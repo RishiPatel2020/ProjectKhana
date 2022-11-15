@@ -1,10 +1,27 @@
-import logo from './logo.svg';
+import Nav from './components/NavBar/Nav';
 import './App.css';
-import Hello from './components/Hello';
-
+import Footer from './components/Footer/Footer';
+import Contact from './components/Contact/Contact';
+import Question from './components/Questions/Question';
+import InformationBox2 from './components/InformationBox2/InformationBox2';
+import InformationBox1 from './components/InformationBox1/InformationBox1';
+import Boxes from './components/Boxes/Boxes';
+import Newsletter from './components/Newsletter/Newsletter';
+import Showcase from './components/Showcase/Showcase';
 function App() {
+
   return (
-    <Hello/>
+    <>
+      <Nav/>
+      <Showcase/>
+      <Newsletter/>
+      <Boxes/>
+      <InformationBox1/>
+      <InformationBox2/>
+      <Question/>
+      <Contact/>
+      <Footer/>
+    </>
   )
 }
 
