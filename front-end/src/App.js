@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import Modal from './components/ModalPopUp/ModalPopUp';
 import Nav from './components/NavBar/Nav';
 import './App.css';
 import Footer from './components/Footer/Footer';
@@ -10,8 +12,15 @@ import Newsletter from './components/Newsletter/Newsletter';
 import Showcase from './components/Showcase/Showcase';
 function App() {
 
+  const [open, setOpen] = useState(false);
+
+
+  
+
   return (
     <>
+
+
       <Nav/>
       <Showcase/>
       <Newsletter/>
@@ -21,6 +30,11 @@ function App() {
       <Question/>
       <Contact/>
       <Footer/>
+      
+
+      
+      
+
     </>
   )
 }

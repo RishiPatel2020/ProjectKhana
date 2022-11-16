@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalPopUp from '../ModalPopUp/ModalPopUp';
 
 const Showcase = () => {
   return (
@@ -13,22 +14,32 @@ const Showcase = () => {
           <p className="lead my-4">
             We provide breakfast, lunch, and dinner at your convinience
           </p>
-          <button
+          {/* <button
             className="btn btn-primary btn-lg"
             data-bs-toggle="modal"
             data-bs-target="#enroll"
+            
           >
             Sign Up
-          </button>
+          </button> */}
+
+          <ModalPopUp/>
+
+          
         </div>
-        <img
-          className="img-fluid w-50 d-none d-sm-block"
-          src="../../Images/tiffinImg.png"
-          alt=""
-        />
+
+        <img className="img-fluid w-50 d-none d-sm-block" src={require("../../Resources/tiffinImg.png")} alt={"Carlie Anglemire"}/>
+        
+
       </div>
     </div>
   </section>
+
+
+
+
+
+
   )
 }
 
