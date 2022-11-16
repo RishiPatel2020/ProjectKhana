@@ -17,7 +17,7 @@ const Boxes = () => {
                 <p className="card-text">
                     We have delicious options for homemade breakfast
                 </p>
-                <a href="#" className="btn btn-dark">Order Breakfast</a>
+                <a href="google.com" className="btn btn-dark">Order Breakfast</a>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ const Boxes = () => {
                 <p className="card-text">
                     We have delicious options for homemade Lunch
                 </p>
-                <a href="#" className="btn btn-dark">Order Lunch</a>
+                <a href="google.com" className="btn btn-dark">Order Lunch</a>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@ const Boxes = () => {
                 <p className="card-text">
                     We have delicious options for homemade Dinner
                 </p>
-                <a href="#" className="btn btn-primary">Order Dinner</a>
+                <a href="google.com" className="btn btn-primary">Order Dinner</a>
               </div>
             </div>
           </div>

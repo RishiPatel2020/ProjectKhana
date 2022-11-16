@@ -37,6 +37,7 @@ function ModalPopUp() {
       alert("Enter Phone");
     }else{
       
+      console.log(firstName+" "+lastName+" "+email+" "+phone);
       // send data to backend to store it in DB
       handleClose(); 
     }

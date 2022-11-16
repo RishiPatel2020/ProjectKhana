@@ -3,7 +3,7 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
       <div className="container">
-        <a href="#" className="navbar-brand">Khana</a>
+        <a href="google.com" className="navbar-brand">Khana</a>
 
         <button
           className="navbar-toggler"
@@ -17,13 +17,13 @@ const Nav = () => {
         <div className="collapse navbar-collapse" id="navmenu">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a href="#questions" className="nav-link">FAQs</a>
+              <a href="google.com" className="nav-link">FAQs</a>
             </li>
             <li className="nav-item">
-              <a href="#questions" className="nav-link">How it Works</a>
+              <a href="google.com" className="nav-link">How it Works</a>
             </li>
             <li className="nav-item">
-              <a href="#Showcase" className="nav-link">Menu</a>
+              <a href="google.com" className="nav-link">Menu</a>
             </li>
           </ul>
         </div>
