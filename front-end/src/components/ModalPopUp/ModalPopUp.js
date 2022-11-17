@@ -4,8 +4,9 @@ import {Button} from "react-bootstrap";
 import { useState } from "react";
 
 function ModalPopUp() {
-  const [show, setShow] = useState(false);
 
+
+  const [show, setShow] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ function ModalPopUp() {
   //When user closes Pop Up
   const handleClose = () => {
     setShow(false);
-    setFirstName("");
+    setFirstName(""); 
     setLastName("");
     setEmail("");
     setPhone("");
@@ -37,8 +38,12 @@ function ModalPopUp() {
       alert("Enter Phone");
     }else{
       
-      console.log(firstName+" "+lastName+" "+email+" "+phone);
-      // send data to backend to store it in DB
+
+      const rslt = firstName+" "+lastName+" "+email+" "+phone;
+
+      console.log(rslt); 
+     
+     // send data to backend to store it in DB
       handleClose(); 
     }
   }
@@ -64,7 +69,7 @@ function ModalPopUp() {
                 <label htmlFor="first-name" className="col-form-label">
                   First Name
                 </label><span style={{color:"red"}}>*</span>
-                <input type="text" className="form-control" id="first-name" value={firstName} onChange={(e)=>setFirstName(e.target.value)} />
+                <input type="text" className="form-control" id="first-name" value={firstName} onChange={(e)=>setFirstName(e.target.value)}/>
               </div>
               <div className="mb-3">
                 <label htmlFor="last-name" className="col-form-label">Last Name</label> <span style={{color:"red"}}>*</span>

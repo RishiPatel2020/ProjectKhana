@@ -1,35 +1,41 @@
-import React from 'react'
-const Nav = () => {
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
-      <div className="container">
-        <a href="google.com" className="navbar-brand">Khana</a>
-
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navmenu"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navmenu">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a href="google.com" className="nav-link">FAQs</a>
-            </li>
-            <li className="nav-item">
-              <a href="google.com" className="nav-link">How it Works</a>
-            </li>
-            <li className="nav-item">
-              <a href="google.com" className="nav-link">Menu</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">Khana</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#features">FAQs</Nav.Link>
+              <Nav.Link href="#pricing">How It Works</Nav.Link>
+              <Nav.Link href="#menu">Menu</Nav.Link>
+              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Separated link
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Navbar.Text  style={{color: "rgba(255,255,255,.55)"}} >
+                Signed in as: <a href="#login"  style={{color: "rgba(255,255,255,.55)"}} >Mav Patil</a>
+              </Navbar.Text> 
+            
+            
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
   );
 }
-
-export default Nav; 
+export default NavBar;
