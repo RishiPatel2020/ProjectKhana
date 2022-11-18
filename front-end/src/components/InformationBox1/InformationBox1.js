@@ -2,7 +2,7 @@ import React from 'react'
 
 const InformationBox1 = () => {
   return (
-    <section id="learn" className="p-5">
+    <section id="learn" className="p-5 bg-secondary text-light">
     <div className="container">
       <div className="row align-items-center justify-content-between">
         <div className="col-md">

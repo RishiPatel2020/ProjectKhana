@@ -1,6 +1,13 @@
+/***
+ * This pop up is for sign up. It also includes bootstrap alter which informs user if some field is missing
+ * Show alert after each attempt of signing up 
+ */
+
+
 import React from "react";
 import { Modal } from "react-bootstrap";
 import {Button} from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { useState } from "react";
 
 function ModalPopUp() {
@@ -12,39 +19,60 @@ function ModalPopUp() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   
+  // used to decided whether to display alert or not 
+  const [displayAlert, setdisplayAlert] = useState(false);
   
-  //When user closes Pop Up
-  const handleClose = () => {
-    setShow(false);
+  // message to be displayed in alert
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const [alertColor, setAlertColor] = useState("");
+
+  
+
+  const resetState = ()=>{
     setFirstName(""); 
     setLastName("");
     setEmail("");
     setPhone("");
-
+  }
+  
+  //reset all states for user inputs
+  const handleClose = () => {
+    resetState(); 
+    setShow(false); 
   }
   
   const handleShow = () => setShow(true);
-
   
   // When user clicks on submit 
   const handleSubmit = ()=>{
     if(firstName.length===0){
-      alert("Enter First Name");
+      // alert("Enter First Name");
+
+      setdisplayAlert(true); 
+      setAlertMessage("Enter First Name");
+      setAlertColor("danger");
+      
     }else if(lastName.length===0){
-      alert("Enter Last Name");
+      setdisplayAlert(true); 
+      setAlertMessage("Enter Last Name"); 
+      setAlertColor("danger");
     }else if(email.length===0){
-      alert("Enter Email");
+      setdisplayAlert(true); 
+      setAlertMessage("Enter Email"); 
+      setAlertColor("danger");
     }else if(phone.length===0){
-      alert("Enter Phone");
+      setdisplayAlert(true); 
+      setAlertMessage("Enter Phone"); 
+      setAlertColor("danger");
     }else{
       
 
       const rslt = firstName+" "+lastName+" "+email+" "+phone;
-
-      console.log(rslt); 
-     
-     // send data to backend to store it in DB
-      handleClose(); 
+      setdisplayAlert(true); 
+      setAlertMessage(rslt); 
+      setAlertColor("success");
+      resetState(); 
     }
   }
 
@@ -57,9 +85,14 @@ function ModalPopUp() {
         Sign Up
       </Button>
 
+    
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton style={{textAlign:"center"}}>
           <Modal.Title >Sign Up</Modal.Title>
+          {displayAlert && <Alert key={alertColor} variant={alertColor} dismissible onClose={()=>setdisplayAlert(false)} style={{left:"20px"}}>
+            {alertMessage}
+        </Alert>}
         </Modal.Header>
         <Modal.Body>
   

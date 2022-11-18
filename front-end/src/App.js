@@ -8,6 +8,7 @@ import InformationBox1 from './components/InformationBox1/InformationBox1';
 import Boxes from './components/Boxes/Boxes';
 import Newsletter from './components/Newsletter/Newsletter';
 import Showcase from './components/Showcase/Showcase';
+import AnimatedBoxes from './components/AnimatedInformationBoxes/AnimatedBoxes';
 function App() {
 
 
@@ -18,11 +19,16 @@ function App() {
     <>
 
 
+
       <Nav/>
       <Showcase/>
+      <AnimatedBoxes/>
       <Newsletter/>
       <Boxes/>
       <InformationBox1/>
+
+      
+      
       <InformationBox2/>
       <Question/>
       <Contact/>
