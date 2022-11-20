@@ -16,7 +16,7 @@ const Contact = () => {
               
               <li className="list-group-item">
                 <span className="fw-bold">Email:</span>
-                maajikitchen@gmail.com
+                khana839@gmail.com
               </li>
             </ul>
           </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Newsletter = () => {
   return (
-    <section className="bg-dark text-light p-5" id = "Newsletter">
+    <section className="bg-second text-light p-5" id = "Newsletter">
       <div className="container">
         <div className="d-md-flex justify-content-between align-items-center">
           <h3 className="mb-3 mb-md-0"></h3>

@@ -13,7 +13,7 @@ function AnimatedBoxes() {
 
              <div className="row">
             <div className="column">
-                <img src={require("../../Resources/thali2.png")}  alt="Snow" width={"50%"}/>
+                <img src={require("../../Resources/thali2.png")}  alt="Snow" width={"70%"}/>
             </div>
             <div className="column" style={{textAlign:"left"}}>
 
