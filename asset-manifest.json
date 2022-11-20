@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ProjectKhana/static/css/main.4dc29dc4.css",
-    "main.js": "/ProjectKhana/static/js/main.c8ff434e.js",
+    "main.js": "/ProjectKhana/static/js/main.c82d7b7b.js",
     "static/js/787.22edae46.chunk.js": "/ProjectKhana/static/js/787.22edae46.chunk.js",
     "static/media/thali3.png": "/ProjectKhana/static/media/thali3.de7aded9aa26affe8f34.png",
     "static/media/newthali.png": "/ProjectKhana/static/media/newthali.d57a771b9926e2fb5406.png",
@@ -9,11 +9,11 @@
     "static/media/tiffinImg.png": "/ProjectKhana/static/media/tiffinImg.1383360d962aae7a5b6b.png",
     "index.html": "/ProjectKhana/index.html",
     "main.4dc29dc4.css.map": "/ProjectKhana/static/css/main.4dc29dc4.css.map",
-    "main.c8ff434e.js.map": "/ProjectKhana/static/js/main.c8ff434e.js.map",
+    "main.c82d7b7b.js.map": "/ProjectKhana/static/js/main.c82d7b7b.js.map",
     "787.22edae46.chunk.js.map": "/ProjectKhana/static/js/787.22edae46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4dc29dc4.css",
-    "static/js/main.c8ff434e.js"
+    "static/js/main.c82d7b7b.js"
   ]
 }
