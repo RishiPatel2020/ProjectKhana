@@ -10,14 +10,14 @@ function NavBar() {
   return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href='/'><span style={{fontSize:"40px"}}>Khana</span></Navbar.Brand>
+          <Navbar.Brand href='/#'><span style={{fontSize:"40px"}}>Khana</span></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/">Plans & Menu</Nav.Link>
-            <Nav.Link href="/">Help</Nav.Link>
+            <Nav.Link href="/#about">About</Nav.Link>
+            <Nav.Link href="/#">Plans & Menu</Nav.Link>
+            <Nav.Link href="/#">Help</Nav.Link>
           
               
             </Nav>
