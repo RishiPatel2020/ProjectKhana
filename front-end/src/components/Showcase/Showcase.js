@@ -8,8 +8,8 @@ const Showcase = () => {
     <div className="container">
       <div className="d-sm-flex align-items-center justify-content-between my-4">
         <div>
-          <h1>Welcome to<span className="text-warning"> Khana.com </span></h1>
-          <p className="lead my-4">
+          <h1 style={{fontFamily:"Comfortaa", fontSize:"57px"}} ><strong>Welcome to</strong><span className="text-warning" style={{fontFamily:"Comfortaa", fontSize:"57px"}}> <strong>Mirchi Meals</strong></span></h1>
+          <p className="lead my-4" style={{fontFamily:"Comfortaa", fontSize:"27px"}}>
             We provide breakfast, lunch, and dinner at your convinience
           </p>
           <div className="row align-items-center justify-content-between">

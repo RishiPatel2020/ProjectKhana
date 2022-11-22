@@ -39,7 +39,7 @@ const secondBox =  {
   return (
    <>
       <Showcase/>
-      <AnimatedBoxes/>
+      <InformationBox data={firstBox}/>
       <Newsletter/>
       <Boxes/>
       <InformationBox data={firstBox}/>

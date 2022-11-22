@@ -5,7 +5,7 @@ import './AnimatedBoxes.css';
 function AnimatedBoxes() {
    
     return (
-        <Carousel variant="dark" >
+        <Carousel variant="dark" fade >
           <Carousel.Item>
 
     

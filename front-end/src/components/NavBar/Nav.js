@@ -1,23 +1,22 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import SessionMaintain from '../../Service/SessionMaintain';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function NavBar() {
 
 
   return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href='/#'><span style={{fontSize:"40px"}}>Khana</span></Navbar.Brand>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="light" >
+        <Container style={{backgroundColor:"rgba(255,153,0)"}}>
+          <Navbar.Brand href='/#'><img src={require("../../Resources/logo.png")}  style={{width:"250px"}} ></img></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               
-            <Nav.Link href="/#about">About</Nav.Link>
-            <Nav.Link href="/#">Plans & Menu</Nav.Link>
-            <Nav.Link href="/#">Help</Nav.Link>
+            <Nav.Link href="#/about"><strong style={{fontFamily:"Comfortaa", fontSize:"27px"}}>About</strong></Nav.Link>
+            <Nav.Link href="/#"><strong style={{fontFamily:"Comfortaa", fontSize:"27px"}}>Plans</strong></Nav.Link>
+            <Nav.Link href="/#"><strong style={{fontFamily:"Comfortaa", fontSize:"27px"}}>Help</strong></Nav.Link>
           
               
             </Nav>
@@ -26,20 +25,21 @@ function NavBar() {
               <Nav>
 
               
-              <Navbar.Text  style={{color: "rgba(255,255,255,.55)"}} >
-                  Signed in as:
+              <Navbar.Text  style={{color: "rgba(255,255,255,.55)",marginRight:"15px"}} >
+                  <strong style={{fontFamily:"Comfortaa", fontSize:"20px", color:"white"}}>Signed in as : </strong>
                 </Navbar.Text> 
 
-              <NavDropdown title="Mav Pillai" id="collasible-nav-dropdown">
-                  <NavDropdown.Item heref="#action/3.1">Account Info</NavDropdown.Item>
-                  <NavDropdown.Item heref="#action/3.2">
-                    Edit Plans
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider/>
-                  <NavDropdown.Item heref="/">Log Out</NavDropdown.Item>
+                <Dropdown>
+                <Dropdown.Toggle variant="warning" id="dropdown-basic">
+                <strong style={{fontFamily:"Comfortaa", fontSize:"20px", color:"white"}}>Mav Pillay</strong>
+                </Dropdown.Toggle>
 
-                  
-                </NavDropdown>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
                 
               
               

@@ -10,10 +10,10 @@ function App() {
     <>
     <Nav/>
     <Routes>
-
       <Route path="/ProjectKhana" element={<Home/>}/>
       <Route path="/" element={<Home/>}/>
-      <Route path="/about" element={<About/>}/>
+      <Route path="#/about" element={<About/>}/>
+
     </Routes> 
 
     <Footer/>

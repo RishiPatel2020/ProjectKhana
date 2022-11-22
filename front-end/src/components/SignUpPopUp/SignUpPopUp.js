@@ -21,6 +21,9 @@
    const [userName, setUserName] = useState("");
    const [userPassword, setUserPassword] = useState("");
    const [phone, setPhone] = useState("");
+
+   const [color, setColor] = useState("black");
+   const [astrik, setAstrik] = useState("*");
    
 
 
@@ -39,6 +42,8 @@
      setUserPassword("");
      setEmail("");
      setPhone("");
+     setAstrik("*");
+     setColor("black"); 
    }
    
    //reset all states of data & close Pop Up
@@ -54,10 +59,8 @@
    // when user clicks on submit
    const handleSubmit = ()=>{
      if(firstName.length===0){ 
-       setDisplayAlert(true); 
-       setAlertMessage("Enter First Name");
-       setAlertColor("danger");
-       
+      setColor("red"); 
+      setAstrik("**");
      }else if(lastName.length===0){
        setDisplayAlert(true); 
        setAlertMessage("Enter Last Name"); 
@@ -108,7 +111,7 @@
                 <p className="lead">Fill out this form and you are all set</p>
                 <form>
                     <div className="mb-3">
-                        <label htmlFor="first-name" className="col-form-label">First Name</label><span style={{color:"red"}}>*</span>
+                        <label htmlFor="first-name" className="col-form-label" ><span style={{color:color}}>First Name</span></label><span style={{color:"red"}}>{astrik}</span>
                         <input type="text" className="form-control" id="first-name" value={firstName} onChange={(e)=>setFirstName(e.target.value)}/>
                     </div>
                     <div className="mb-3">
