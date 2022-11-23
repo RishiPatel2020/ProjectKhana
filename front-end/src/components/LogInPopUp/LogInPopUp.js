@@ -8,7 +8,7 @@
  import { Alert } from "react-bootstrap";
  import { useState } from "react";
  
- function LogInPopUP() {
+ function LogInPopUP({style}) {
  
    // display pop up
    const [display, setDisplay] = useState(false);
@@ -16,30 +16,38 @@
    // data for sign up
    const [userName, setUserName] = useState("");
    const [userPassword, setUserPassword] = useState("");
+   const [userNameLabel, setUserNameLabel] = useState(<label htmlFor="userName" className="col-form-label" >Enter User Name <span style={{color:"red"}}>*</span></label>);
+   const [userPasswordLabel, setUserPasswordLabel] = useState(<label htmlFor="userPassword" className="col-form-label" >Enter Password <span style={{color:"red"}}>*</span></label>);
 
    
 
 
-   // display alert
-   const [displayAlert, setDisplayAlert] = useState(false);
-   const [alertMessage, setAlertMessage] = useState("");
-   const [alertColor, setAlertColor] = useState("");
- 
+   const resetData = ()=>{
+    setUserName("");
+    setUserPassword(""); 
+   };
+
+   const resetLabels=()=>{
+     setUserNameLabel(<label htmlFor="userName" className="col-form-label" >Enter User Name <span style={{color:"red"}}>*</span></label>);
+     setUserPasswordLabel(<label htmlFor="userPassword" className="col-form-label" >Enter Password <span style={{color:"red"}}>*</span></label>);
+   };
+
+   
    
  
 
-   const resetState = ()=>{
-    
-     setUserName("");
-     setUserPassword("");
+   const reset = ()=>{
+
+      resetData();
+      resetLabels();
      
    }
    
    //reset all states of data & close Pop Up
    const handleClose = () => {
-     resetState(); 
+     reset(); 
      setDisplay(false);
-     setDisplayAlert(false); 
+     
    }
    
    const handleDisplay = () => setDisplay(true);
@@ -47,20 +55,14 @@
 
    // when user clicks on submit AUTHENTICATE USER based on credentials provided
    const handleSubmit = ()=>{
+    resetLabels();
      if(userName.length===0){
-        setDisplayAlert(true); 
-        setAlertMessage("Create User Name"); 
-        setAlertColor("danger");
+      setUserNameLabel(<label htmlFor="userName" className="col-form-label" style={{color:"red"}} >Enter User Name <span style={{color:"red"}}>**</span></label>); 
       }else if(userPassword.length===0){
-        setDisplayAlert(true); 
-        setAlertMessage("Enter Password"); 
-        setAlertColor("danger");
-      }else{
-       const rslt = userName+" "+userPassword;
-       setDisplayAlert(true); 
-       setAlertMessage(rslt); 
-       setAlertColor("success");
-       resetState(); 
+        setUserPasswordLabel(<label htmlFor="userPassword" className="col-form-label"  style={{color:"red"}}>Enter Password <span style={{color:"red"}}>*</span></label>);
+      }else{       
+       // verify data with backend then close the window 
+       handleClose();
 
      }
    }
@@ -69,16 +71,11 @@
    
    return (
      <>
-        <Button variant="primary" onClick={handleDisplay}>Log In</Button>
+        <Button variant={style.buttonColor} onClick={handleDisplay} style={{width:"100px"}}><span style = {{color:style.textColor, fontSize:"20px"}}>Log In</span></Button>
          <Modal show={display} onHide={handleClose}>
 
             <Modal.Header closeButton style={{textAlign:"center"}}>
                 <Modal.Title >Log In</Modal.Title>
-                    {   displayAlert && 
-                        <Alert key={alertColor} variant={alertColor} dismissible onClose={()=>setDisplayAlert(false)} style={{left:"20px"}}> 
-                            {alertMessage}
-                        </Alert>
-                    }
             </Modal.Header>
 
             <Modal.Body>
@@ -86,12 +83,12 @@
                 <form>
 
                     <div className="mb-3">
-                        <label htmlFor="userName" className="col-form-label" >Enter User Name</label><span style={{color:"red"}}>*</span>
+                        {userNameLabel}
                         <input type="text" className="form-control" id="userName" value={userName} onChange={(e)=>setUserName(e.target.value)} />
                     </div>
                     
                     <div className="mb-3">
-                        <label htmlFor="userPassword" className="col-form-label" >Enter Password</label><span style={{color:"red"}}>*</span>
+                        {userPasswordLabel}
                         <input type="password" className="form-control" id="userPassword" value={userPassword} onChange={(e)=>setUserPassword(e.target.value)} />
                     </div>
 
@@ -101,11 +98,11 @@
 
 
            <Modal.Footer>
-             <Button variant="secondary" onClick={handleClose}>
-               Close
+             <Button variant={style.buttonColor} onClick={handleClose}>
+               <span style={{color: style.textColor}}>Close</span>
              </Button>
-             <Button variant="primary" onClick={handleSubmit}>
-               Submit
+             <Button variant={style.buttonColor} onClick={handleSubmit}>
+             <span style={{color: style.textColor}}>Submit</span>
              </Button>
            </Modal.Footer>
 

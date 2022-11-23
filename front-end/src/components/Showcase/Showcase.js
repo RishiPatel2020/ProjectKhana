@@ -14,10 +14,10 @@ const Showcase = () => {
           </p>
           <div className="row align-items-center justify-content-between">
             <div className="col-md">
-              <SignUpPopUp/>
+              <SignUpPopUp style={{buttonColor:"secondary", textColor:"white"}}/>
             </div>  
             <div className="col-md p-5">
-              <LogInPopUP/>
+              <LogInPopUP style={{buttonColor:"secondary", textColor:"white"}}/>
             </div>
           </div>        
         </div>

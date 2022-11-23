@@ -9,7 +9,7 @@
  import { useState } from "react";
 
  
- function SignUpPopUp() {
+ function SignUpPopUp({style}) {
  
    // display pop up
    const [display, setDisplay] = useState(false);
@@ -28,8 +28,7 @@
    
    
 
-   // display alert
-   const [loggedInMsg, setLoggedInMsg] = useState("");
+   
  
 
 
@@ -47,7 +46,6 @@
      setUserName("");
      setUserPassword("");
      setEmail("");
-     setLoggedInMsg(""); 
 
      
      
@@ -88,9 +86,9 @@
       }else if(userPassword.length===0){
         setUserPasswordLabel(<label htmlFor="userPassword" className="col-form-label" ><span style={{color:"red"}}>Create Password <span style={{color:"red"}}>**</span></span></label>);
       }else{
-       setDisplay(false); 
-       resetLabels();
-       resetData();
+       
+        // verify data with backend then close the window 
+        handleClose(); 
      }
    }
  
@@ -98,14 +96,11 @@
    
    return (
      <>
-        <Button variant="secondary" style= {{color:"white"}} onClick={handleDisplay}>Sign Up</Button>
+        <Button variant={style.buttonColor} onClick={handleDisplay} style={{width:"100px"}}  ><span style = {{color:style.textColor, fontSize:"20px"}}>Sign Up</span></Button>
          <Modal show={display} onHide={handleClose}>
 
             <Modal.Header closeButton style={{textAlign:"center"}}>
                 <Modal.Title >Sign Up</Modal.Title>
-                    { 
-                        loggedInMsg
-                    }
             </Modal.Header>
 
             <Modal.Body>
@@ -142,11 +137,11 @@
 
 
            <Modal.Footer>
-             <Button variant="secondary" onClick={handleClose}>
-               Close
+             <Button variant={style.buttonColor} onClick={handleClose}>
+               <span style={{color: style.textColor}}>Close</span>
              </Button>
-             <Button variant="secondary" onClick={handleSubmit}>
-               Submit
+             <Button variant={style.buttonColor} onClick={handleSubmit}>
+             <span style={{color: style.textColor}}>Submit</span>
              </Button>
            </Modal.Footer>
 
