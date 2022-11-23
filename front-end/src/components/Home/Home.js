@@ -5,17 +5,14 @@
 
 
 import React from 'react'
-import Nav from "../NavBar/Nav";
 import Showcase from '../Showcase/Showcase';
-import AnimatedBoxes from '../AnimatedInformationBoxes/AnimatedBoxes';
 import Newsletter from '../Newsletter/Newsletter';
 import Boxes from '../Boxes/Boxes';
 import InformationBox from '../InformationBox/InformationBox';
 import Question from '../Questions/Question';
 import Contact from '../Contact/Contact';
-import Footer from '../Footer/Footer';
 
-const Home = () => {
+const Home = ({loggedIn, setLogIn}) => {
   const firstBox =  {
     image: require("../../Resources/thali3.png"),
     textPosition: "r",
@@ -38,7 +35,7 @@ const secondBox =  {
 }
   return (
    <>
-      <Showcase/>
+      <Showcase loggedIn = {loggedIn} setLogIn = {setLogIn}/>
       <InformationBox data={firstBox}/>
       <Newsletter/>
       <Boxes/>

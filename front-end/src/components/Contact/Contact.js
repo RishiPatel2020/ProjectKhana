@@ -3,7 +3,7 @@ import React from 'react'
 const Contact = () => {
   return (
     
-    <section className="p-5">
+    <section className="p-5" style={{fontFamily:"Comfortaa"}}>
       <div className="container">
         <div className="row g-4">
           <div className="col-md">

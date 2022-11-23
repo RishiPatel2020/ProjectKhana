@@ -2,7 +2,7 @@ import React from 'react'
 import { Accordion } from 'react-bootstrap'
 const Question = () => {
   return (
-    <section id="questions" className="p-5 bg-light">
+    <section id="questions" className="p-5 bg-light" style={{fontFamily:"Comfortaa"}}>
     <h2 className="text-center mb-4">Frequently Asked Questions</h2>
     <Accordion>
       <Accordion.Item eventKey="0">

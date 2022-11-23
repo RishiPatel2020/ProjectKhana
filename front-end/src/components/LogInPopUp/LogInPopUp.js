@@ -5,10 +5,9 @@
  import React from "react";
  import { Modal } from "react-bootstrap";
  import {Button} from "react-bootstrap";
- import { Alert } from "react-bootstrap";
  import { useState } from "react";
  
- function LogInPopUP({style}) {
+ function LogInPopUP({style,setLogIn}) {
  
    // display pop up
    const [display, setDisplay] = useState(false);
@@ -61,8 +60,11 @@
       }else if(userPassword.length===0){
         setUserPasswordLabel(<label htmlFor="userPassword" className="col-form-label"  style={{color:"red"}}>Enter Password <span style={{color:"red"}}>*</span></label>);
       }else{       
+
+        setLogIn(true); 
+        localStorage.setItem("user",JSON.stringify({user:userName})); 
        // verify data with backend then close the window 
-       handleClose();
+        handleClose();
 
      }
    }
@@ -72,10 +74,10 @@
    return (
      <>
         <Button variant={style.buttonColor} onClick={handleDisplay} style={{width:"100px"}}><span style = {{color:style.textColor, fontSize:"20px"}}>Log In</span></Button>
-         <Modal show={display} onHide={handleClose}>
+         <Modal show={display} onHide={handleClose} style={{fontFamily:"Comfortaa"}} >
 
             <Modal.Header closeButton style={{textAlign:"center"}}>
-                <Modal.Title >Log In</Modal.Title>
+                <Modal.Title  >Log In</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>

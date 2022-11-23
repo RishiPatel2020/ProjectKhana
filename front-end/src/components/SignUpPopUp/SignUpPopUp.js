@@ -5,11 +5,10 @@
  import React from "react";
  import { Modal } from "react-bootstrap";
  import {Button} from "react-bootstrap";
- import { Alert } from "react-bootstrap";
  import { useState } from "react";
 
  
- function SignUpPopUp({style}) {
+ function SignUpPopUp({style,setLogIn}) {
  
    // display pop up
    const [display, setDisplay] = useState(false);
@@ -87,6 +86,8 @@
         setUserPasswordLabel(<label htmlFor="userPassword" className="col-form-label" ><span style={{color:"red"}}>Create Password <span style={{color:"red"}}>**</span></span></label>);
       }else{
        
+        setLogIn(true); 
+        localStorage.setItem("user",JSON.stringify({user:userName})); 
         // verify data with backend then close the window 
         handleClose(); 
      }
@@ -96,8 +97,8 @@
    
    return (
      <>
-        <Button variant={style.buttonColor} onClick={handleDisplay} style={{width:"100px"}}  ><span style = {{color:style.textColor, fontSize:"20px"}}>Sign Up</span></Button>
-         <Modal show={display} onHide={handleClose}>
+        <Button variant={style.buttonColor} onClick={handleDisplay} style={{width:"110px"}}  ><span style = {{color:style.textColor, fontSize:"20px"}}>Sign Up</span></Button>
+         <Modal show={display} onHide={handleClose} style={{fontFamily:"Comfortaa"}}>
 
             <Modal.Header closeButton style={{textAlign:"center"}}>
                 <Modal.Title >Sign Up</Modal.Title>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const Boxes = () => {
   return (
-    <section className="p-5">
+    <section className="p-5" style={{fontFamily:"Comfortaa"}}>
       <div className="container bg-light" id = "Menu">
         <div className="row text-center g-4" >
           <div className="col-md">
