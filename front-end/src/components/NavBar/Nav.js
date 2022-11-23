@@ -2,21 +2,26 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function NavBar() {
 
 
   return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="light" >
-        <Container style={{backgroundColor:"rgba(255,153,0)"}}>
-          <Navbar.Brand href='/#'><img src={require("../../Resources/logo.png")}  style={{width:"250px"}} ></img></Navbar.Brand>
+      <Navbar collapseOnSelect expand="lg" bg="secondary" variant="light" >
+        <Container >
+          {/* <Navbar.Brand href='/'><img src={require("../../Resources/logo.png")}  style={{width:"250px"}} ></img></Navbar.Brand> */}
+          <Navbar.Brand><Link to = "/">  <img src={require("../../Resources/logo.png")}  style={{width:"250px"}} ></img> </Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              
-            <Nav.Link href="#/about"><strong style={{fontFamily:"Comfortaa", fontSize:"27px"}}>About</strong></Nav.Link>
-            <Nav.Link href="/#"><strong style={{fontFamily:"Comfortaa", fontSize:"27px"}}>Plans</strong></Nav.Link>
-            <Nav.Link href="/#"><strong style={{fontFamily:"Comfortaa", fontSize:"27px"}}>Help</strong></Nav.Link>
+              <Nav.Link ><Link to="/about" style={{ textDecoration: 'none' }}><strong style={{fontFamily:"Comfortaa", fontSize:"27px", color:"rgb(247, 193, 68)"}}>About</strong></Link></Nav.Link>    
+              <Nav.Link ><Link to="/" style={{ textDecoration: 'none' }}><strong style={{fontFamily:"Comfortaa", fontSize:"27px", color:"rgb(247, 193, 68)"}}>Plans</strong></Link></Nav.Link>
+              <Nav.Link><Link to="/" style={{ textDecoration: 'none' }}><strong style={{fontFamily:"Comfortaa", fontSize:"27px", color:"rgb(247, 193, 68)"}}>Help</strong></Link></Nav.Link>
+
           
               
             </Nav>
@@ -30,8 +35,8 @@ function NavBar() {
                 </Navbar.Text> 
 
                 <Dropdown>
-                <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                <strong style={{fontFamily:"Comfortaa", fontSize:"20px", color:"white"}}>Mav Pillay</strong>
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                <strong style={{fontFamily:"Comfortaa", fontSize:"20px", color:"rgb(98, 10, 21)"}}>Mav Pillai</strong>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>

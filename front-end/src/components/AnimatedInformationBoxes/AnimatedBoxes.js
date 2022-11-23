@@ -1,5 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import './AnimatedBoxes.css'; 
+import React from 'react';
 
 
 function AnimatedBoxes() {
