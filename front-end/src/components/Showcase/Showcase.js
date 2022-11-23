@@ -10,7 +10,7 @@ const Showcase = () => {
         <div>
           <h1 style={{fontFamily:"Comfortaa", fontSize:"57px"}} ><strong>Welcome to</strong><span className="text-primary" style={{fontFamily:"Comfortaa", fontSize:"57px"}}> <strong>Mirchi Meals</strong></span></h1>
           <p className="lead my-4" style={{fontFamily:"Comfortaa", fontSize:"27px"}}>
-            We provide breakfast, lunch, and dinner at your convinience
+          We provide Indian meals to fuel your tight schedules. Mealing done right.  
           </p>
           <div className="row align-items-center justify-content-between">
             <div className="col-md">
