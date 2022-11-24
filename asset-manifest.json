@@ -1,19 +1,22 @@
 {
   "files": {
     "main.css": "/ProjectKhana/static/css/main.a2ef826c.css",
-    "main.js": "/ProjectKhana/static/js/main.4b30ceeb.js",
+    "main.js": "/ProjectKhana/static/js/main.e1e2f092.js",
     "static/js/787.22edae46.chunk.js": "/ProjectKhana/static/js/787.22edae46.chunk.js",
     "static/media/newthali.png": "/ProjectKhana/static/media/newthali.d57a771b9926e2fb5406.png",
     "static/media/thali2.png": "/ProjectKhana/static/media/thali2.24a287f72273d317ac18.png",
     "static/media/newBack.png": "/ProjectKhana/static/media/newBack.37a7004a9fa331964dd4.png",
+    "static/media/step2.png": "/ProjectKhana/static/media/step2.39a2554b77d476e6698c.png",
+    "static/media/step3.png": "/ProjectKhana/static/media/step3.4e542ebdf78d13a13bb3.png",
+    "static/media/step1.png": "/ProjectKhana/static/media/step1.b07b4c04c2b74e5fb492.png",
     "static/media/logo.png": "/ProjectKhana/static/media/logo.8114023b713f1f38eaac.png",
     "index.html": "/ProjectKhana/index.html",
     "main.a2ef826c.css.map": "/ProjectKhana/static/css/main.a2ef826c.css.map",
-    "main.4b30ceeb.js.map": "/ProjectKhana/static/js/main.4b30ceeb.js.map",
+    "main.e1e2f092.js.map": "/ProjectKhana/static/js/main.e1e2f092.js.map",
     "787.22edae46.chunk.js.map": "/ProjectKhana/static/js/787.22edae46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2ef826c.css",
-    "static/js/main.4b30ceeb.js"
+    "static/js/main.e1e2f092.js"
   ]
 }
