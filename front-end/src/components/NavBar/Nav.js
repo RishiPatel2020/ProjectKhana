@@ -14,7 +14,7 @@ function NavBar({loggedIn,setLogIn}) {
 
   return (
       <Navbar collapseOnSelect expand="lg" bg="secondary" variant="light" >
-        <Container style={{fontFamily:"Comfortaa"}}>
+        <Container style={{fontFamily:"Signika"}}>
           {/* <Navbar.Brand href='/'><img src={require("../../Resources/logo.png")}  style={{width:"250px"}} ></img></Navbar.Brand> */}
           <Navbar.Brand><Link to = "/">  <img src={require("../../Resources/logo.png")}  style={{width:"250px"}} alt="MirchiMealsLogo" ></img> </Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -32,13 +32,11 @@ function NavBar({loggedIn,setLogIn}) {
               <Nav>
 
               
-              <Navbar.Text  style={{color: "rgba(255,255,255,.55)",marginRight:"15px"}} >
-                  <strong style={{fontFamily:"Comfortaa", fontSize:"20px", color:"white"}}>Signed in as : </strong>
-                </Navbar.Text> 
 
                 <Dropdown>
                 <Dropdown.Toggle variant="light" id="dropdown-basic">
-                <strong style={{fontFamily:"Comfortaa", fontSize:"20px", color:"rgb(98, 10, 21)"}}>{JSON.parse(localStorage.getItem("user")).user}</strong>
+                <span class="material-symbols-outlined"> Person</span>
+                {/* <strong style={{fontFamily:"Signika", fontSize:"20px", color:"rgb(98, 10, 21)"}}>{JSON.parse(localStorage.getItem("user")).user}</strong> */}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
@@ -47,6 +45,10 @@ function NavBar({loggedIn,setLogIn}) {
                   <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+
+              <Navbar.Text  style={{color: "rgba(255,255,255,.55)",marginLeft:"15px"}} >
+                  <strong style={{fontFamily:"Signika", fontSize:"20px", color:"white"}}>{JSON.parse(localStorage.getItem("user")).user}</strong>
+                </Navbar.Text> 
                 
               
               

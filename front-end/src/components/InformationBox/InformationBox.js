@@ -70,7 +70,7 @@ const InformationBox = ({data}) => {
   
 
   return (
-    <section id="learn" className= {"p-5 bg-"+data.backgroundColor+" text-"+data.textColor} style={{fontFamily:"Comfortaa"}}>
+    <section id="learn" className= {"p-5 bg-"+data.backgroundColor+" text-"+data.textColor} style={{fontFamily:"Signika"}}>
     <div className="container">
       {data.textPosition==='r'?textOnRight():textOnLeft()}
     </div>
