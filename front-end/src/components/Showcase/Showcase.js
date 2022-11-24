@@ -6,10 +6,10 @@ import background from '../../Resources/newBack.png';
 const Showcase = ({loggedIn, setLogIn}) => {
   return (
     <section className="bg-primary text-primary p-5 p-lg-0 pt-lg-5 text-center text-sm-start" id = "Showcase" style={{backgroundImage: `url(${background})`, backgroundSize:"cover", height:"100%", width:"100%",marginRight:"10px", fontFamily:"Signika"}}>
-    <div className="container">
+    <div className="container" >
       <div className="d-sm-flex align-items-center my-0.1" >
        
-         <div style={{backgroundColor:"rgb(98, 10, 21)", opacity:0.91,paddingLeft:"25px",paddingRight:"25px",marginBottom:"55px"}}>
+         <div style={{backgroundColor:"rgb(98, 10, 21)", opacity:0.91,paddingLeft:"25px",paddingRight:"25px",marginBottom:"55px", boxShadow:"15px 15px 15px black"}}>
           
          <div style={{marginBottom:"-20px",fontSize:"4em"}} className="text-primary">
           <strong>Cooking</strong>

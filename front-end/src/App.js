@@ -2,6 +2,7 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Footer from './components/Footer/Footer';
 import React from 'react';
+import './index.css'; 
 import { useState } from 'react';
 
 import Nav from './components/NavBar/Nav';
