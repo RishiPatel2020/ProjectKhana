@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import React from 'react';
 import './index.css'; 
 import { useState } from 'react';
+import './App.css'; 
 
 import Nav from './components/NavBar/Nav';
 import {Route,Routes} from 'react-router-dom'; 

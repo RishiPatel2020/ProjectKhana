@@ -1,81 +1,91 @@
-import React from 'react'
+import React from 'react';
+import {Container, Row } from 'react-bootstrap';
+
+
+
+
 
 const InformationBox = ({data}) => {
+  const textRight = ()=>{
 
-
-  const textOnRight = ()=>{
+    return (
+        
+        <>
+            
+            {data.bigImage}
+            
+                           
+                          {/* Right Stuff */}
+                             <Container>
+                         
+                                 <Row><div className="h-100 d-flex align-items-center justify-content-center">{data.smallImage}</div></Row>
+                                 <Row>{data.description}</Row>
+                                 
+                                 {data.buttonExist? data.button : <></>}
+                               
+                             </Container>
+        </>
+    );
+  
+  };
+  
+  
+  const textLeft = ()=>{
+  
     return(
-      <div className="row align-items-center justify-content-between">
-        
-    
-        <div className="col-md">
-          <img src={data.image} className="img-fluid"/>
-        </div>
-        
-        <div className="col-md p-5">
-          <h2>{data.title}</h2>
-          <p className="lead">
-            {data.subtitle}
-          </p>
-          <p>
-            {data.description}
-          </p>
-          <a href="google.com" className={data.backgroundColor==="light"? "btn btn-dark mt-3":"btn btn-light mt-3"}>
-            <i className="bi bi-chevron-right"></i> Read More
-          </a>
-        </div>
+  
+      <>
+  
+  
+            
+                           
+            {/* Right Stuff */}
+               <Container>
+           
+                   <Row><div className="h-100 d-flex align-items-center justify-content-center">{data.smallImage}</div></Row>
+                   <Row>{data.description}</Row>
+                   
+                   {data.buttonExist? data.button : <></>}
+                 
+               </Container>
 
+               {data.bigImage}
+    </>
+  
+    );
+  
+    
+  
+  
+          
+        
+  
+  }; 
+
+
+  return(
+    <section
+    className={"bg-"+data.backgroundColor+' text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start'}
+
+    id = "Showcase" style={{fontFamily:"Signika", marginBottom:"-10px"}}
+
+  >
+    <div className="container" >
+      
+      {data.heading}
+
+
+      <div className="d-sm-flex align-items-center justify-content-between my-2" >
+      
+        {data.textPosition==='r'?textRight():textLeft()}
 
       </div>
-    );
-  };
 
+      
 
-
-
-  const textOnLeft = ()=>{
-    return(
-      <div className="row align-items-center justify-content-between">
-        
-    
-        
-        
-        <div className="col-md p-5">
-          <h2>{data.title}</h2>
-          <p className="lead">
-            {data.subtitle}
-          </p>
-          <p>
-            {data.description}
-          </p>
-          <a href="google.com" className={data.backgroundColor==="light"? "btn btn-dark mt-3":"btn btn-light mt-3"}>
-            <i className="bi bi-chevron-right"></i> Read More
-          </a>
-        </div>
-
-
-
-        <div className="col-md">
-          <img src={data.image} className="img-fluid"/>
-        </div>
-
-      </div>
-    );
-  };
-
-
-
-  
-
-  
-
-  return (
-    <section id="learn" className= {"p-5 bg-"+data.backgroundColor+" text-"+data.textColor} style={{fontFamily:"Signika"}}>
-    <div className="container">
-      {data.textPosition==='r'?textOnRight():textOnLeft()}
     </div>
   </section>
-  )
+  );
 }
 
 export default InformationBox

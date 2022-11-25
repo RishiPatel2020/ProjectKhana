@@ -2,8 +2,8 @@ import React from 'react'
 import { Accordion } from 'react-bootstrap'
 const Question = () => {
   return (
-    <section id="questions" className="p-5 bg-light" style={{fontFamily:"Comfortaa"}}>
-    <h2 className="text-center mb-4">Frequently Asked Questions</h2>
+    <section id="questions" className="p-5 bg-dark" style={{fontFamily:"Signika"}}>
+    <h2 className="text-center text-light mb-4" style={{fontSize:"42px"}}>Frequently Asked Questions</h2>
     <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>When do I have to order by?</Accordion.Header>
