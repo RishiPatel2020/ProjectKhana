@@ -70,7 +70,7 @@ const InformationBox = ({data}) => {
     id = "Showcase" style={{fontFamily:"Signika", marginBottom:"-10px"}}
 
   >
-    <div className="container" >
+    <div className="container" style={{paddingBottom:"45px"}} >
       
       {data.heading}
 
