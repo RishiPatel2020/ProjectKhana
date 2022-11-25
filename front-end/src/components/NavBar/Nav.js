@@ -22,7 +22,7 @@ function NavBar({loggedIn,setLogIn}) {
             <Nav className="me-auto">
               <Nav.Link ><Link to="/about" style={{ textDecoration: 'none', marginRight:"30px"}}><strong style={{fontSize:"27px", color:"rgb(247, 193, 68)"}}>About</strong></Link></Nav.Link>    
               <Nav.Link ><Link to="/" style={{ textDecoration: 'none',  marginRight:"30px" }}><strong style={{fontSize:"27px", color:"rgb(247, 193, 68)"}}>Order</strong></Link></Nav.Link>
-              <Nav.Link><Link to="/" style={{ textDecoration: 'none' ,  marginRight:"90px"}}><strong style={{fontSize:"27px", color:"rgb(247, 193, 68)"}}>Help</strong></Link></Nav.Link>
+              <Nav.Link><Link to="/help" style={{ textDecoration: 'none' ,  marginRight:"90px"}}><strong style={{fontSize:"27px", color:"rgb(247, 193, 68)"}}>Help</strong></Link></Nav.Link>
 
           
               

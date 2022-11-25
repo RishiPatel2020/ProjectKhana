@@ -1,3 +1,4 @@
+import Help from './components/Help/Help';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Footer from './components/Footer/Footer';
@@ -21,6 +22,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn}/>}/>
       <Route exact path="/about" element={<About/>}/>
+      <Route exact path="/help" element={<Help/>}/>
 
     </Routes> 
 
