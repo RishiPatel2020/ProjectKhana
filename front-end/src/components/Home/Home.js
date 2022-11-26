@@ -11,9 +11,7 @@ import Contact from '../Contact/Contact';
 import InformationGrid from '../InformationGrid/InformationGrid';
 import MealPlans from '../MealPlans/MealPlans';
 import MealsLookUp from '../MealsLookUp/MealsLookUp';
-
-const Home = ({loggedIn, setLogIn}) => {
-
+const Home = ({loggedIn, setLogIn, setMeals}) => {
 const saveTime = {
 
   backColor:"primary",
@@ -80,7 +78,7 @@ const stats = {
    <>
       <Showcase loggedIn = {loggedIn} setLogIn = {setLogIn}/>
       <InformationGrid data={saveTime}/>
-      <MealPlans data = {stats}/>
+      <MealPlans setMeals = {setMeals} />
       <MealsLookUp/>
       <InformationGrid data={stats}/>
       <Question/>

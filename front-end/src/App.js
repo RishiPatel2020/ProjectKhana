@@ -9,21 +9,23 @@ import './App.css';
 
 import Nav from './components/NavBar/Nav';
 import {Route,Routes} from 'react-router-dom'; 
+import OrderPage from './components/OrderPage/OrderPage';
 function App() {
 
 
   const [loggedIn, setLogIn] = useState(localStorage.getItem("user")!==null);
 
+  const [meals, setMeals] = useState("");
 
 
   return (
     <>
     <Nav loggedIn = {loggedIn} setLogIn = {setLogIn}/>
     <Routes>
-      <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn}/>}/>
+      <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn} setMeals ={setMeals} />}/>
       <Route exact path="/about" element={<About/>}/>
       <Route exact path="/help" element={<Help/>}/>
-
+      <Route exact path="/order" element={<OrderPage meals = {meals}/>}/>
     </Routes> 
 
     <Footer/>

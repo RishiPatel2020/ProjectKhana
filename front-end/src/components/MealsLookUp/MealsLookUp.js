@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
-import Newsletter from '../ZipCode/ZipCode';
+import {Button, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const MealsLookUp = () => {
   return (
@@ -11,9 +11,8 @@ const MealsLookUp = () => {
         {/* for heading  */}
         <div style={{marginRight:"auto",marginBottom:"33px", marginLeft:"auto"}}>
 
-            <h1 className='text-center text-dark' style={{margin:"0px 0px 10px", fontSize:"48px"}} >See What Meals Are Available</h1>
-            <Newsletter/>
-            <p className='text-left text-dark' style={{marginTop:"-15px"}} >Order 4-12 meals per week, with prices as low as $10.50 each. The more meals you order, the more you’ll save. Set up weekly, bi-weekly, or one time orders — you can always change your plan at any time.</p>
+            <h1 className='text-center text-dark' style={{margin:"0px 0px 10px", fontSize:"48px"}} >Fan Favorites</h1>
+            <p className='text-center text-dark' style={{marginTop:"5px"}} > Each Mirchi Meal is made to sufficiently  serve 1 person with our top quality and tastes.</p>
 
         </div>
 
@@ -43,6 +42,22 @@ const MealsLookUp = () => {
 
                 </Col>
             </Row>
+
+            <Row>
+                    <Col>
+
+                        <div className='d-flex justify-content-center align-items-center'>
+
+                            <Link to ="/order"><Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Pick Meals</Button></Link>
+                            
+
+
+                        </div>
+
+
+                    </Col>
+                    
+                    </Row>
         </Container>
     </div>
 </section>
