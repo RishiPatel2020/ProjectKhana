@@ -1,15 +1,19 @@
 {
   "files": {
     "main.css": "/ProjectKhana/static/css/main.3b72c2b0.css",
-    "main.js": "/ProjectKhana/static/js/main.11c306e5.js",
+    "main.js": "/ProjectKhana/static/js/main.2f15a21a.js",
     "static/js/787.22edae46.chunk.js": "/ProjectKhana/static/js/787.22edae46.chunk.js",
-    "static/media/newBack.png": "/ProjectKhana/static/media/newBack.37a7004a9fa331964dd4.png",
-    "static/media/verticalImage3.png": "/ProjectKhana/static/media/verticalImage3.ad25c4ac7863078a7213.png",
+    "static/media/newGradient.png": "/ProjectKhana/static/media/newGradient.6c8b5355fa41b9d261d1.png",
+    "static/media/pavbhaji.png": "/ProjectKhana/static/media/pavbhaji.c9e0198637100f35fa89.png",
+    "static/media/paneer.png": "/ProjectKhana/static/media/paneer.5e53177aa0e4746775c1.png",
+    "static/media/rajma.png": "/ProjectKhana/static/media/rajma.8e40a390bc19881f4646.png",
+    "static/media/biryani.png": "/ProjectKhana/static/media/biryani.6a5323d4670c9d9bc292.png",
     "static/media/zipImage1.png": "/ProjectKhana/static/media/zipImage1.f89d65bbe31bdc074673.png",
+    "static/media/puzzle1.png": "/ProjectKhana/static/media/puzzle1.b62e86687eece9bc9d9d.png",
     "static/media/zipImage2.png": "/ProjectKhana/static/media/zipImage2.3eec913448600d6914f0.png",
-    "static/media/verticalImage1.png": "/ProjectKhana/static/media/verticalImage1.1137bf374ca4f363db74.png",
+    "static/media/puzzle.png": "/ProjectKhana/static/media/puzzle.4a9af1420608f9ec214a.png",
     "static/media/zipImage3.png": "/ProjectKhana/static/media/zipImage3.2d6dd8c6392d5f3f2f35.png",
-    "static/media/verticalImage2.png": "/ProjectKhana/static/media/verticalImage2.7914ed9d1be969b1d579.png",
+    "static/media/rocket.png": "/ProjectKhana/static/media/rocket.2c3930051ea1bab7db22.png",
     "static/media/help.png": "/ProjectKhana/static/media/help.615f050134e4c4cbb978.png",
     "static/media/customers.png": "/ProjectKhana/static/media/customers.28c85f555d2baa109dcf.png",
     "static/media/meal4.png": "/ProjectKhana/static/media/meal4.133b4d56cfc8105bf066.png",
@@ -21,14 +25,14 @@
     "static/media/step2.png": "/ProjectKhana/static/media/step2.39a2554b77d476e6698c.png",
     "static/media/step3.png": "/ProjectKhana/static/media/step3.4e542ebdf78d13a13bb3.png",
     "static/media/step1.png": "/ProjectKhana/static/media/step1.b07b4c04c2b74e5fb492.png",
-    "static/media/logo.png": "/ProjectKhana/static/media/logo.8114023b713f1f38eaac.png",
+    "static/media/mirchiMealsLogo.png": "/ProjectKhana/static/media/mirchiMealsLogo.edea7ed0341520f42b54.png",
     "index.html": "/ProjectKhana/index.html",
     "main.3b72c2b0.css.map": "/ProjectKhana/static/css/main.3b72c2b0.css.map",
-    "main.11c306e5.js.map": "/ProjectKhana/static/js/main.11c306e5.js.map",
+    "main.2f15a21a.js.map": "/ProjectKhana/static/js/main.2f15a21a.js.map",
     "787.22edae46.chunk.js.map": "/ProjectKhana/static/js/787.22edae46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3b72c2b0.css",
-    "static/js/main.11c306e5.js"
+    "static/js/main.2f15a21a.js"
   ]
 }
