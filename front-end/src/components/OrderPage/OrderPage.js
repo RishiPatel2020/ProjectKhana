@@ -49,7 +49,7 @@ const OrderPage = ({meals}) => {
     const [deliv, setDeliv] = useState("Select Day");
 
     // scroll up 
-    // Scroll.scrollUp(); 
+    Scroll.scrollUp();
 
     
 
