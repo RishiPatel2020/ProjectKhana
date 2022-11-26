@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ProjectKhana/static/css/main.3b72c2b0.css",
-    "main.js": "/ProjectKhana/static/js/main.a2a38b3d.js",
+    "main.css": "/ProjectKhana/static/css/main.b58a9a44.css",
+    "main.js": "/ProjectKhana/static/js/main.a3dfe410.js",
     "static/js/787.22edae46.chunk.js": "/ProjectKhana/static/js/787.22edae46.chunk.js",
     "static/media/newGradient.png": "/ProjectKhana/static/media/newGradient.6c8b5355fa41b9d261d1.png",
     "static/media/pavbhaji.png": "/ProjectKhana/static/media/pavbhaji.c9e0198637100f35fa89.png",
@@ -22,17 +22,20 @@
     "static/media/meal1.png": "/ProjectKhana/static/media/meal1.fa62fb41ba155e0b9647.png",
     "static/media/kitchen.png": "/ProjectKhana/static/media/kitchen.75813e611039f76d0ed5.png",
     "static/media/satisfiction.png": "/ProjectKhana/static/media/satisfiction.dbc21866cf53d1c84b4b.png",
+    "static/media/fresh.png": "/ProjectKhana/static/media/fresh.9e5e6665691bb8c66ae5.png",
+    "static/media/convinient.png": "/ProjectKhana/static/media/convinient.6262a07a5bb75262c0c5.png",
+    "static/media/tasty.png": "/ProjectKhana/static/media/tasty.3f2cbef882980dcca896.png",
     "static/media/step2.png": "/ProjectKhana/static/media/step2.39a2554b77d476e6698c.png",
     "static/media/step3.png": "/ProjectKhana/static/media/step3.4e542ebdf78d13a13bb3.png",
     "static/media/step1.png": "/ProjectKhana/static/media/step1.b07b4c04c2b74e5fb492.png",
     "static/media/mirchiMealsLogo.png": "/ProjectKhana/static/media/mirchiMealsLogo.edea7ed0341520f42b54.png",
     "index.html": "/ProjectKhana/index.html",
-    "main.3b72c2b0.css.map": "/ProjectKhana/static/css/main.3b72c2b0.css.map",
-    "main.a2a38b3d.js.map": "/ProjectKhana/static/js/main.a2a38b3d.js.map",
+    "main.b58a9a44.css.map": "/ProjectKhana/static/css/main.b58a9a44.css.map",
+    "main.a3dfe410.js.map": "/ProjectKhana/static/js/main.a3dfe410.js.map",
     "787.22edae46.chunk.js.map": "/ProjectKhana/static/js/787.22edae46.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b72c2b0.css",
-    "static/js/main.a2a38b3d.js"
+    "static/css/main.b58a9a44.css",
+    "static/js/main.a3dfe410.js"
   ]
 }
