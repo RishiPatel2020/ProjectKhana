@@ -28,7 +28,7 @@ const MealsLookUp = () => {
 
                 <Col sm style={{marginLeft:"8px", marginRight:"8px"}}>
                     <div className="card-body text-center" >
-                        <img  className="h1 mb-3" src= {require("../../Resources/Meals/zipImage2.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
+                        <img  className="h1 mb-3 img-fluid" src= {require("../../Resources/Meals/zipImage2.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
                         <h4>Vada</h4>
                     </div>
 
@@ -48,7 +48,7 @@ const MealsLookUp = () => {
 
                         <div className='d-flex justify-content-center align-items-center'>
 
-                            <Link to ="/order"><Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Pick Meals</Button></Link>
+                            <Link to ="/order" smooth><Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Pick Meals</Button></Link>
                             
 
 

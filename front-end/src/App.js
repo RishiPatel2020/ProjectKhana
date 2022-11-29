@@ -6,10 +6,10 @@ import React from 'react';
 import './index.css'; 
 import { useState } from 'react';
 import './App.css'; 
-
 import Nav from './components/NavBar/Nav';
 import {Route,Routes} from 'react-router-dom'; 
 import OrderPage from './components/OrderPage/OrderPage';
+import PickMeals from './components/PickMeals/PickMeals';
 function App() {
 
 
@@ -26,6 +26,7 @@ function App() {
       <Route exact path="/about" element={<About/>}/>
       <Route exact path="/help" element={<Help/>}/>
       <Route exact path="/order" element={<OrderPage meals = {meals}/>}/>
+      <Route exact path="/pickMeals" element={<PickMeals/>}/>
     </Routes> 
 
     <Footer/>

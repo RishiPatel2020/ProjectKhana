@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import {Dropdown} from 'react-bootstrap';
 import ZipCode from '../ZipCode/ZipCode';
-import { useState } from 'react';
+import { useState, useRef} from 'react';
 import InformationGrid from '../InformationGrid/InformationGrid';
 import Scroll from '../../Service/ScrollTop';
 
@@ -38,7 +39,11 @@ const data = {
 
 const OrderPage = ({meals}) => {
 
-    const [plan, setPlan] = useState(meals);
+  Scroll.scrollUp();
+  
+ 
+
+  const [plan, setPlan] = useState(meals);
 
     
     if(plan.length===0){
@@ -48,8 +53,7 @@ const OrderPage = ({meals}) => {
     const [freq, setFreq] = useState("Select Frequency");
     const [deliv, setDeliv] = useState("Select Day");
 
-    // scroll up 
-    Scroll.scrollUp();
+    
 
     
 
@@ -63,6 +67,7 @@ const OrderPage = ({meals}) => {
     id = "Showcase" style={{fontFamily:"Signika", marginBottom:"0px"}}
 
   >
+
     <div className="container" style={{paddingBottom:"10px"}}>
 
         
@@ -145,7 +150,7 @@ const OrderPage = ({meals}) => {
                                     <Dropdown.Menu>
                                     <Dropdown.Item onClick={()=>setFreq("Weekly")}> <span>Weekly</span> </Dropdown.Item>
                                     <Dropdown.Item onClick={()=>setFreq("Bi-Weekly")}> <span>Bi-Weekly</span> </Dropdown.Item>
-                                    <Dropdown.Item onClick={()=>setFreq("Monthly")}> <span>Monthly</span> </Dropdown.Item>
+                                    <Dropdown.Item onClick={()=>setFreq("One Time")}> <span>One Time</span> </Dropdown.Item>
                                     </Dropdown.Menu>
                                     </Dropdown>
                                 </div>
@@ -175,7 +180,9 @@ const OrderPage = ({meals}) => {
 
                     <div className='d-flex justify-content-center align-items-center'>
 
-                        <Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Pick Meals</Button>
+                      <Link to = "/pickMeals" smooth><Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Pick Meals</Button></Link>
+
+                        
 
                     </div>
 

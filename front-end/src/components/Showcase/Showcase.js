@@ -12,21 +12,21 @@ const Showcase = ({loggedIn, setLogIn}) => {
          <div style={{backgroundColor:"rgb(98, 10, 21)", opacity:0.91,paddingLeft:"25px",paddingRight:"25px",marginBottom:"55px", boxShadow:"15px 15px 15px black", borderRadius:"25px"}}>
           
          <div style={{marginBottom:"-20px",fontSize:"4em"}} className="text-primary">
-          <strong>Cooking</strong>
+          <strong>Ready-to-Eat</strong>
         </div>
 
         <div style={{marginBottom:"-20px", fontSize:"4em"}} className="text-primary">
-          <strong>Indian</strong>
+          <strong>All In One</strong>
         </div>
         <div style={{marginBottom:"-20px", fontSize:"4em"}} className="text-primary">
 
-           <strong>Food</strong>
+           <strong>Indian Cuisine</strong>
 
         </div>
 
 
 
-        <div style={{marginBottom:"-20px"}}>
+        {/* <div style={{marginBottom:"-20px"}}>
 
           <strong style={{fontSize:"4em",color:"rgb(255,87,20)"}}>Takes</strong>
 
@@ -37,20 +37,26 @@ const Showcase = ({loggedIn, setLogIn}) => {
 
             <strong style={{fontSize:"4em",color:"rgb(255,87,20)"}}>Time</strong>
 
-          </div>
+          </div> */}
 
 
 
           <div style={{marginTop:"30px"}}>
 
-              <span className="lead  text-primary" style={{fontSize:"1.7em"}}>
+              {/* <span className="lead  text-primary" style={{fontSize:"1.7em"}}>
               Order <span style={{color:"rgb(255,87,20)"}} >Mirchi Meals </span>
-              </span>
+              </span> */}
               <br></br>
 
               <span className="lead text-primary" style={{fontSize:"1.7em" }}>
-              <span className='text-primary'>So You </span>
-              Worry Less
+              <span className='text-primary'>Freshly Cooked</span>
+              <br></br>
+              
+              <span style={{color:"rgb(255,87,20)"}} >Authentic Tastes</span>
+              
+              <br></br>
+              No Preservatives
+              
               </span>
 
 

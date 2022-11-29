@@ -6,7 +6,6 @@ const MealPlans = ({setMeals}) => {
     const navigate = useNavigate();
 
     const buttonClicked = meals =>{
-        console.log(meals+ " clicked....");
         setMeals(meals); 
         navigate("/order"); 
     };
@@ -83,7 +82,7 @@ const MealPlans = ({setMeals}) => {
 
                         <div className='d-flex justify-content-center align-items-center'>
 
-                            <Link to = "/order">
+                            <Link to = "/order" smooth>
                                 <Button variant='primary' className='text-dark' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Pick Meals</Button>
                             </Link>
 

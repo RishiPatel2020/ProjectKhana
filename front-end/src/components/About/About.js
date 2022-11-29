@@ -24,7 +24,7 @@ const About = () => {
         smallImage:(<img className="d-sm-block" src={require('../../Resources/Vector/puzzle1.png')}  style={{height:"250px",width:"350px"}} alt=""/>),
       
         button:(<div className="h-100 d-flex align-items-center justify-content-center">
-      <Link to = "/order">
+      <Link to = "/order" smooth>
                                 <Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Order</Button>
                             </Link>
   </div>),
