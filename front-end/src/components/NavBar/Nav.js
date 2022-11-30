@@ -1,15 +1,29 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import React from 'react';
 import { Link } from 'react-router-dom';
-function NavBar({loggedIn,setLogIn}) {
+import { useState } from 'react';
+import { Button } from 'bootstrap';
+import { Offcanvas } from 'react-bootstrap';
+
+function NavBar({loggedIn,setLogIn,cart,setCart}) {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const logOut = ()=>{
     setLogIn(false);
     localStorage.removeItem("user"); 
   }
+
+
+  const clearCart=()=>{
+    setCart([]); 
+  };
 
 
   
@@ -40,11 +54,16 @@ function NavBar({loggedIn,setLogIn}) {
               
             </Nav>
             
+
+            {/* User profile  */}
               {loggedIn&& 
-              <Nav>
+              <Nav style={{marginRight:"20px", marginTop:"8px"}}>
 
               
 
+                  <Navbar.Text  style={{color: "rgba(255,255,255,.55)",marginRight:"15px"}} >
+                  <strong style={{fontFamily:"Signika", fontSize:"20px", color:"white"}}>{JSON.parse(localStorage.getItem("user")).user}</strong>
+                </Navbar.Text>
                 <Dropdown>
                 <Dropdown.Toggle variant="light" id="dropdown-basic">
                 <span class="material-symbols-outlined"> Person</span>
@@ -58,15 +77,111 @@ function NavBar({loggedIn,setLogIn}) {
                 </Dropdown.Menu>
               </Dropdown>
 
-              <Navbar.Text  style={{color: "rgba(255,255,255,.55)",marginLeft:"15px"}} >
-                  <strong style={{fontFamily:"Signika", fontSize:"20px", color:"white"}}>{JSON.parse(localStorage.getItem("user")).user}</strong>
-                </Navbar.Text> 
+ 
                 
               
               
               </Nav>
 
               }
+
+
+              {/* Shopping cart */}
+
+
+              {cart.length!==0 &&
+              
+              <Nav style={{marginTop:"8px"}}>
+
+
+
+              {/* <Dropdown>
+                <Dropdown.Toggle variant="light" id="dropdown-basic"> */}
+
+                {/* </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">View Plans</Dropdown.Item>
+                  <Dropdown.Item href="">Account Info</Dropdown.Item>
+                  <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown> */}
+
+
+                <button className="bg-light text-dark" style={{border:"0px", height:"45px", width:"63.67px", padding:"6px 12px", borderRadius:"10px"}} onClick={handleShow}>
+
+                <span style={{paddingTop:"4px"}}class="material-symbols-outlined">shopping_cart</span>
+
+                </button>
+                
+
+
+            
+    
+                
+
+
+
+
+
+              
+
+
+              
+              
+
+              
+              <Offcanvas show={show} onHide={handleClose} placement="end" style={{fontFamily:"Signika"}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Shopping Cart</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        {
+                  cart.map(item=>{
+                    return (
+
+                  
+                    <div key = {item.id}>
+                    
+                    <span>{item.numberOfMeals} </span><span>{item.mealName}</span>
+                    <br></br>
+                    <span>{item.description}</span>
+                    <br></br>
+                    
+                    <br></br>
+
+
+
+
+                    </div>
+                    )
+                    
+                  })
+                }
+
+              <div className="h-100 d-flex align-items-center justify-content-center">
+
+              <button onClick={()=>clearCart()} className='text-dark' style={{backgroundColor:"rgb(247, 193, 68)",border:"0px",height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Clear Order</button>
+
+              </div>
+        </Offcanvas.Body>
+      </Offcanvas>
+
+
+                
+
+              
+
+
+
+
+              
+            
+            
+            </Nav>
+              }
+
+              
               
             
             

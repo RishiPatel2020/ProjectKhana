@@ -4,42 +4,42 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Modal} from 'react-bootstrap';
 import {Button} from "react-bootstrap";
-import './PickMeals.css'
+import { useEffect } from 'react';
 
 
 
   const data = [
     {
-      id:1,
+      id:0,
       img: require("../../Resources/Meals/meal1.png"),
-      mealName:"Meal Name 1 ",
-      description:"description : 1",
+      mealName:"Madrasi Thari ",
+      description:"Special Dish from South India",
       numberOfMeals:0,
     },
   
     {
-      id:2,
+      id:1,
       img: require("../../Resources/Meals/meal2.png"),
-      mealName:"Meal Name 2",
-      description:"description : 2",
+      mealName:"Gujarati Thari",
+      description:"Special Dish from Gujarat",
+      numberOfMeals:0
+    
+    },
+  
+    {
+      id:2,
+      img: require("../../Resources/Meals/meal3.png"),
+      mealName:"Punjabi Thari",
+      description:"Special Dish from Punjab",
       numberOfMeals:0
     
     },
   
     {
       id:3,
-      img: require("../../Resources/Meals/meal3.png"),
-      mealName:"Meal Name 3",
-      description:"description : 3",
-      numberOfMeals:0
-    
-    },
-  
-    {
-      id:4,
       img: require("../../Resources/Meals/meal4.png"),
-      mealName:"Meal Name 4",
-      description:"description : 4",
+      mealName:"Benagali Thari",
+      description:"Special Dish from Bengal",
       numberOfMeals:0
     
     }
@@ -49,56 +49,120 @@ import './PickMeals.css'
 
 
 
-const PickMeals = () => {
+// we might need zip code later when loading relevant images
+  const PickMeals = ({zipCode, planSize, freq, delivDay, cart, setCart}) => {
 
 
+    // will need some preprocessing to load relevant images based on zip code 
     
 
-    // need this for img, pop up 
+    // need this for img, pop up msg
     const [items, setItems] = useState(data);
 
     // pop status and description
     const [show, setShow] = useState(false);
     const [description, setDescription] = useState("");
-
+    const [mealSelected, setMealSelected] = useState("");
+    
 
     
+    // number of meals 
+    const [numberMeals, setNumberMeals] = useState(new Array(data.length).fill(0));
+
+    
+    
     // method for pop up 
-    const handleDisplay = (description) =>{
+    const handleDisplay = (description, mealName) =>{
       setDescription(description); 
+      setMealSelected(mealName); 
       setShow(true);
 
     }
 
-    const add = (id, numberOfMeals)=>{
+    const add = (id)=>{
+
+     
+  
+      
+      
+      data[id].numberOfMeals++; 
+
+      
+      const tempArray = [];
+      if(cart.length===0){
+
+        
+        tempArray.push(data[id]);
+        
+        setCart(tempArray); 
+      }else{
 
 
-      const listItems = items.map((item)=>item.id===id?
-        {...item,numberOfMeals: (numberOfMeals+1)}:item
-      );
-      setItems(listItems);
+
+        let found = false;
+        cart.forEach(element => {
+          if(element.id===id){ 
+            
+            tempArray.push(data[id])
+            found = true; 
+
+          }else{
+            tempArray.push(element); 
+          }
+        });
+
+          if(!found){
+            tempArray.push(data[id]); 
+          }
+          setCart(tempArray); 
+        
+
+      }
+
+
+      // setting local cart 
+      numberMeals[id]++;
+      const newAr = [];
+      numberMeals.map(item=>{newAr.push(item)}); 
+      setNumberMeals(newAr); 
+
+      
+
+      
 
 
     };
 
 
-    const remove = (id, numberOfMeals)=>{
+    const handleClose = () => {
+      setDescription("");
+      setMealSelected(""); 
+      setShow(false); 
+    }
 
-      if(numberOfMeals>0){
+    const remove = (id)=>{
 
-        const listItems = items.map((item)=>item.id===id?
-        {...item,numberOfMeals: (numberOfMeals-1)}:item
-      );
-      setItems(listItems);
+
+      if(numberMeals[id]>0){
+        numberMeals[id]--;
+        data[id].numberOfMeals--; 
+        const newAr = [];
+        numberMeals.map(item=>{newAr.push(item)}); 
+        setNumberMeals(newAr); 
 
       }
+
+
+      
+
+        // const listItems = items.map((item)=>item.id===id?
+        // {...item,numberOfMeals: (numberOfMeals-1)}:item
+      // );
+
       
 
     };
-    const handleClose = () => {
-      setDescription(""); 
-      setShow(false); 
-    }
+
 
 
 
@@ -108,7 +172,7 @@ const PickMeals = () => {
 
       <section style={{fontFamily:"Signika"}}>
 
-<Container className='text-dark'>
+<Container className='text-dark my-4'>
 
 <Row style={{marginTop:"66px", marginBottom:"32px"}} xs="auto">
 
@@ -123,24 +187,24 @@ const PickMeals = () => {
 
               <Col key = {id} className='p-3'> 
               <div className="card-body text-center" >
-                <img src ={img}className='img-fluid imageRes' />
+                <img src ={img}className='img-fluid' />
                 <h4 >{mealName}</h4>
-                <Link onClick={()=>handleDisplay(description)}><p className='text-light'>Description/Ingridients</p></Link>
+                <Link onClick={()=>handleDisplay(description,mealName)}><p className='text-light'>Description/Ingridients</p></Link>
               
                             
 
 
-                             <Button variant="light"onClick={()=>remove(id, numberOfMeals)} style={{borderRadius:"30px"}}>
+                             <Button variant="light"onClick={()=>remove(id)} style={{borderRadius:"30px"}}>
                                <span className="material-symbols-outlined" style={{padding:"4px"}}>
                                  remove
                                </span>
                            </Button>
 
 
-                             <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{numberOfMeals}</span>
+                             <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{numberMeals[id].toString()}</span>
 
 
-                             <Button variant='light' onClick={()=>add(id, numberOfMeals)} style={{borderRadius:"30px"}}>
+                             <Button variant='light' onClick={()=>add(id)} style={{borderRadius:"30px"}}>
                                <span className="material-symbols-outlined"style={{padding:"4px"}} >
                                        add
                                </span>
@@ -161,9 +225,9 @@ const PickMeals = () => {
 
       }
 
-          <Modal show={show} onHide={handleClose} style={{fontFamily:"Signika"}}>
+                        <Modal show={show} onHide={handleClose} style={{fontFamily:"Signika"}}>
                               <Modal.Header closeButton>
-                                <Modal.Title>Description/Ingridients</Modal.Title>
+                                <Modal.Title>{mealSelected}</Modal.Title>
                               </Modal.Header>
                               <Modal.Body>{description}</Modal.Body>
                               <Modal.Footer>
@@ -177,6 +241,18 @@ const PickMeals = () => {
 
 
   </Row>
+
+  <Row>
+
+  <div className="h-100 d-flex align-items-center justify-content-center">
+      <Link to = "/order" smooth>
+        <Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Check Out</Button>
+      </Link>
+  </div>
+
+  </Row>
+
+  
 
   </Container>
 

@@ -13,20 +13,46 @@ import PickMeals from './components/PickMeals/PickMeals';
 function App() {
 
 
+  // rely less on cookies 
   const [loggedIn, setLogIn] = useState(localStorage.getItem("user")!==null);
+  const [numMeals, setNumMeals] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [zipCode, setZipCode] = useState("");
+  const [freq, setFreq] = useState("Select Frequency");
+  const [delivDate, setDelivDate] = useState("Select Day");
 
-  const [meals, setMeals] = useState("");
 
 
   return (
     <>
-    <Nav loggedIn = {loggedIn} setLogIn = {setLogIn}/>
+    <Nav loggedIn = {loggedIn} setLogIn = {setLogIn} cart= {cart} setCart = {setCart}/>
     <Routes>
-      <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn} setMeals ={setMeals} />}/>
+      <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn} setMeals ={setNumMeals} />}/>
       <Route exact path="/about" element={<About/>}/>
       <Route exact path="/help" element={<Help/>}/>
-      <Route exact path="/order" element={<OrderPage meals = {meals}/>}/>
-      <Route exact path="/pickMeals" element={<PickMeals/>}/>
+      
+      
+      <Route exact path="/order" 
+        element={<OrderPage 
+          numMeals = {numMeals}
+          setNumMeals = {setNumMeals}
+          zipCode = {zipCode}
+          setZipCode = {setZipCode}
+          freq = {freq}
+          setFreq = {setFreq}
+          delivDate = {delivDate}
+          setDelivDate = {setDelivDate}    
+        />}
+          
+          />
+
+
+      <Route exact path="/pickMeals" element={<PickMeals
+
+          cart = {cart}
+          setCart = {setCart}
+        
+      />}/>
     </Routes> 
 
     <Footer/>
