@@ -1,4 +1,5 @@
 import { Link, useNavigate, useNavigation } from 'react-router-dom';
+import { useEffect } from 'react';
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import {Dropdown} from 'react-bootstrap';
@@ -40,7 +41,13 @@ const data = {
 
 const OrderPage = ({numMeals,setNumMeals,zipCode,setZipCode, freq, setFreq, delivDate, setDelivDate}) => {
 
-  Scroll.scrollUp();
+  useEffect(() => {
+  
+    Scroll.scrollUp();
+    
+  }, []);
+
+  
 
   
   // For pop up if something is missing

@@ -1,5 +1,7 @@
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+
+import {Container,Row,Col} from 'react-bootstrap';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -9,7 +11,7 @@ import { useState } from 'react';
 import { Button } from 'bootstrap';
 import { Offcanvas } from 'react-bootstrap';
 
-function NavBar({loggedIn,setLogIn,cart,setCart}) {
+function NavBar({loggedIn,setLogIn,cart,setCart, mealNumbers ,setMealNumbers}) {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -22,7 +24,47 @@ function NavBar({loggedIn,setLogIn,cart,setCart}) {
 
 
   const clearCart=()=>{
-    setCart([]); 
+    setCart([]);
+    const emptyAr = new Array(mealNumbers.length).fill(0);
+    setMealNumbers(emptyAr); 
+  };
+
+
+  const add = (id)=>{
+      mealNumbers[id]++;
+
+      const tempAr = [];
+
+      mealNumbers.map(item=>{tempAr.push(item)}); 
+
+      setMealNumbers(tempAr);
+
+  };
+
+  const remove = (id)=>{
+
+    if(mealNumbers[id]>0){
+      mealNumbers[id]--;
+      const tempAr = [];
+
+      mealNumbers.map(item=>{tempAr.push(item)}); 
+
+      setMealNumbers(tempAr);
+
+      if(mealNumbers[id]===0){
+          const tempCart= [];
+
+          cart.forEach(element => {
+            if(element.id!==id){
+              tempCart.push(element); 
+            }
+          });
+
+          setCart(tempCart); 
+        }
+
+    }
+    
   };
 
 
@@ -131,37 +173,71 @@ function NavBar({loggedIn,setLogIn,cart,setCart}) {
               
 
               
-              <Offcanvas show={show} onHide={handleClose} placement="end" style={{fontFamily:"Signika"}}>
+              <Offcanvas show={show} onHide={handleClose} placement="end" style={{fontFamily:"Signika",height:"25%"}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Shopping Cart</Offcanvas.Title>
+          <Offcanvas.Title className='h-100 d-flex align-items-center justify-content-center'>
+
+            Shopping Cart
+          
+            
+            </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
+
+
+        <Container>
+
         {
                   cart.map(item=>{
                     return (
 
                   
-                    <div key = {item.id}>
-                    
-                    <span>{item.numberOfMeals} </span><span>{item.mealName}</span>
+                    <Row key = {item.id}>
+                      <Col style={{marginLeft:"100px"}}>
+
+                      <span>{mealNumbers[item.id]} </span><span>{item.mealName}</span>
                     <br></br>
                     <span>{item.description}</span>
                     <br></br>
-                    
-                    <br></br>
+                    <button variant="light" onClick={()=>remove(item.id)} style={{borderRadius:"30px", border:"0px", backgroundColor:"rgb(247, 193, 68)"}}>
+                               <span className="material-symbols-outlined" style={{padding:"4px"}}>
+                                 remove
+                               </span>
+                           </button>
 
 
+                             <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{mealNumbers[item.id]}</span>
 
 
-                    </div>
+                             <button variant='light' onClick={()=>add(item.id)} style={{borderRadius:"30px", border:"0px", backgroundColor:"rgb(247, 193, 68)"}}>
+                               <span className="material-symbols-outlined"style={{padding:"4px"}} >
+                                       add
+                               </span>
+                             </button>
+
+                      </Col>  
+                    </Row>
                     )
                     
                   })
                 }
 
+
+
+      </Container>
+
+
+        
+
+
               <div className="h-100 d-flex align-items-center justify-content-center">
 
               <button onClick={()=>clearCart()} className='text-dark' style={{backgroundColor:"rgb(247, 193, 68)",border:"0px",height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Clear Order</button>
+              
+              
+              <Link to = "/order" smooth style={{marginLeft:"24px"}}>
+                <button onClick={()=>clearCart()} className='text-dark' style={{backgroundColor:"rgb(247, 193, 68)",border:"0px",height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Check Out</button>
+              </Link>
 
               </div>
         </Offcanvas.Body>

@@ -21,11 +21,17 @@ function App() {
   const [freq, setFreq] = useState("Select Frequency");
   const [delivDate, setDelivDate] = useState("Select Day");
 
+  const [mealNumbers, setMealNumbers] = useState([]);
+
 
 
   return (
     <>
-    <Nav loggedIn = {loggedIn} setLogIn = {setLogIn} cart= {cart} setCart = {setCart}/>
+    <Nav loggedIn = {loggedIn} setLogIn = {setLogIn} cart= {cart} setCart = {setCart}
+    mealNumbers = {mealNumbers}
+    setMealNumbers = {setMealNumbers}
+    
+    />
     <Routes>
       <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn} setMeals ={setNumMeals} />}/>
       <Route exact path="/about" element={<About/>}/>
@@ -51,6 +57,9 @@ function App() {
 
           cart = {cart}
           setCart = {setCart}
+
+          mealNumbers = {mealNumbers}
+          setMealNumbers = {setMealNumbers}
         
       />}/>
     </Routes> 

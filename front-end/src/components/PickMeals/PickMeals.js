@@ -50,7 +50,13 @@ import { useEffect } from 'react';
 
 
 // we might need zip code later when loading relevant images
-  const PickMeals = ({zipCode, planSize, freq, delivDay, cart, setCart}) => {
+  const PickMeals = ({zipCode, planSize, freq, delivDay, cart, setCart, mealNumbers ,setMealNumbers}) => {
+
+    useEffect(() => {
+      
+      setMealNumbers(new Array(data.length).fill(0));
+      console.log(mealNumbers);
+    }, []);
 
 
     // will need some preprocessing to load relevant images based on zip code 
@@ -67,8 +73,7 @@ import { useEffect } from 'react';
 
     
     // number of meals 
-    const [numberMeals, setNumberMeals] = useState(new Array(data.length).fill(0));
-
+    // const [mealNumbers, setMealNumbers] = useState(new Array(data.length).fill(0));
     
     
     // method for pop up 
@@ -121,10 +126,10 @@ import { useEffect } from 'react';
 
 
       // setting local cart 
-      numberMeals[id]++;
+      mealNumbers[id]++;
       const newAr = [];
-      numberMeals.map(item=>{newAr.push(item)}); 
-      setNumberMeals(newAr); 
+      mealNumbers.map(item=>{newAr.push(item)}); 
+      setMealNumbers(newAr); 
 
       
 
@@ -143,12 +148,24 @@ import { useEffect } from 'react';
     const remove = (id)=>{
 
 
-      if(numberMeals[id]>0){
-        numberMeals[id]--;
+      if(mealNumbers[id]>0){
+        mealNumbers[id]--;
         data[id].numberOfMeals--; 
         const newAr = [];
-        numberMeals.map(item=>{newAr.push(item)}); 
-        setNumberMeals(newAr); 
+        mealNumbers.map(item=>{newAr.push(item)}); 
+        setMealNumbers(newAr); 
+
+        if(mealNumbers[id]===0){
+          const tempCart= [];
+
+          cart.forEach(element => {
+            if(element.id!==id){
+              tempCart.push(element); 
+            }
+          });
+
+          setCart(tempCart); 
+        }
 
       }
 
@@ -201,7 +218,7 @@ import { useEffect } from 'react';
                            </Button>
 
 
-                             <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{numberMeals[id].toString()}</span>
+                             <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{mealNumbers[id]}</span>
 
 
                              <Button variant='light' onClick={()=>add(id)} style={{borderRadius:"30px"}}>
