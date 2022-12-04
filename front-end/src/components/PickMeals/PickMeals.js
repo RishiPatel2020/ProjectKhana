@@ -1,10 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Modal} from 'react-bootstrap';
 import {Button} from "react-bootstrap";
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ScrollTop from '../../Service/ScrollTop';
 
 
 
@@ -50,13 +52,18 @@ import { useEffect } from 'react';
 
 
 // we might need zip code later when loading relevant images
-  const PickMeals = ({zipCode, planSize, freq, delivDay, cart, setCart, mealNumbers ,setMealNumbers}) => {
-
+  const PickMeals = ({zipCode, planSize, freq, delivDay, cart, setCart, mealNumbers ,setMealNumbers, setResetOrderPageInfo}) => {
+    
+    
     useEffect(() => {
-      
-      setMealNumbers(new Array(data.length).fill(0));
-      console.log(mealNumbers);
+      ScrollTop.scrollUp(); 
     }, []);
+
+    const navigate = useNavigate();
+
+      if(mealNumbers.length===0){
+        setMealNumbers(new Array(data.length).fill(0));
+      } 
 
 
     // will need some preprocessing to load relevant images based on zip code 
@@ -71,6 +78,13 @@ import { useEffect } from 'react';
     const [mealSelected, setMealSelected] = useState("");
     
 
+    
+    const backToOrderPage = ()=>{
+        setCart([]);
+        setMealNumbers(null); 
+        setResetOrderPageInfo(true); 
+        navigate("/order"); 
+    };  
     
     // number of meals 
     // const [mealNumbers, setMealNumbers] = useState(new Array(data.length).fill(0));
@@ -191,6 +205,8 @@ import { useEffect } from 'react';
 
 <Container className='text-dark my-4'>
 
+  <button onClick={()=>backToOrderPage()}>Back to Order Page</button>
+
 <Row style={{marginTop:"66px", marginBottom:"32px"}} xs="auto">
 
 
@@ -261,11 +277,14 @@ import { useEffect } from 'react';
 
   <Row>
 
-  <div className="h-100 d-flex align-items-center justify-content-center">
-      <Link to = "/order" smooth>
+
+
+{/* Only show checkout button if # of item > 0 */}
+  {cart.length!==0 && <div className="h-100 d-flex align-items-center justify-content-center">
+      <Link to = "/checkOut" smooth>
         <Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Check Out</Button>
       </Link>
-  </div>
+  </div>}
 
   </Row>
 

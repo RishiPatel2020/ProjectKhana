@@ -5,13 +5,13 @@
 
 
 import React from 'react'
-import Showcase from '../Showcase/Showcase';
-import Question from '../Questions/Question';
-import Contact from '../Contact/Contact';
-import InformationGrid from '../InformationGrid/InformationGrid';
-import MealPlans from '../MealPlans/MealPlans';
-import MealsLookUp from '../MealsLookUp/MealsLookUp';
-const Home = ({loggedIn, setLogIn, setMeals}) => {
+import Showcase from './Showcase/Showcase';
+import Question from './Questions/Question';
+import Contact from './Contact/Contact';
+import InformationGrid from '../About/InformationGrid/InformationGrid';
+import MealPlans from './MealPlans/MealPlans';
+import MealsLookUp from './MealsLookUp/MealsLookUp';
+const Home = ({loggedIn, setLogIn, setMeals, setResetOrderPageInfo, setCart}) => {
 const saveTime = {
 
   backColor:"primary",
@@ -78,8 +78,8 @@ const stats = {
    <>
       <Showcase loggedIn = {loggedIn} setLogIn = {setLogIn}/>
       <InformationGrid data={saveTime}/>
-      <MealPlans setMeals = {setMeals} />
-      <MealsLookUp/>
+      <MealPlans setMeals = {setMeals} setResetOrderPageInfo = {setResetOrderPageInfo}  setCart ={setCart}/>
+      <MealsLookUp />
       <InformationGrid data={stats}/>
       <Question/>
       <Contact/>

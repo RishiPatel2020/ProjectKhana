@@ -5,7 +5,7 @@
 import React from 'react'
 
 import { Button } from 'react-bootstrap';
-import InformationBox from '../InformationBox/InformationBox';
+import InformationBox from './InformationBox/InformationBox';
 import { Link } from 'react-router-dom';
 
 

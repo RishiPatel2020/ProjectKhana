@@ -1,12 +1,14 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link, useNavigate} from 'react-router-dom';
-const MealPlans = ({setMeals}) => {
+const MealPlans = ({setMeals,setResetOrderPageInfo, setCart}) => {
 
     const navigate = useNavigate();
 
     const buttonClicked = meals =>{
         setMeals(meals); 
+        setResetOrderPageInfo(true); 
+        setCart([]); 
         navigate("/order"); 
     };
 
@@ -30,7 +32,7 @@ const MealPlans = ({setMeals}) => {
                     <Col sm style={{marginLeft:"8px", marginRight:"8px"}}>
                         <div className="card-body text-center" >
                             <button onClick= {()=>buttonClicked("4 Meals")} style={{background:"transparent",border:"none"}}>
-                                <img className="h1 mb-3" src= {require("../../Resources/Meals/meal1.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px",marginBottom:"6px"}}/>
+                                <img className="h1 mb-3" src= {require("../../../Resources/Meals/meal1.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px",marginBottom:"6px"}}/>
                             </button>
                             <h4 >4 Meals</h4>
                         </div>
@@ -41,7 +43,7 @@ const MealPlans = ({setMeals}) => {
                         <div className="card-body text-center" >
 
                         <button onClick= {()=>buttonClicked("6 Meals")} style={{background:"transparent",border:"none"}}>
-                            <img  className="h1 mb-3" src= {require("../../Resources/Meals/meal2.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
+                            <img  className="h1 mb-3" src= {require("../../../Resources/Meals/meal2.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
                         </button>
                             
                             
@@ -55,7 +57,7 @@ const MealPlans = ({setMeals}) => {
                         <div className="card-body text-center" >
                         
                         <button onClick= {()=>buttonClicked("8 Meals")} style={{background:"transparent",border:"none"}}>
-                            <img  className="h1 mb-3" src= {require("../../Resources/Meals/meal3.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
+                            <img  className="h1 mb-3" src= {require("../../../Resources/Meals/meal3.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
                         </button>
                             
                             <h4>8 Meals <i><super>*</super>Save 8%<super>*</super></i></h4>
@@ -67,7 +69,7 @@ const MealPlans = ({setMeals}) => {
                         <div className="card-body text-center" >
 
                         <button onClick= {()=>buttonClicked("12 Meals")} style={{background:"transparent",border:"none"}}>
-                        <img  className="h1 mb-3" src= {require("../../Resources/Meals/meal4.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
+                        <img  className="h1 mb-3" src= {require("../../../Resources/Meals/meal4.png")}  alt ="lorem" style={{height:"auto",width:"100%", borderRadius:"17px", marginBottom:"6px"}}/>
                         </button>
                         
                             <h4>12 Meals <i><super>*</super>Save 10%<super>*</super></i></h4>

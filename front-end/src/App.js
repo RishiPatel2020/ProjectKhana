@@ -10,6 +10,7 @@ import Nav from './components/NavBar/Nav';
 import {Route,Routes} from 'react-router-dom'; 
 import OrderPage from './components/OrderPage/OrderPage';
 import PickMeals from './components/PickMeals/PickMeals';
+import CheckOut from './components/CheckOut/CheckOut';
 function App() {
 
 
@@ -24,6 +25,8 @@ function App() {
   const [mealNumbers, setMealNumbers] = useState([]);
 
 
+  const [resetOrderPageInfo, setResetOrderPageInfo] = useState(false);
+
 
   return (
     <>
@@ -33,7 +36,7 @@ function App() {
     
     />
     <Routes>
-      <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn} setMeals ={setNumMeals} />}/>
+      <Route exact path="/" element={<Home loggedIn = {loggedIn} setLogIn = {setLogIn} setMeals ={setNumMeals} setResetOrderPageInfo = {setResetOrderPageInfo} setCart ={setCart}/>}/>
       <Route exact path="/about" element={<About/>}/>
       <Route exact path="/help" element={<Help/>}/>
       
@@ -48,6 +51,11 @@ function App() {
           setFreq = {setFreq}
           delivDate = {delivDate}
           setDelivDate = {setDelivDate}    
+
+          resetOrderPageInfo = {resetOrderPageInfo}
+          setResetOrderPageInfo = {setResetOrderPageInfo}
+
+          setMealNumbers = {setMealNumbers}
         />}
           
           />
@@ -60,8 +68,11 @@ function App() {
 
           mealNumbers = {mealNumbers}
           setMealNumbers = {setMealNumbers}
+          setResetOrderPageInfo = {setResetOrderPageInfo}
         
       />}/>
+
+      <Route exact path = "/checkOut" element={<CheckOut/>}/>
     </Routes> 
 
     <Footer/>

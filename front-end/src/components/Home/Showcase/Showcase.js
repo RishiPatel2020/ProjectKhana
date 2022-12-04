@@ -1,7 +1,7 @@
 import React from 'react'
-import LogInPopUP from '../LogInPopUp/LogInPopUp';
-import SignUpPopUp from '../SignUpPopUp/SignUpPopUp';
-import background from '../../Resources/Background/newGradient.png';
+import LogInPopUP from '../../NavBar/LogInPopUp/LogInPopUp';
+import SignUpPopUp from '../../NavBar/LogInPopUp/LogInPopUp';
+import background from '../../../Resources/Background/newGradient.png';
 
 const Showcase = ({loggedIn, setLogIn}) => {
   return (

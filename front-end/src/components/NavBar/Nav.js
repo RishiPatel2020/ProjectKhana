@@ -173,7 +173,7 @@ function NavBar({loggedIn,setLogIn,cart,setCart, mealNumbers ,setMealNumbers}) {
               
 
               
-              <Offcanvas show={show} onHide={handleClose} placement="end" style={{fontFamily:"Signika",height:"25%"}}>
+              <Offcanvas show={show} onHide={handleClose} placement="end" style={{fontFamily:"Signika",height:"85%"}}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className='h-100 d-flex align-items-center justify-content-center'>
 
@@ -230,17 +230,23 @@ function NavBar({loggedIn,setLogIn,cart,setCart, mealNumbers ,setMealNumbers}) {
         
 
 
+
               <div className="h-100 d-flex align-items-center justify-content-center">
 
-              <button onClick={()=>clearCart()} className='text-dark' style={{backgroundColor:"rgb(247, 193, 68)",border:"0px",height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Clear Order</button>
-              
-              
-              <Link to = "/order" smooth style={{marginLeft:"24px"}}>
-                <button onClick={()=>clearCart()} className='text-dark' style={{backgroundColor:"rgb(247, 193, 68)",border:"0px",height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Check Out</button>
+              <button onClick={()=>clearCart()} className='text-dark' style={{backgroundColor:"rgb(247, 193, 68)",border:"0px",height:"45px",width:"145px", borderRadius:"25px", fontSize:"20px"}}>Clear Order</button>
+
+
+              <Link to = "/checkOut" smooth style={{marginLeft:"24px"}}>
+                <button onClick={()=>clearCart()} className='text-dark' style={{backgroundColor:"rgb(247, 193, 68)",border:"0px",height:"45px",width:"145px", borderRadius:"25px", fontSize:"20px"}}>Check Out</button>
               </Link>
 
               </div>
+
+
+             
+              
         </Offcanvas.Body>
+
       </Offcanvas>
 
 

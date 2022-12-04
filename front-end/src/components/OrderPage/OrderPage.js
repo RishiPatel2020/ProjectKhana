@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import {Dropdown} from 'react-bootstrap';
-import ZipCode from '../ZipCode/ZipCode';
+import ZipCode from './ZipCode/ZipCode';
 import { useState, useRef} from 'react';
-import InformationGrid from '../InformationGrid/InformationGrid';
+import InformationGrid from '../About/InformationGrid/InformationGrid';
 import Scroll from '../../Service/ScrollTop';
 import { Modal } from 'react-bootstrap';
 
@@ -39,20 +39,31 @@ const data = {
     
   };
 
-const OrderPage = ({numMeals,setNumMeals,zipCode,setZipCode, freq, setFreq, delivDate, setDelivDate}) => {
-
-  useEffect(() => {
-  
-    Scroll.scrollUp();
-    
-  }, []);
+const OrderPage = ({numMeals,setNumMeals,zipCode,setZipCode, freq, setFreq, delivDate, setDelivDate,resetOrderPageInfo ,setResetOrderPageInfo, setMealNumbers}) => {
 
   
 
+ 
+
+  
+const navigate = useNavigate();
   
   // For pop up if something is missing
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState("");
+
+  useEffect(() => {
+    if(!resetOrderPageInfo){ // we are coming from pages other than back button on PickMeals Page
+      navigate("/pickMeals"); 
+    }else{ // we are coming from back button in Pick Meals Page
+      setNumMeals(0);
+      setZipCode("");
+      setFreq("Select Frequency");
+      setDelivDate("Select Date"); 
+    }
+    Scroll.scrollUp();
+    
+  }, []);
 
 
   const [plan, setPlan] = useState(numMeals);
@@ -62,7 +73,10 @@ const OrderPage = ({numMeals,setNumMeals,zipCode,setZipCode, freq, setFreq, deli
       setPlan("Select Plan"); 
     }
 
-  const navigate = useNavigate();
+
+
+
+  
 
   
 
@@ -93,13 +107,16 @@ const OrderPage = ({numMeals,setNumMeals,zipCode,setZipCode, freq, setFreq, deli
       if (zipCode.length===0){
         // more validations on zip code needed
         handleDisplay("Enter Proper Zip Code"); 
-      }else if(numMeals===0){
+      }else if(plan==="Select Plan"){
         handleDisplay("Select Plan"); 
       }else if (freq==="Select Frequency"){
         handleDisplay("Select Frequency"); 
-      }else if (delivDate==="Select Day"){
+      }else if (delivDate==="Select Date"){
         handleDisplay("Select Day"); 
       }else{
+        setResetOrderPageInfo(false); 
+        setMealNumbers([]); 
+        setResetOrderPageInfo(false); 
         navigate("/pickMeals"); 
       }
 
