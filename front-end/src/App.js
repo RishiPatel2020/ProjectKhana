@@ -14,17 +14,20 @@ import CheckOut from './components/CheckOut/CheckOut';
 function App() {
 
 
-  // rely less on cookies 
+  // Nav, Home
   const [loggedIn, setLogIn] = useState(localStorage.getItem("user")!==null);
+  
+  // OrderPage
   const [numMeals, setNumMeals] = useState(0);
-  const [cart, setCart] = useState([]);
   const [zipCode, setZipCode] = useState("");
   const [freq, setFreq] = useState("Select Frequency");
   const [delivDate, setDelivDate] = useState("Select Day");
-
+  
+  // Nav, PickMeals
+  const [cart, setCart] = useState([]);
   const [mealNumbers, setMealNumbers] = useState([]);
 
-
+  // Connecting PickMeals & OrderPage, [About,Home,Help....]
   const [resetOrderPageInfo, setResetOrderPageInfo] = useState(false);
 
 

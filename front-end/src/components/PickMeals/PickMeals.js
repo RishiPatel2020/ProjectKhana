@@ -1,7 +1,14 @@
+/**
+ * @author Rishi Patel
+ * Load data based on zip code entered on OrederPage 
+ * Let user modify Cart
+ */
+
+
 import React from 'react'
 import { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Modal} from 'react-bootstrap';
 import {Button} from "react-bootstrap";
@@ -10,6 +17,8 @@ import ScrollTop from '../../Service/ScrollTop';
 
 
 
+
+  // depends on zipcode entered by user
   const data = [
     {
       id:0,
@@ -51,34 +60,32 @@ import ScrollTop from '../../Service/ScrollTop';
 
 
 
-// we might need zip code later when loading relevant images
-  const PickMeals = ({zipCode, planSize, freq, delivDay, cart, setCart, mealNumbers ,setMealNumbers, setResetOrderPageInfo}) => {
+  const PickMeals = ({zipCode, cart, setCart, mealNumbers ,setMealNumbers, setResetOrderPageInfo}) => {
     
     
+    // scroll up only once when user arrives on this page
     useEffect(() => {
       ScrollTop.scrollUp(); 
     }, []);
 
     const navigate = useNavigate();
 
+
       if(mealNumbers.length===0){
         setMealNumbers(new Array(data.length).fill(0));
       } 
 
 
-    // will need some preprocessing to load relevant images based on zip code 
-    
 
-    // need this for img, pop up msg
-    const [items, setItems] = useState(data);
 
-    // pop status and description
+    // pop up to show description/ingridents to users
     const [show, setShow] = useState(false);
     const [description, setDescription] = useState("");
     const [mealSelected, setMealSelected] = useState("");
     
 
     
+    // What if user wants to reset freq, zipcode, etc...?? => we let user go back to OrderPage
     const backToOrderPage = ()=>{
         setCart([]);
         setMealNumbers(null); 
@@ -86,11 +93,10 @@ import ScrollTop from '../../Service/ScrollTop';
         navigate("/order"); 
     };  
     
-    // number of meals 
-    // const [mealNumbers, setMealNumbers] = useState(new Array(data.length).fill(0));
     
     
-    // method for pop up 
+  
+  // Handles PopUp display
     const handleDisplay = (description, mealName) =>{
       setDescription(description); 
       setMealSelected(mealName); 
@@ -98,100 +104,86 @@ import ScrollTop from '../../Service/ScrollTop';
 
     }
 
-    const add = (id)=>{
 
-     
-  
-      
-      
-      data[id].numberOfMeals++; 
-
-      
-      const tempArray = [];
-      if(cart.length===0){
-
-        
-        tempArray.push(data[id]);
-        
-        setCart(tempArray); 
-      }else{
-
-
-
-        let found = false;
-        cart.forEach(element => {
-          if(element.id===id){ 
-            
-            tempArray.push(data[id])
-            found = true; 
-
-          }else{
-            tempArray.push(element); 
-          }
-        });
-
-          if(!found){
-            tempArray.push(data[id]); 
-          }
-          setCart(tempArray); 
-        
-
-      }
-
-
-      // setting local cart 
-      mealNumbers[id]++;
-      const newAr = [];
-      mealNumbers.map(item=>{newAr.push(item)}); 
-      setMealNumbers(newAr); 
-
-      
-
-      
-
-
-    };
-
-
+    // closes description pop up when user closes it
     const handleClose = () => {
       setDescription("");
       setMealSelected(""); 
       setShow(false); 
     }
 
+
+    /**
+     * @Goal ADD item to cart && increment quantity by 1
+     * @param idNum of item to be added
+     * 1. Increment quantity in mealNumbers at index "id"
+     * 2. Update cart by setCart()
+     */
+
+    const add = (idNum)=>{ 
+
+      const addToCart ={
+        id:idNum,
+        mealName:data[idNum].mealName,
+        description: data[idNum].description,
+      };
+
+      const tempArray = [];
+
+      if(cart.length===0){ // cart is empty
+        tempArray.push(addToCart);
+        setCart(tempArray); 
+      }else{ // cart is NOT empty; 2 cases: idNum IS in cart OR NOT in the cart 
+  
+        let found = false;
+  
+        cart.forEach(element => {
+          
+          if(element.id===idNum){ 
+            found = true; 
+          }
+            tempArray.push(element); 
+          
+        });
+        
+        if(!found){tempArray.push(addToCart); }
+        setCart(tempArray); // Update cart to display correct items in cart
+      }
+      
+      mealNumbers[idNum]++; // increment quantity in mealNumbers at index "idNum"
+      const newAr = [];
+      mealNumbers.map(item=>{newAr.push(item)}); 
+      setMealNumbers(newAr);  // Update mealNumbers to display correct quantity numbers in cart AND pickMeals page
+    };
+
+
+
+
+    
+    /**
+     * @Goal REMOVE item from cart && decrement quantity by 1
+     * @param id of item to be removed/reduced
+     * 1. Decrement quantity in mealNumbers at index "idNum"
+     * 2. Update cart by setCart()
+     */
     const remove = (id)=>{
-
-
-      if(mealNumbers[id]>0){
-        mealNumbers[id]--;
-        data[id].numberOfMeals--; 
+      if(mealNumbers[id]>0){ // CANNOT have quantity < 0 
+        mealNumbers[id]--; // decrement quantity in mealNumbers at index "id"
         const newAr = [];
         mealNumbers.map(item=>{newAr.push(item)}); 
-        setMealNumbers(newAr); 
+        setMealNumbers(newAr); // update mealNumbers
 
-        if(mealNumbers[id]===0){
-          const tempCart= [];
-
+        if(mealNumbers[id]===0){ // if item is reduced to 0 in cart, cart should be updated so we don't have an item in cart whose quantity = 0
+          const tempCart= []; 
           cart.forEach(element => {
             if(element.id!==id){
               tempCart.push(element); 
             }
           });
-
           setCart(tempCart); 
         }
 
       }
-
-
-      
-
-        // const listItems = items.map((item)=>item.id===id?
-        // {...item,numberOfMeals: (numberOfMeals-1)}:item
-      // );
-
-      
-
     };
 
 
@@ -202,98 +194,67 @@ import ScrollTop from '../../Service/ScrollTop';
     return(
 
       <section style={{fontFamily:"Signika"}}>
+        <Container className='text-dark my-4'>
+          <button onClick={()=>backToOrderPage()}>Back to Order Page</button>
+          <Row style={{marginTop:"66px", marginBottom:"32px"}} xs="auto">
+            {
+              data.map(item=>{
+              const {id, img,mealName, description, numberOfMeals} = item;
+                return(
 
-<Container className='text-dark my-4'>
-
-  <button onClick={()=>backToOrderPage()}>Back to Order Page</button>
-
-<Row style={{marginTop:"66px", marginBottom:"32px"}} xs="auto">
-
-
-
-
-      {
-
-          items.map(item=>{
-            const {id, img,mealName, description, numberOfMeals} = item;
-            return(
-
-              <Col key = {id} className='p-3'> 
-              <div className="card-body text-center" >
-                <img src ={img}className='img-fluid' />
-                <h4 >{mealName}</h4>
-                <Link onClick={()=>handleDisplay(description,mealName)}><p className='text-light'>Description/Ingridients</p></Link>
-              
-                            
-
-
-                             <Button variant="light"onClick={()=>remove(id)} style={{borderRadius:"30px"}}>
-                               <span className="material-symbols-outlined" style={{padding:"4px"}}>
-                                 remove
-                               </span>
-                           </Button>
-
-
-                             <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{mealNumbers[id]}</span>
-
-
-                             <Button variant='light' onClick={()=>add(id)} style={{borderRadius:"30px"}}>
-                               <span className="material-symbols-outlined"style={{padding:"4px"}} >
-                                       add
-                               </span>
-                             </Button>
-
-                             
-
-              </div>
-
-
-
+                  <Col key = {id} className='p-3'> 
+                    <div className="card-body text-center" >
+                      <img src ={img}className='img-fluid' />
+                      <h4 >{mealName}</h4>
+                      <Link onClick={()=>handleDisplay(description,mealName)}><p className='text-light'>Description/Ingridients</p></Link>
                 
-              </Col>
+                      <Button variant="light"onClick={()=>remove(id)} style={{borderRadius:"30px"}}>
+                        <span className="material-symbols-outlined" style={{padding:"4px"}}>remove</span>
+                      </Button>
 
-              
-            ) 
-          })
+                      <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{mealNumbers[id]}</span>
 
-      }
+                      <Button variant='light' onClick={()=>add(id)} style={{borderRadius:"30px"}}>
+                        <span className="material-symbols-outlined"style={{padding:"4px"}} >add</span>
+                      </Button>
+                    </div>                  
+                  </Col>
 
-                        <Modal show={show} onHide={handleClose} style={{fontFamily:"Signika"}}>
-                              <Modal.Header closeButton>
-                                <Modal.Title>{mealSelected}</Modal.Title>
-                              </Modal.Header>
-                              <Modal.Body>{description}</Modal.Body>
-                              <Modal.Footer>
+                  
+                ) 
+              })
+            }
 
-                                <Button variant="light"  onClick={handleClose}>
-                                  Close
-                                </Button>
-                                
-                              </Modal.Footer>
-                            </Modal>
+            <Modal show={show} onHide={handleClose} style={{fontFamily:"Signika"}}>
+              <Modal.Header closeButton>
+                <Modal.Title>{mealSelected}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>{description}</Modal.Body>
+              <Modal.Footer>
+                <Button variant="light"  onClick={handleClose}>Close</Button>
+              </Modal.Footer>
+              </Modal>
 
+          </Row>
 
-  </Row>
+          <Row>
+            {/* Only show checkout button if # of item > 0 */}
+            {
+              cart.length!==0 
+              && 
+              ( <div className="h-100 d-flex align-items-center justify-content-center">
+                  <Link to = "/checkOut" smooth>
+                    <Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Check Out</Button>
+                  </Link>
+                </div>
+              )
+            }
 
-  <Row>
-
-
-
-{/* Only show checkout button if # of item > 0 */}
-  {cart.length!==0 && <div className="h-100 d-flex align-items-center justify-content-center">
-      <Link to = "/checkOut" smooth>
-        <Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Check Out</Button>
-      </Link>
-  </div>}
-
-  </Row>
+          </Row>
 
   
 
-  </Container>
-
-
-
+        </Container>
       </section>
 
         
