@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ProjectKhana/static/css/main.b58a9a44.css",
-    "main.js": "/ProjectKhana/static/js/main.93cb7fcd.js",
+    "main.js": "/ProjectKhana/static/js/main.45ff20b2.js",
     "static/js/496.7431dc9b.chunk.js": "/ProjectKhana/static/js/496.7431dc9b.chunk.js",
     "static/media/newGradient.png": "/ProjectKhana/static/media/newGradient.6c8b5355fa41b9d261d1.png",
     "static/media/pavbhaji.png": "/ProjectKhana/static/media/pavbhaji.c9e0198637100f35fa89.png",
@@ -31,11 +31,11 @@
     "static/media/mirchiMealsLogo.png": "/ProjectKhana/static/media/mirchiMealsLogo.edea7ed0341520f42b54.png",
     "index.html": "/ProjectKhana/index.html",
     "main.b58a9a44.css.map": "/ProjectKhana/static/css/main.b58a9a44.css.map",
-    "main.93cb7fcd.js.map": "/ProjectKhana/static/js/main.93cb7fcd.js.map",
+    "main.45ff20b2.js.map": "/ProjectKhana/static/js/main.45ff20b2.js.map",
     "496.7431dc9b.chunk.js.map": "/ProjectKhana/static/js/496.7431dc9b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b58a9a44.css",
-    "static/js/main.93cb7fcd.js"
+    "static/js/main.45ff20b2.js"
   ]
 }
