@@ -4,7 +4,7 @@
  */
 
 import "./PickMeals.css";
-import React from "react";
+import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -176,85 +176,90 @@ const PickMeals = ({
   };
 
   return (
-    <section style={{ fontFamily: "Signika" }}>
-      <Container className="text-dark my-4 customCss">
-        <button onClick={() => backToOrderPage()}>Back to Order Page</button>
-        <Row style={{ marginTop: "66px", marginBottom: "32px" }} xs="auto">
-          {data.map((item) => {
-            const { id, img, mealName, description } = item;
-            return (
-              <Col key={id} className="p-3 spacesBetweenBoxes">
-                <div className="card-body text-center">
-                  <img src={img} className="img-fluid imageAdjustment" />
-                  <h4 className="titleAdjustment">{mealName}</h4>
-                  <Link onClick={() => handleDisplay(description, mealName)}>
-                    <p className="text-light descriptionAdjustment">
-                      Description/Ingridients
-                    </p>
-                  </Link>
+    <>
+      <div className="justify-content-center backButtonContainer">
+        <Button
+          variant="secondary"
+          className="position-fixed backButton"
+          onClick={() => backToOrderPage()}
+          style={{ fontFamily: "Signika", color: "white" }}
+        >
+          Back
+        </Button>
+      </div>
+      <section style={{ fontFamily: "Signika" }}>
+        <Container className="text-dark my-4 customCss">
+          <Row style={{ marginTop: "66px", marginBottom: "32px" }} xs="auto">
+            {data.map((item) => {
+              const { id, img, mealName, description } = item;
+              return (
+                <Col key={id} className="p-3 spacesBetweenBoxes">
+                  <div className="card-body text-center">
+                    <img src={img} className="img-fluid imageAdjustment" />
+                    <h4 className="titleAdjustment">{mealName}</h4>
+                    <Link onClick={() => handleDisplay(description, mealName)}>
+                      <p className="text-light descriptionAdjustment">
+                        Description/Ingridients
+                      </p>
+                    </Link>
 
-                  <Button
-                    variant="light"
-                    onClick={() => remove(id)}
-                    className="buttonAdjustment"
-                  >
-                    <span className="letterAdjustment">-</span>
-                  </Button>
+                    <Button
+                      variant="light"
+                      onClick={() => remove(id)}
+                      className="buttonAdjustment"
+                    >
+                      <span className="letterAdjustment">-</span>
+                    </Button>
 
-                  <span className="amountAdjustment">{mealNumbers[id]}</span>
+                    <span className="amountAdjustment">{mealNumbers[id]}</span>
 
-                  <Button
-                    variant="light"
-                    onClick={() => add(id)}
-                    className="buttonAdjustment"
-                  >
-                    <span className="letterAdjustment">+</span>
-                  </Button>
-                </div>
-              </Col>
-            );
-          })}
+                    <Button
+                      variant="light"
+                      onClick={() => add(id)}
+                      className="buttonAdjustment"
+                    >
+                      <span className="letterAdjustment">+</span>
+                    </Button>
+                  </div>
+                </Col>
+              );
+            })}
 
-          <Modal
-            show={show}
-            onHide={handleClose}
-            style={{ fontFamily: "Signika" }}
-          >
-            <Modal.Header closeButton>
-              <Modal.Title>{mealSelected}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>{description}</Modal.Body>
-            <Modal.Footer>
-              <Button variant="light" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </Row>
-
-        <Row>
-          {/* Only show checkout button if # of item > 0 */}
-          {cart.length !== 0 && (
-            <div className="h-100 d-flex align-items-center justify-content-center">
-              <Link to="/checkOut" smooth>
-                <Button
-                  variant="secondary"
-                  className="text-primary"
-                  style={{
-                    height: "50px",
-                    width: "150px",
-                    borderRadius: "25px",
-                    fontSize: "25px",
-                  }}
-                >
-                  Check Out
+            <Modal
+              show={show}
+              onHide={handleClose}
+              style={{ fontFamily: "Signika" }}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>{mealSelected}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>{description}</Modal.Body>
+              <Modal.Footer>
+                <Button variant="light" onClick={handleClose}>
+                  Close
                 </Button>
-              </Link>
-            </div>
-          )}
-        </Row>
-      </Container>
-    </section>
+              </Modal.Footer>
+            </Modal>
+          </Row>
+
+          <Row>
+            {/* Only show checkout button if # of item > 0 */}
+            {cart.length !== 0 && (
+              <div className="h-100 d-flex align-items-center justify-content-center">
+                <Link to="/checkOut" smooth>
+                  <Button
+                    variant="secondary"
+                    className="text-primary checkOutButton"
+                  >
+                    Check Out
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </Row>
+        </Container>
+      </section>
+    </>
   );
 };
 

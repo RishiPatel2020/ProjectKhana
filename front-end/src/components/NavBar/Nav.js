@@ -71,7 +71,7 @@ function NavBar({
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="secondary" variant="light">
+    <Navbar collapseOnSelect expand="lg" bg="secondary" variant="light" className="fixed-top">
       <Container style={{ fontFamily: "Signika"}}>
         {/* Mirchi Meals  */}
         <Navbar.Brand>

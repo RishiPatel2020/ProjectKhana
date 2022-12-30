@@ -1,5 +1,4 @@
 /* for galaxy fold */
-
 @media screen and (width<=280px) {
   .imageAdjustment {
     height: 80px;
@@ -31,6 +30,30 @@
   }
   .spacesBetweenBoxes {
     padding: 0px;
+  }
+
+  .checkOutButton {
+    height: 34px;
+    width: 112px;
+    border-radius: 15px;
+    font-size: 17px;
+    padding: 1px;
+  }
+
+  .backButton {
+    margin-top: 41px;
+    top: 10%;
+    left: 3%;
+    margin-left: -4px;
+    height: 30px;
+    width: 72px;
+    padding: 1px;
+    border-radius: 20px;
+    font-size: 15px;
+  }
+  .backButtonContainer {
+   background-color: black;
+   margin-bottom: 150px;
   }
 }
 
@@ -66,6 +89,30 @@
   }
   .spacesBetweenBoxes {
     padding: 1em;
+  }
+
+  .checkOutButton {
+    height: 40px;
+    width: 125px;
+    border-radius: 15px;
+    font-size: 21px;
+    padding: 1px;
+  }
+
+  .backButton {
+    margin-top: 40px;
+    top: 10%;
+    left: 3%;
+    margin-left: -4px;
+    height: 33px;
+    width: 88px;
+    padding: 1px;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+  .backButtonContainer {
+   background-color: black;
+   margin-bottom: 150px;
   }
 }
 
@@ -104,6 +151,28 @@
   .spacesBetweenBoxes {
     padding: 1em;
   }
+
+  .checkOutButton {
+    height: 45px;
+    width: 130px;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+
+  .backButton {
+    margin-top: 12px;
+    top: 10%;
+    left: 3%;
+    margin-left: 0px;
+    height: 36px;
+    width: 91px;
+    padding: 1px;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+  .backButtonContainer {
+    margin-bottom: 136px;
+  }
 }
 
 /* for tablets */
@@ -134,6 +203,22 @@
     font-size: 35px;
     padding-left: 20px;
     padding-right: 15px;
+  }
+
+  .backButton {
+    margin-top: 22px;
+    top: 10%;
+    left: 3%;
+    margin-left: -10px;
+    height: 50px;
+    width: 105px;
+    padding: 1px;
+    border-radius: 20px;
+    font-size: 25px;
+  }
+  .backButtonContainer {
+   background-color: black;
+   margin-bottom: 220px;
   }
 }
 
@@ -170,5 +255,28 @@
     width: 60px;
     height: 45px;
     border-radius: 30px;
+  }
+
+  .checkOutButton {
+    height: 50px;
+    width: 150px;
+    border-radius: 25px;
+    font-size: 25px;
+  }
+
+  .backButton {
+    margin-top: 40px;
+    top: 10%;
+    left: 3%;
+    margin-left: 10px;
+    height: 50px;
+    width: 105px;
+    padding: 1px;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+  .backButtonContainer {
+    background-color: black;
+    margin-bottom: 200px;
   }
 }

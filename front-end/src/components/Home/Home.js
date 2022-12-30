@@ -2,6 +2,8 @@
  * has 1 Nav bar, 2 Information Boxes, 1 Foot Bar
  */
 
+import { useEffect } from "react";
+import ScrollTop from "../../Service/ScrollTop";
 import React from "react";
 import Showcase from "./Showcase/Showcase";
 import Question from "./Questions/Question";
@@ -17,6 +19,12 @@ const Home = ({
   setCart,
   setMealNumbers
 }) => {
+
+  useEffect(() => {
+    
+    ScrollTop.scrollUp();
+    
+  }, []);
   const saveTime = {
     backColor: "primary",
     headingColor: "dark",

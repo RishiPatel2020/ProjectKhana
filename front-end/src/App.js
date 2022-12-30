@@ -39,6 +39,8 @@ function App() {
         mealNumbers={mealNumbers}
         setMealNumbers={setMealNumbers}
       />
+      {/* to make nav sticked to top */}
+      <section className="stickNavBarAdjustments"></section>
       <Routes>
         {/* Home */}
         <Route

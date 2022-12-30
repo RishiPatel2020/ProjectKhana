@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+/* Galaxy Field */
+@media screen and (width<=280px) {
+  .stickNavBarAdjustments {
+    margin: 91px;
+  }
+}
+
+/* Small mobiles like iphone SE*/
+@media screen and (width>280px) and (width<=375px) {
+  .stickNavBarAdjustments {
+    margin: 91px;
+  }
+}
+
+/* for mobiles */
+@media screen and (width>376px) and (width<=420px) {
+  .stickNavBarAdjustments {
+    margin: 85px;
+  }
+}
+
+/* for tablets */
+@media screen and (width>420px) {
+  .stickNavBarAdjustments {
+    margin: 110px;
+  }
+}
+
+/* for laptops */
+@media screen and (width>820px) {
+  .stickNavBarAdjustments {
+    margin: 125px;
+  }
+}

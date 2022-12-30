@@ -7,8 +7,14 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import InformationBox from "./InformationBox/InformationBox";
 import { Link } from "react-router-dom";
-
+import ScrollTop from "../../Service/ScrollTop";
+import { useEffect } from "react";
 const About = () => {
+  useEffect(() => {
+    
+    ScrollTop.scrollUp();
+    
+  }, []);
   const firstBox = {
     image: require("../../Resources/Meals/meal1.png"),
     textPosition: "r",
