@@ -72,13 +72,13 @@
 
   .amountAdjustment {
     font-size: 30px;
-    padding-left: 20px;
-    padding-right: 15px;
+    padding-left: 12px;
+    padding-right: 7px;
   }
 
   .buttonAdjustment {
-    width: 40px;
-    height: 30px;
+    width: 43px;
+    height: 37px;
     border: 1px;
     padding: 0px;
     border-radius: 30px;
@@ -134,13 +134,13 @@
 
   .amountAdjustment {
     font-size: 35px;
-    padding-left: 20px;
-    padding-right: 15px;
+    padding-left: 13px;
+    padding-right: 9px;
   }
 
   .buttonAdjustment {
-    width: 45px;
-    height: 35px;
+    width: 48px;
+    height: 44px;
     padding: 0px;
     border-radius: 30px;
   }
