@@ -1,0 +1,19 @@
+/* Galaxy Field */
+@media screen and (width<=280px) {
+}
+
+/* Small mobiles like iphone SE*/
+@media screen and (width>280px) and (width<=375px) {
+}
+
+/* for mobiles */
+@media screen and (width>376px) and (width<=420px) {
+}
+
+/* for tablets */
+@media screen and (width>420px) {
+}
+
+/* for laptops */
+@media screen and (width>820px) {
+}

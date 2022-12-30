@@ -91,8 +91,8 @@
     background-color: rgb(98, 10, 21);
     opacity: 0.91;
     padding: 15px;
-    margin-bottom: 55px;
-    box-shadow: 15px 15px 15px black;
+    /* margin-bottom: 0px; */
+    box-shadow: 20px 20px 20px black;
     border-radius: 25px;
   }
 
@@ -173,4 +173,5 @@
     width: 100%;
     font-family: Signika;
   }
+  
 }

@@ -1,41 +1,40 @@
 /* for galaxy fold */
 
 @media screen and (width<=280px) {
-    .imageAdjustment {
-      height: 80px;
-      width: 100px;
-    }
-    .titleAdjustment {
-      font-size: 16px;
-    }
-    .descriptionAdjustment {
-      font-size: 13px;
-    }
-  
-    .amountAdjustment {
-      font-size: 30px;
-      padding-left: 10px;
-      padding-right: 5px;
-    }
-  
-    .buttonAdjustment {
-      width: 40px;
-      height: 30px;
-      border: 1px;
-      padding: 0px;
-      border-radius: 30px;
-    }
-  
-    .letterAdjustment {
-      font-size: 20px;
-    }
-    .spacesBetweenBoxes {
-      padding: 0px;
-    }
+  .imageAdjustment {
+    height: 80px;
+    width: 100px;
+  }
+  .titleAdjustment {
+    font-size: 16px;
+  }
+  .descriptionAdjustment {
+    font-size: 13px;
   }
 
-/* for mobiles like Galaxy S8+, SE */
-/* for mobiles */
+  .amountAdjustment {
+    font-size: 30px;
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+
+  .buttonAdjustment {
+    width: 40px;
+    height: 30px;
+    border: 1px;
+    padding: 0px;
+    border-radius: 30px;
+  }
+
+  .letterAdjustment {
+    font-size: 20px;
+  }
+  .spacesBetweenBoxes {
+    padding: 0px;
+  }
+}
+
+/* for small mobiles */
 @media screen and (width>280px) and (width<=375px) {
   .imageAdjustment {
     height: 100px;
@@ -75,6 +74,8 @@
   .imageAdjustment {
     height: 150px;
     width: 161px;
+    border: 0px;
+    border-radius: 20px;
   }
 
   .titleAdjustment {
@@ -141,8 +142,9 @@
   .imageAdjustment {
     height: 220px;
     width: 300px;
+    border: 0px;
+    border-radius: 20px;
   }
-
 
   .titleAdjustment {
     font-size: 35px;
@@ -154,18 +156,19 @@
     padding: 5em;
   }
 
+  /* for + and - */
   .letterAdjustment {
-    font-size: 25px;
+    font-size: 35px;
   }
 
   .amountAdjustment {
-    font-size: 35px;
+    font-size: 45px;
     padding-left: 20px;
     padding-right: 15px;
   }
   .buttonAdjustment {
-    width: 50px;
-    height: 35px;
+    width: 60px;
+    height: 45px;
     border-radius: 30px;
   }
 }

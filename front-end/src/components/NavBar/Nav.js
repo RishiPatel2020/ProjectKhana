@@ -94,7 +94,7 @@ function NavBar({
                 style={{ textDecoration: "none", marginRight: "30px" }}
               >
                 <strong
-                  style={{ fontSize: "27px", color: "rgb(247, 193, 68)" }}
+                 className="fontAdjustment"
                 >
                   About
                 </strong>
@@ -106,7 +106,7 @@ function NavBar({
                 style={{ textDecoration: "none", marginRight: "30px" }}
               >
                 <strong
-                  style={{ fontSize: "27px", color: "rgb(247, 193, 68)" }}
+                 className="fontAdjustment"
                 >
                   Order
                 </strong>
@@ -118,7 +118,7 @@ function NavBar({
                 style={{ textDecoration: "none", marginRight: "90px" }}
               >
                 <strong
-                  style={{ fontSize: "27px", color: "rgb(247, 193, 68)" }}
+                 className="fontAdjustment"
                 >
                   Help
                 </strong>
