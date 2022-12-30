@@ -2,7 +2,6 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Button } from "react-bootstrap";
 
 const InformationGrid = ({ data }) => {
   return (
@@ -14,6 +13,7 @@ const InformationGrid = ({ data }) => {
     >
       <Container style={{ padding: "64px 32px" }}>
         <div style={{ textAlign: "center" }}>
+          {/* Main Title eg. "How you Save Time"  */}
           <h1
             style={{ margin: "0px 0px 10px", fontSize: "48px" }}
             className={"text-" + data.headingColor}
@@ -25,6 +25,7 @@ const InformationGrid = ({ data }) => {
         <Row>
           <Col sm>
             <div className="card-body text-center">
+              {/* Vector Image */}
               <img
                 className="h1 mb-3"
                 src={data.image1}
@@ -32,7 +33,10 @@ const InformationGrid = ({ data }) => {
                 alt="lorem"
               />
 
+              {/* Sub Title eg. "Enjoy Your Meals" */}
               <h4 className={"text-" + data.titleColor}>{data.title1}</h4>
+
+              {/* Description */}
               <p className={"card-text text-" + data.textColor}>
                 {data.description1}
               </p>

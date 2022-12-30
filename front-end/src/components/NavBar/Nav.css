@@ -1,0 +1,44 @@
+/* LOGO RATIO ORIGINAL: WIDTH: 200PX; HEIGHT: 90PX */
+
+/* Galaxy Field */
+@media screen and (width<=280px) {
+  .logoAdjustment {
+    height: 60px;
+    width: 133.32px;
+  }
+}
+
+/* Small mobiles like iphone SE*/
+@media screen and (width>280px) and (width<=375px) {
+  .logoAdjustment {
+    height: 55px;
+    width: 122.21px;
+  }
+}
+
+/* for mobiles */
+@media screen and (width>376px) and (width<=420px) {
+  .logoAdjustment {
+    height: 60px;
+    width: 133.32px;
+  }
+}
+
+/* for tablets */
+@media screen and (width>420px) {
+  .logoAdjustment {
+    height: 85px;
+    width: 188.887px;
+  }
+}
+
+/* for laptops */
+@media screen and (width>820px) {
+  .logoAdjustment {
+    height: 100px;
+    width: 222.2px;
+    margin-right: 50px;
+  }
+}
+
+/* w: 200 h:90 */

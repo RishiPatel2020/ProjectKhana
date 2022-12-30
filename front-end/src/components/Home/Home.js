@@ -15,6 +15,7 @@ const Home = ({
   setMeals,
   setResetOrderPageInfo,
   setCart,
+  setMealNumbers
 }) => {
   const saveTime = {
     backColor: "primary",
@@ -73,7 +74,9 @@ const Home = ({
   };
   return (
     <>
+      {/* Log In & Sign Up Button */}
       <Showcase loggedIn={loggedIn} setLogIn={setLogIn} />
+
       {/* How you save time */}
       <InformationGrid data={saveTime} />
 
@@ -82,6 +85,7 @@ const Home = ({
         setMeals={setMeals}
         setResetOrderPageInfo={setResetOrderPageInfo}
         setCart={setCart}
+        setMealNumbers = {setMealNumbers}
       />
 
       {/* Fans Favorite */}

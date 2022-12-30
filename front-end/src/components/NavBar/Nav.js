@@ -1,7 +1,7 @@
 import Nav from "react-bootstrap/Nav";
 
 import { Container, Row, Col } from "react-bootstrap";
-
+import './Nav.css'
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
@@ -72,19 +72,21 @@ function NavBar({
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="secondary" variant="light">
-      <Container style={{ fontFamily: "Signika" }}>
+      <Container style={{ fontFamily: "Signika"}}>
+        {/* Mirchi Meals  */}
         <Navbar.Brand>
           <Link to="/">
-            {" "}
+            
             <img
               src={require("../../Resources/Logo/mirchiMealsLogo.png")}
-              style={{ width: "200px", height: "90px" }}
               alt="MirchiMealsLogo"
-            ></img>{" "}
+              className="logoAdjustment"
+            ></img>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
+          {/* About, Order, Help Links */}
           <Nav className="me-auto" defaultActiveKey="/home">
             <Nav.Link>
               <Link
@@ -155,7 +157,6 @@ function NavBar({
           )}
 
           {/* Shopping cart */}
-
           {cart.length !== 0 && (
             <Nav style={{ marginTop: "8px" }}>
               <button

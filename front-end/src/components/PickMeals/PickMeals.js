@@ -1,264 +1,261 @@
 /**
- * @author Rishi Patel
- * Load data based on zip code entered on OrederPage 
- * Let user modify Cart
+ *  For now can look in csv file for meal data based on zip code entered
+ *  Scaling: might need API call to search meal info based on given zip code
  */
 
+import "./PickMeals.css";
+import React from "react";
+import { useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import ScrollTop from "../../Service/ScrollTop";
 
-import React from 'react'
-import { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { Modal} from 'react-bootstrap';
-import {Button} from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
-import ScrollTop from '../../Service/ScrollTop';
+// depends on zipcode entered by user
+const data = [
+  {
+    id: 0,
+    img: require("../../Resources/Meals/meal1.png"),
+    mealName: "Madrasi Thari ",
+    description: "Special Dish from South India",
+    numberOfMeals: 0,
+  },
 
+  {
+    id: 1,
+    img: require("../../Resources/Meals/meal2.png"),
+    mealName: "Gujarati Thari",
+    description: "Special Dish from Gujarat",
+    numberOfMeals: 0,
+  },
 
+  {
+    id: 2,
+    img: require("../../Resources/Meals/meal3.png"),
+    mealName: "Punjabi Thari",
+    description: "Special Dish from Punjab",
+    numberOfMeals: 0,
+  },
 
+  {
+    id: 3,
+    img: require("../../Resources/Meals/meal4.png"),
+    mealName: "Benagali Thari",
+    description: "Special Dish from Bengal",
+    numberOfMeals: 0,
+  },
+];
 
-  // depends on zipcode entered by user
-  const data = [
-    {
-      id:0,
-      img: require("../../Resources/Meals/meal1.png"),
-      mealName:"Madrasi Thari ",
-      description:"Special Dish from South India",
-      numberOfMeals:0,
-    },
-  
-    {
-      id:1,
-      img: require("../../Resources/Meals/meal2.png"),
-      mealName:"Gujarati Thari",
-      description:"Special Dish from Gujarat",
-      numberOfMeals:0
-    
-    },
-  
-    {
-      id:2,
-      img: require("../../Resources/Meals/meal3.png"),
-      mealName:"Punjabi Thari",
-      description:"Special Dish from Punjab",
-      numberOfMeals:0
-    
-    },
-  
-    {
-      id:3,
-      img: require("../../Resources/Meals/meal4.png"),
-      mealName:"Benagali Thari",
-      description:"Special Dish from Bengal",
-      numberOfMeals:0
-    
-    }
-  
-  
-  ]; 
+const PickMeals = ({
+  zipCode,
+  cart,
+  setCart,
+  mealNumbers,
+  setMealNumbers,
+  setResetOrderPageInfo,
+}) => {
+  // scroll up only once when user arrives on this page
+  useEffect(() => {
+    ScrollTop.scrollUp();
+  }, []);
 
+  // so we can go back to orderPage
+  const navigate = useNavigate();
 
+  // visiting this first time
+  if (mealNumbers.length === 0) {
+    setMealNumbers(new Array(data.length).fill(0));
+  }
 
-  const PickMeals = ({zipCode, cart, setCart, mealNumbers ,setMealNumbers, setResetOrderPageInfo}) => {
-    
-    
-    // scroll up only once when user arrives on this page
-    useEffect(() => {
-      ScrollTop.scrollUp(); 
-    }, []);
+  // pop up to show description/ingridents to users
+  const [show, setShow] = useState(false);
+  const [description, setDescription] = useState("");
+  const [mealSelected, setMealSelected] = useState("");
 
-    const navigate = useNavigate();
+  // What if user wants to reset freq, zipcode, etc...?? => we let user go back to OrderPage
+  const backToOrderPage = () => {
+    setCart([]);
+    setMealNumbers([]);
+    setResetOrderPageInfo(2); // reset everything in orderPage
+    navigate("/order");
+  };
 
-
-      if(mealNumbers.length===0){
-        setMealNumbers(new Array(data.length).fill(0));
-      } 
-
-
-
-
-    // pop up to show description/ingridents to users
-    const [show, setShow] = useState(false);
-    const [description, setDescription] = useState("");
-    const [mealSelected, setMealSelected] = useState("");
-    
-
-    
-    // What if user wants to reset freq, zipcode, etc...?? => we let user go back to OrderPage
-    const backToOrderPage = ()=>{
-        setCart([]);
-        setMealNumbers(null); 
-        setResetOrderPageInfo(true); 
-        navigate("/order"); 
-    };  
-    
-    
-    
-  
   // Handles PopUp display
-    const handleDisplay = (description, mealName) =>{
-      setDescription(description); 
-      setMealSelected(mealName); 
-      setShow(true);
+  const handleDisplay = (description, mealName) => {
+    setDescription(description);
+    setMealSelected(mealName);
+    setShow(true);
+  };
 
-    }
+  // closes description pop up when user closes it
+  const handleClose = () => {
+    setDescription("");
+    setMealSelected("");
+    setShow(false);
+  };
 
+  /**
+   * @Goal ADD item to cart && increment quantity by 1
+   * @param idNum of item to be added
+   * 1. Increment quantity in mealNumbers at index "id"
+   * 2. Update cart by setCart()
+   */
 
-    // closes description pop up when user closes it
-    const handleClose = () => {
-      setDescription("");
-      setMealSelected(""); 
-      setShow(false); 
-    }
-
-
-    /**
-     * @Goal ADD item to cart && increment quantity by 1
-     * @param idNum of item to be added
-     * 1. Increment quantity in mealNumbers at index "id"
-     * 2. Update cart by setCart()
-     */
-
-    const add = (idNum)=>{ 
-
-      const addToCart ={
-        id:idNum,
-        mealName:data[idNum].mealName,
-        description: data[idNum].description,
-      };
-
-      const tempArray = [];
-
-      if(cart.length===0){ // cart is empty
-        tempArray.push(addToCart);
-        setCart(tempArray); 
-      }else{ // cart is NOT empty; 2 cases: idNum IS in cart OR NOT in the cart 
-  
-        let found = false;
-  
-        cart.forEach(element => {
-          
-          if(element.id===idNum){ 
-            found = true; 
-          }
-            tempArray.push(element); 
-          
-        });
-        
-        if(!found){tempArray.push(addToCart); }
-        setCart(tempArray); // Update cart to display correct items in cart
-      }
-      
-      mealNumbers[idNum]++; // increment quantity in mealNumbers at index "idNum"
-      const newAr = [];
-      mealNumbers.map(item=>{newAr.push(item)}); 
-      setMealNumbers(newAr);  // Update mealNumbers to display correct quantity numbers in cart AND pickMeals page
+  const add = (idNum) => {
+    // will have to add PRICE
+    const addToCart = {
+      id: idNum,
+      mealName: data[idNum].mealName,
+      description: data[idNum].description,
     };
 
+    const tempArray = [];
 
+    if (cart.length === 0) {
+      // cart is empty
+      tempArray.push(addToCart);
+      setCart(tempArray);
+    } else {
+      // cart is NOT empty; 2 cases: idNum IS in cart OR NOT in the cart
 
+      // don't wanna add duplicate items
+      let found = false;
 
-    
-    /**
-     * @Goal REMOVE item from cart && decrement quantity by 1
-     * @param id of item to be removed/reduced
-     * 1. Decrement quantity in mealNumbers at index "idNum"
-     * 2. Update cart by setCart()
-     */
-    const remove = (id)=>{
-      if(mealNumbers[id]>0){ // CANNOT have quantity < 0 
-        mealNumbers[id]--; // decrement quantity in mealNumbers at index "id"
-        const newAr = [];
-        mealNumbers.map(item=>{newAr.push(item)}); 
-        setMealNumbers(newAr); // update mealNumbers
-
-        if(mealNumbers[id]===0){ // if item is reduced to 0 in cart, cart should be updated so we don't have an item in cart whose quantity = 0
-          const tempCart= []; 
-          cart.forEach(element => {
-            if(element.id!==id){
-              tempCart.push(element); 
-            }
-          });
-          setCart(tempCart); 
+      cart.forEach((element) => {
+        if (element.id === idNum) {
+          found = true;
         }
+        tempArray.push(element);
+      });
 
+      // adding item first time
+      if (!found) {
+        tempArray.push(addToCart);
       }
-    };
+      setCart(tempArray); // Update cart to display correct items in cart
+    }
 
+    mealNumbers[idNum]++; // increment quantity in mealNumbers at index "idNum"
+    const newAr = [];
+    mealNumbers.map((item) => {
+      newAr.push(item);
+    });
+    setMealNumbers(newAr); // Update mealNumbers to display correct quantity numbers in cart AND pickMeals page
+  };
 
+  /**
+   * @Goal REMOVE item from cart && decrement quantity by 1
+   * @param id of item to be removed/reduced
+   * 1. Decrement quantity in mealNumbers at index "idNum"
+   * 2. Update cart by setCart()
+   */
+  const remove = (id) => {
+    // CANNOT have quantity < 0
+    if (mealNumbers[id] > 0) {
+      mealNumbers[id]--; // decrement quantity in mealNumbers at index "id"
+      const newAr = [];
+      mealNumbers.map((item) => {
+        newAr.push(item);
+      });
+      setMealNumbers(newAr); // update mealNumbers
 
+      if (mealNumbers[id] === 0) {
+        // if item is reduced to 0 in cart, cart should be updated so we don't have an item in cart whose quantity = 0
+        const tempCart = [];
+        cart.forEach((element) => {
+          if (element.id !== id) {
+            tempCart.push(element);
+          }
+        });
+        setCart(tempCart);
+      }
+    }
+  };
 
-
-  
-    return(
-
-      <section style={{fontFamily:"Signika"}}>
-        <Container className='text-dark my-4'>
-          <button onClick={()=>backToOrderPage()}>Back to Order Page</button>
-          <Row style={{marginTop:"66px", marginBottom:"32px"}} xs="auto">
-            {
-              data.map(item=>{
-              const {id, img,mealName, description, numberOfMeals} = item;
-                return(
-
-                  <Col key = {id} className='p-3'> 
-                    <div className="card-body text-center" >
-                      <img src ={img}className='img-fluid' />
-                      <h4 >{mealName}</h4>
-                      <Link onClick={()=>handleDisplay(description,mealName)}><p className='text-light'>Description/Ingridients</p></Link>
-                
-                      <Button variant="light"onClick={()=>remove(id)} style={{borderRadius:"30px"}}>
-                        <span className="material-symbols-outlined" style={{padding:"4px"}}>remove</span>
-                      </Button>
-
-                      <span style={{fontSize:"40px",paddingLeft:"20px",paddingRight:"15px"}}>{mealNumbers[id]}</span>
-
-                      <Button variant='light' onClick={()=>add(id)} style={{borderRadius:"30px"}}>
-                        <span className="material-symbols-outlined"style={{padding:"4px"}} >add</span>
-                      </Button>
-                    </div>                  
-                  </Col>
-
-                  
-                ) 
-              })
-            }
-
-            <Modal show={show} onHide={handleClose} style={{fontFamily:"Signika"}}>
-              <Modal.Header closeButton>
-                <Modal.Title>{mealSelected}</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>{description}</Modal.Body>
-              <Modal.Footer>
-                <Button variant="light"  onClick={handleClose}>Close</Button>
-              </Modal.Footer>
-              </Modal>
-
-          </Row>
-
-          <Row>
-            {/* Only show checkout button if # of item > 0 */}
-            {
-              cart.length!==0 
-              && 
-              ( <div className="h-100 d-flex align-items-center justify-content-center">
-                  <Link to = "/checkOut" smooth>
-                    <Button variant='secondary' className='text-primary' style={{height:"50px",width:"150px", borderRadius:"25px", fontSize:"25px"}}>Check Out</Button>
+  return (
+    <section style={{ fontFamily: "Signika" }}>
+      <Container className="text-dark my-4 customCss">
+        <button onClick={() => backToOrderPage()}>Back to Order Page</button>
+        <Row style={{ marginTop: "66px", marginBottom: "32px" }} xs="auto">
+          {data.map((item) => {
+            const { id, img, mealName, description } = item;
+            return (
+              <Col key={id} className="p-3 spacesBetweenBoxes">
+                <div className="card-body text-center">
+                  <img src={img} className="img-fluid imageAdjustment" />
+                  <h4 className="titleAdjustment">{mealName}</h4>
+                  <Link onClick={() => handleDisplay(description, mealName)}>
+                    <p className="text-light descriptionAdjustment">
+                      Description/Ingridients
+                    </p>
                   </Link>
+
+                  <Button
+                    variant="light"
+                    onClick={() => remove(id)}
+                    className="buttonAdjustment"
+                  >
+                    <span className="letterAdjustment">-</span>
+                  </Button>
+
+                  <span className="amountAdjustment">{mealNumbers[id]}</span>
+
+                  <Button
+                    variant="light"
+                    onClick={() => add(id)}
+                    className="buttonAdjustment"
+                  >
+                    <span className="letterAdjustment">+</span>
+                  </Button>
                 </div>
-              )
-            }
+              </Col>
+            );
+          })}
 
-          </Row>
+          <Modal
+            show={show}
+            onHide={handleClose}
+            style={{ fontFamily: "Signika" }}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>{mealSelected}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>{description}</Modal.Body>
+            <Modal.Footer>
+              <Button variant="light" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </Row>
 
-  
-
-        </Container>
-      </section>
-
-        
-    );
-}
+        <Row>
+          {/* Only show checkout button if # of item > 0 */}
+          {cart.length !== 0 && (
+            <div className="h-100 d-flex align-items-center justify-content-center">
+              <Link to="/checkOut" smooth>
+                <Button
+                  variant="secondary"
+                  className="text-primary"
+                  style={{
+                    height: "50px",
+                    width: "150px",
+                    borderRadius: "25px",
+                    fontSize: "25px",
+                  }}
+                >
+                  Check Out
+                </Button>
+              </Link>
+            </div>
+          )}
+        </Row>
+      </Container>
+    </section>
+  );
+};
 
 export default PickMeals;

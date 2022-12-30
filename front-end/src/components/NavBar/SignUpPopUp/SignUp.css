@@ -1,0 +1,64 @@
+/* Galaxy Field */
+@media screen and (width<=280px) {
+  .buttonAdjustments {
+    font-size: 20px;
+    width: 100px;
+    height: 45px;
+    background-color: rgb(212, 106, 25);
+    border-color: rgb(212, 106, 25);
+    border: 0px;
+    border-radius: 10px;
+  }
+}
+
+/* Small mobiles like iphone SE*/
+@media screen and (width>280px) and (width<=375px) {
+  .buttonAdjustments {
+    font-size: 20px;
+    width: 100px;
+    height: 45px;
+    background-color: rgb(212, 106, 25);
+    border-color: rgb(212, 106, 25);
+    border: 0px;
+    border-radius: 10px;
+  }
+}
+
+/* for mobiles */
+@media screen and (width>376px) and (width<=420px) {
+  .buttonAdjustments {
+    font-size: 20px;
+    width: 100px;
+    height: 45px;
+    background-color: rgb(212, 106, 25);
+    border-color: rgb(212, 106, 25);
+    border: 0px;
+    border-radius: 10px;
+  }
+}
+
+/* for tablets */
+@media screen and (width>420px) {
+  .buttonAdjustments {
+    font-size: 20px;
+    width: 100px;
+    height: 45px;
+    background-color: rgb(212, 106, 25);
+    border-color: rgb(212, 106, 25);
+    border: 0px;
+    border-radius: 10px;
+  }
+}
+
+/* for laptops */
+@media screen and (width>820px) {
+  .buttonAdjustments {
+    font-size: 20px;
+    width: 100px;
+    height: 45px;
+    background-color: rgb(212, 106, 25);
+    border-color: rgb(212, 106, 25);
+    border: 0px;
+    border-radius: 10px;
+  }
+}

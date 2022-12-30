@@ -1,4 +1,7 @@
-import { Link, useNavigate, useNavigation } from "react-router-dom";
+/**
+ * Might need API call to validate zipcode based on region
+ */
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -53,13 +56,25 @@ const OrderPage = ({
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState("");
 
+  /**
+   * coming from pickMeals, want to reselect all options
+   * coming from MealPlans section of home page, want to enter everything EXCEPT plan size because we clicked on one of the buttons like 4 meals, 6 meals, ...
+   * coming from else where, go to pickMeals page or stay on orderPage depending on previous interaction of user with orderPage
+   */
   useEffect(() => {
-    if (!resetOrderPageInfo) {
-      // we are coming from pages other than back button on PickMeals Page
+    if (resetOrderPageInfo === 0) {
+      // user was looking at pickMeals; went else where; wants to go back to pickMeals
+      // GO to pick meals
       navigate("/pickMeals");
+    } else if (resetOrderPageInfo === 1) {
+      // came from mealPlans section of Home Page
+      // reset freq, date, and zipcode
+      setFreq("Select Frequency");
+      setZipCode("");
+      setDelivDate("Select Date");
     } else {
-      // we are coming from back button in Pick Meals Page
-      setNumMeals(0);
+      // Want to choose every option again; Coming back from Pick Meals Page
+      setNumMeals("Select Plan");
       setZipCode("");
       setFreq("Select Frequency");
       setDelivDate("Select Date");
@@ -67,50 +82,33 @@ const OrderPage = ({
     Scroll.scrollUp();
   }, []);
 
-  const [plan, setPlan] = useState(numMeals);
-
-  // because we could be getting this from Home Page when we click either 4,6,8, or 10 meals
-  if (plan === 0) {
-    setPlan("Select Plan");
-  }
-
-  // our global state stores int but local needs string to display
-  const handlePlanChange = (size) => {
-    if (size === 4) {
-      setPlan("4 Meals");
-    } else if (size === 8) {
-      setPlan("8 Meals");
-    } else {
-      // 12
-      setPlan("12 Meals");
-    }
-    setNumMeals(size);
-  };
-
+  // Pick meals button clicked
   const handlePickMeals = () => {
-    // all valid
     if (zipCode.length === 0) {
-      // more validations on zip code needed
+      // need MORE validations on zip code like positive int, valid based on region
+      // might require API call
       handleDisplay("Enter Proper Zip Code");
-    } else if (plan === "Select Plan") {
+    } else if (numMeals === "Select Plan") {
       handleDisplay("Select Plan");
     } else if (freq === "Select Frequency") {
       handleDisplay("Select Frequency");
     } else if (delivDate === "Select Date") {
-      handleDisplay("Select Day");
+      handleDisplay("Select Date");
     } else {
-      setResetOrderPageInfo(false);
+      // move to pickMeals page
+      setResetOrderPageInfo(0);
       setMealNumbers([]);
-      setResetOrderPageInfo(false);
       navigate("/pickMeals");
     }
   };
 
+  // open pop up
   const handleDisplay = (msg) => {
     setMsg(msg);
     setShow(true);
   };
 
+  // closes pop up
   const handleClose = () => {
     setMsg("");
     setShow(false);
@@ -165,26 +163,35 @@ const OrderPage = ({
                         id="dropdown-basic"
                         style={{ height: "50px", width: "150px" }}
                       >
-                        <span className="text-primary">{plan}</span>
+                        <span className="text-primary">{numMeals}</span>
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => handlePlanChange(4)}>
-                          {" "}
-                          <span>4 meals</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setNumMeals("4 Meals")}
+                          onClick={() => setNumMeals("4 Meals")}
+                        >
+                          <span>4 meals</span>
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => handlePlanChange(8)}>
-                          {" "}
-                          <span>8 meals</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setNumMeals("6 Meals")}
+                          onClick={() => setNumMeals("6 Meals")}
+                        >
+                          <span>6 meals</span>
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => handlePlanChange(12)}>
-                          {" "}
-                          <span>12 meals</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setNumMeals("8 Meals")}
+                          onClick={() => setNumMeals("8 Meals")}
+                        >
+                          <span>8 meals</span>
                         </Dropdown.Item>
 
-                        {/* <Dropdown.Item onClick={setPlan("4 meals")}>4 meals</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">8 meals</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">12 meals</Dropdown.Item> */}
+                        <Dropdown.Item
+                          onMouseEnter={() => setNumMeals("12 Meals")}
+                          onClick={() => setNumMeals("12 Meals")}
+                        >
+                          <span>12 meals</span>
+                        </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
@@ -206,17 +213,23 @@ const OrderPage = ({
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => setFreq("Weekly")}>
-                          {" "}
-                          <span>Weekly</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setFreq("Weekly")}
+                          onClick={() => setFreq("Weekly")}
+                        >
+                          <span>Weekly</span>
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => setFreq("Bi-Weekly")}>
-                          {" "}
-                          <span>Bi-Weekly</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setFreq("Bi-Weekly")}
+                          onClick={() => setFreq("Bi-Weekly")}
+                        >
+                          <span>Bi-Weekly</span>
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => setFreq("One Time")}>
-                          {" "}
-                          <span>One Time</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setFreq("One Time")}
+                          onClick={() => setFreq("One Time")}
+                        >
+                          <span>One Time</span>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
@@ -240,19 +253,23 @@ const OrderPage = ({
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => setDelivDate("Monday")}>
-                          {" "}
-                          <span>Monday</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setDelivDate("Monday")}
+                          onClick={() => setDelivDate("Monday")}
+                        >
+                          <span>Monday</span>
                         </Dropdown.Item>
                         <Dropdown.Item
+                          onMouseEnter={() => setDelivDate("Wednesday")}
                           onClick={() => setDelivDate("Wednesday")}
                         >
-                          {" "}
-                          <span>Wednesday</span>{" "}
+                          <span>Wednesday</span>
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => setDelivDate("Friday")}>
-                          {" "}
-                          <span>Friday</span>{" "}
+                        <Dropdown.Item
+                          onMouseEnter={() => setDelivDate("Friday")}
+                          onClick={() => setDelivDate("Friday")}
+                        >
+                          <span>Friday</span>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

@@ -8,9 +8,7 @@ const MealsLookUp = () => {
       className="bg-light"
       style={{ fontFamily: "Signika", padding: "64px 32px" }}
     >
-      {/* this will have padding  */}
       <div className="container" style={{ marginLeft: "auto" }}>
-        {/* for heading  */}
         <div
           style={{
             marginRight: "auto",

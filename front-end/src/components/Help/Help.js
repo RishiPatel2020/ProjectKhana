@@ -16,10 +16,12 @@ const Help = () => {
         }}
       >
         <div style={{ marginTop: "40px" }}>
+          {/* Image */}
           <img
             className="img-fluid"
             src={require("../../Resources/Vector/help.png")}
           />
+          {/* Help Text */}
           <div style={{ marginTop: "30px" }}>
             <p className="">
               Any inquiries, comments, or concerns, please address to:
@@ -35,6 +37,7 @@ const Help = () => {
             </p>
             <p>In the meantime, try out our meals.</p>
 
+            {/* Order Button */}
             <div className="h-100 d-flex align-items-center justify-content-center">
               <Link to="/order">
                 <Button

@@ -1,13 +1,14 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
+const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart, setMealNumbers }) => {
   const navigate = useNavigate();
 
   const buttonClicked = (meals) => {
     setMeals(meals);
-    setResetOrderPageInfo(true);
+    setResetOrderPageInfo(1); // want to pick freq, date, zipCode but number of meals is chosen
     setCart([]);
+    setMealNumbers([]); 
     navigate("/order");
   };
 
@@ -16,9 +17,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
       className="mealPlans bg-dark"
       style={{ fontFamily: "Signika", padding: "64px 32px" }}
     >
-      {/* this will have padding  */}
       <div className="container text-center" style={{ marginLeft: "auto" }}>
-        {/* for heading  */}
         <div
           style={{
             marginRight: "auto",
@@ -26,6 +25,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
             marginLeft: "auto",
           }}
         >
+          {/* Main Title: Meal Plans For You */}
           <h1
             className="text-light"
             style={{ margin: "0px 0px 10px", fontSize: "48px" }}
@@ -33,6 +33,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
             Meal Plans for You
           </h1>
 
+          {/* Main description */}
           <p className="text-primary">
             Order 4-12 meals per week, with prices as low as $10.50 each. The
             more meals you order, the more you’ll save. Set up weekly,
@@ -45,6 +46,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
           <Row style={{ marginTop: "66px", marginBottom: "32px" }}>
             <Col sm style={{ marginLeft: "8px", marginRight: "8px" }}>
               <div className="card-body text-center">
+                {/* Image button 1  */}
                 <button
                   onClick={() => buttonClicked("4 Meals")}
                   style={{ background: "transparent", border: "none" }}
@@ -61,12 +63,14 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
                     }}
                   />
                 </button>
+                {/* Text below Img 1 */}
                 <h4>4 Meals</h4>
               </div>
             </Col>
 
             <Col sm style={{ marginLeft: "8px", marginRight: "8px" }}>
               <div className="card-body text-center">
+                {/* Image button 2 */}
                 <button
                   onClick={() => buttonClicked("6 Meals")}
                   style={{ background: "transparent", border: "none" }}
@@ -83,7 +87,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
                     }}
                   />
                 </button>
-
+                {/* Text below Img 2 */}
                 <h4>
                   6 Meals{" "}
                   <i>
@@ -95,6 +99,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
 
             <Col sm style={{ marginLeft: "8px", marginRight: "8px" }}>
               <div className="card-body text-center">
+                {/* Image button 3 */}
                 <button
                   onClick={() => buttonClicked("8 Meals")}
                   style={{ background: "transparent", border: "none" }}
@@ -111,7 +116,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
                     }}
                   />
                 </button>
-
+                {/* Text below Img 3 */}
                 <h4>
                   8 Meals{" "}
                   <i>
@@ -123,6 +128,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
 
             <Col sm style={{ marginLeft: "8px", marginRight: "8px" }}>
               <div className="card-body text-center">
+                {/* Image button 4 */}
                 <button
                   onClick={() => buttonClicked("12 Meals")}
                   style={{ background: "transparent", border: "none" }}
@@ -139,7 +145,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
                     }}
                   />
                 </button>
-
+                {/* Text below Img 4 */}
                 <h4>
                   12 Meals{" "}
                   <i>
@@ -153,6 +159,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart }) => {
           <Row>
             <Col>
               <div className="d-flex justify-content-center align-items-center">
+                {/* Link to order page */}
                 <Link to="/order" smooth>
                   <Button
                     variant="primary"

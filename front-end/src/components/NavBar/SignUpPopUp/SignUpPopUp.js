@@ -1,7 +1,8 @@
 /***
- * Will later call backend api to perform CRUD operations for user data
+ * Will call backend API to register user
  */
 
+import './SignUp.css';
 import React from "react";
 import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -11,7 +12,7 @@ function SignUpPopUp({ style, setLogIn }) {
   // display pop up
   const [display, setDisplay] = useState(false);
 
-  // states for Sign Up
+  // states for firstName, firstNameLabel
   const [firstName, setFirstName] = useState("");
   const [firstNameLabel, setFirstNameLabel] = useState(
     <label htmlFor="first-name" className="col-form-label">
@@ -20,6 +21,8 @@ function SignUpPopUp({ style, setLogIn }) {
       </span>
     </label>
   );
+
+  // states for lastName, lastNameLabel
   const [lastName, setLastName] = useState("");
   const [lastNameLabel, setLastNameLabel] = useState(
     <label htmlFor="last-name" className="col-form-label">
@@ -28,6 +31,8 @@ function SignUpPopUp({ style, setLogIn }) {
       </span>
     </label>
   );
+
+  // states for email, emailLabel
   const [email, setEmail] = useState("");
   const [emailLabel, setEmailLabel] = useState(
     <label htmlFor="email" className="col-form-label">
@@ -36,6 +41,7 @@ function SignUpPopUp({ style, setLogIn }) {
       </span>
     </label>
   );
+  // states for userName, userNameLabel
   const [userName, setUserName] = useState("");
   const [userNameLabel, setUserNameLabel] = useState(
     <label htmlFor="userName" className="col-form-label">
@@ -44,6 +50,8 @@ function SignUpPopUp({ style, setLogIn }) {
       </span>
     </label>
   );
+
+  // states for password, passwordLabel
   const [userPassword, setUserPassword] = useState("");
   const [userPasswordLabel, setUserPasswordLabel] = useState(
     <label htmlFor="userPassword" className="col-form-label">
@@ -53,6 +61,8 @@ function SignUpPopUp({ style, setLogIn }) {
     </label>
   );
 
+  // restores labels to black text and replace ** with *
+  // for eg. First Name ** in red will become First Name * in black
   const resetLabels = () => {
     setFirstNameLabel(
       <label htmlFor="first-name" className="col-form-label">
@@ -91,6 +101,7 @@ function SignUpPopUp({ style, setLogIn }) {
     );
   };
 
+  // resets state of data
   const resetData = () => {
     setFirstName("");
     setLastName("");
@@ -99,15 +110,13 @@ function SignUpPopUp({ style, setLogIn }) {
     setEmail("");
   };
 
-  /***
-   * resets both data and lables
-   */
+  // reset data & lables
   const reset = () => {
     resetLabels();
     resetData();
   };
 
-  //reset all states of data & close Pop Up
+  //reset ALL states of data & CLOSE Pop Up
   const handleClose = () => {
     reset();
     setDisplay(false);
@@ -115,7 +124,13 @@ function SignUpPopUp({ style, setLogIn }) {
 
   const handleDisplay = () => setDisplay(true);
 
-  // when user clicks on submit
+  /** User clicked on submit
+   * all fields were entered
+   * API interaction happens here
+   * Validate email
+   * Store data in DB
+   * get userId and update userInfo global state
+   */
   const handleSubmit = () => {
     resetLabels();
     if (firstName.length === 0) {
@@ -159,24 +174,28 @@ function SignUpPopUp({ style, setLogIn }) {
         </label>
       );
     } else {
+      // IF email valid => following things
       setLogIn(true);
       localStorage.setItem("user", JSON.stringify({ user: userName }));
-      // verify data with backend then close the window
       handleClose();
+
+      // IF email invalid => take some action
     }
   };
 
   return (
     <>
-      <Button
-        variant={style.buttonColor}
+      {/* Sign Up Button on Red Box in Showcase */}
+      <button
         onClick={handleDisplay}
-        style={{ width: "110px" }}
+        className = "buttonAdjustments"
       >
-        <span style={{ color: style.textColor, fontSize: "20px" }}>
+        <span style={{ color: style.textColor}}>
           Sign Up
         </span>
-      </Button>
+      </button>
+
+      {/* Content in Pop Up */}
       <Modal
         show={display}
         onHide={handleClose}
@@ -248,6 +267,7 @@ function SignUpPopUp({ style, setLogIn }) {
           <Button variant={style.buttonColor} onClick={handleClose}>
             <span style={{ color: style.textColor }}>Close</span>
           </Button>
+          {/* Submit Button Clicked */}
           <Button variant={style.buttonColor} onClick={handleSubmit}>
             <span style={{ color: style.textColor }}>Submit</span>
           </Button>
