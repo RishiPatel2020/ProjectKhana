@@ -16,7 +16,7 @@ const InformationGrid = ({ data }) => {
         <div style={{ textAlign: "center" }}>
           {/* Main Title eg. "How you Save Time"  */}
           <h1
-            style={{ margin: "0px 0px 10px", fontSize: "48px" }}
+            style={{ margin: "0px 0px 10px", fontSize: "3vw" }}
             className={"text-" + data.headingColor}
           >
             {data.heading}

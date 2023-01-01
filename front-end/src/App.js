@@ -7,10 +7,13 @@ import "./index.css";
 import { useState } from "react";
 import "./App.css";
 import Nav from "./components/NavBar/Nav";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import OrderPage from "./components/OrderPage/OrderPage";
 import PickMeals from "./components/PickMeals/PickMeals";
 import CheckOut from "./components/CheckOut/CheckOut";
+import ViewPlans from "./components/ViewPlans/ViewPlans";
+import AccountInfo from "./components/AccountInfo/AccountInfo";
+import Hotel from "./components/Hotel/Hotel";
 function App() {
   // Nav, Home
   const [loggedIn, setLogIn] = useState(localStorage.getItem("user") !== null);
@@ -26,49 +29,60 @@ function App() {
   const [mealNumbers, setMealNumbers] = useState([]);
 
   // Connecting PickMeals & OrderPage, [About,Home,Help....]
-  // 0: do NOT reset, 1: RESET Everything except Number of Meals bc we go from Home to OrderPage by selecting number of meals, 2: RESET EVERYTHING  
+  // 0: do NOT reset, 1: RESET Everything except Number of Meals bc we go from Home to OrderPage by selecting number of meals, 2: RESET EVERYTHING
   const [resetOrderPageInfo, setResetOrderPageInfo] = useState(0);
+
+  const navAndFoot = (element) => {
+    return (
+      <>
+        <Nav
+          loggedIn={loggedIn}
+          setLogIn={setLogIn}
+          cart={cart}
+          setCart={setCart}
+          mealNumbers={mealNumbers}
+          setMealNumbers={setMealNumbers}
+        />
+
+        {/* to make nav sticked to top */}
+        <section className="stickNavBarAdjustments"></section>
+        {/* About, Home, Help,... */}
+        {element}
+        <Footer />
+      </>
+    );
+  };
 
   return (
     <>
-      <Nav
-        loggedIn={loggedIn}
-        setLogIn={setLogIn}
-        cart={cart}
-        setCart={setCart}
-        mealNumbers={mealNumbers}
-        setMealNumbers={setMealNumbers}
-      />
-      {/* to make nav sticked to top */}
-      <section className="stickNavBarAdjustments"></section>
       <Routes>
         {/* Home */}
         <Route
           exact
           path="/"
-          element={
+          element={navAndFoot(
             <Home
               loggedIn={loggedIn}
               setLogIn={setLogIn}
               setMeals={setNumMeals}
               setResetOrderPageInfo={setResetOrderPageInfo}
               setCart={setCart}
-              setMealNumbers = {setMealNumbers}
+              setMealNumbers={setMealNumbers}
             />
-          }
+          )}
         />
 
         {/* About */}
-        <Route exact path="/about" element={<About />} />
+        <Route exact path="/about" element={navAndFoot(<About />)} />
 
         {/* Help */}
-        <Route exact path="/help" element={<Help />} />
+        <Route exact path="/help" element={navAndFoot(<Help />)} />
 
         {/* Order Page */}
         <Route
           exact
           path="/order"
-          element={
+          element={navAndFoot(
             <OrderPage
               numMeals={numMeals}
               setNumMeals={setNumMeals}
@@ -82,29 +96,41 @@ function App() {
               setResetOrderPageInfo={setResetOrderPageInfo}
               setMealNumbers={setMealNumbers}
             />
-          }
+          )}
         />
 
         {/* PickMeals page */}
         <Route
           exact
           path="/pickMeals"
-          element={
+          element={navAndFoot(
             <PickMeals
+              zipCode={zipCode}
               cart={cart}
               setCart={setCart}
               mealNumbers={mealNumbers}
               setMealNumbers={setMealNumbers}
               setResetOrderPageInfo={setResetOrderPageInfo}
             />
-          }
+          )}
         />
 
         {/* CheckOut Page */}
         <Route exact path="/checkOut" element={<CheckOut />} />
-      </Routes>
 
-      <Footer />
+        {/* ViewPlans Page */}
+        <Route exact path="/viewPlans" element={navAndFoot(<ViewPlans/>)} />
+
+        {/* AccountInfo Page */}
+        <Route
+          exact
+          path="/accountInfo"
+          element={navAndFoot(<AccountInfo />)}
+        />
+
+        {/* Hotel Page */}
+        <Route exact path="/hotel" element={<Hotel />} />
+      </Routes>
     </>
   );
 }

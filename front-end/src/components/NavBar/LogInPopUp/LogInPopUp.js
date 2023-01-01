@@ -11,11 +11,11 @@ function LogInPopUP({ style, setLogIn }) {
   // display pop up
   const [display, setDisplay] = useState(false);
 
-  // states for userName, userNameLabel
-  const [userName, setUserName] = useState("");
-  const [userNameLabel, setUserNameLabel] = useState(
-    <label htmlFor="userName" className="col-form-label">
-      Enter User Name <span style={{ color: "red" }}>*</span>
+  // states for email, emailLabel
+  const [email, setEmail] = useState("");
+  const [emailLabel, setEmailLabel] = useState(
+    <label htmlFor="email" className="col-form-label">
+      Enter email<span style={{ color: "red" }}>*</span>
     </label>
   );
 
@@ -30,8 +30,8 @@ function LogInPopUP({ style, setLogIn }) {
   // restores labels to black text and replace ** with *
   // for eg. User Name ** in red will become User Name * in black
   const resetLabels = () => {
-    setUserNameLabel(
-      <label htmlFor="userName" className="col-form-label">
+    setEmailLabel(
+      <label htmlFor="email" className="col-form-label">
         <span style={{ color: "black" }}>
           Enter User Name <span style={{ color: "red" }}>*</span>
         </span>
@@ -48,7 +48,7 @@ function LogInPopUP({ style, setLogIn }) {
 
   // resets state of data
   const resetData = () => {
-    setUserName("");
+    setEmail("");
     setUserPassword("");
   };
 
@@ -69,14 +69,14 @@ function LogInPopUP({ style, setLogIn }) {
   /** User clicked on submit
    * all fields were entered
    * API interaction happens here
-   * Authenticate user from backend based on userName & password
+   * Authenticate user from backend based on email & password
    * get userinfo from backend and update userInfo global state
    */
   const handleSubmit = () => {
     resetLabels();
-    if (userName.length === 0) {
-      setUserNameLabel(
-        <label htmlFor="userName" className="col-form-label">
+    if (email.length === 0) {
+      setEmailLabel(
+        <label htmlFor="email" className="col-form-label">
           <span style={{ color: "red" }}>
             Enter User Name <span style={{ color: "red" }}>**</span>
           </span>
@@ -93,7 +93,7 @@ function LogInPopUP({ style, setLogIn }) {
     } else {
       // IF username && password valid => following things
       setLogIn(true);
-      localStorage.setItem("user", JSON.stringify({ user: userName }));
+      localStorage.setItem("user", JSON.stringify({ user: email }));
       handleClose();
 
       // IF username || password invalid => take some action
@@ -121,16 +121,16 @@ function LogInPopUP({ style, setLogIn }) {
         </Modal.Header>
 
         <Modal.Body>
-          <p className="lead">Enter username and password to log in</p>
+          <p className="lead">Enter email and password</p>
           <form>
             <div className="mb-3">
-              {userNameLabel}
+              {emailLabel}
               <input
                 type="text"
                 className="form-control"
-                id="userName"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 

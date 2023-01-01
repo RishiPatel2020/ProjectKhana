@@ -41,16 +41,6 @@ function SignUpPopUp({ style, setLogIn }) {
       </span>
     </label>
   );
-  // states for userName, userNameLabel
-  const [userName, setUserName] = useState("");
-  const [userNameLabel, setUserNameLabel] = useState(
-    <label htmlFor="userName" className="col-form-label">
-      <span style={{ color: "black" }}>
-        Create User Name <span style={{ color: "red" }}>*</span>
-      </span>
-    </label>
-  );
-
   // states for password, passwordLabel
   const [userPassword, setUserPassword] = useState("");
   const [userPasswordLabel, setUserPasswordLabel] = useState(
@@ -85,13 +75,7 @@ function SignUpPopUp({ style, setLogIn }) {
         </span>
       </label>
     );
-    setUserNameLabel(
-      <label htmlFor="userName" className="col-form-label">
-        <span style={{ color: "black" }}>
-          Create User Name <span style={{ color: "red" }}>*</span>
-        </span>
-      </label>
-    );
+    
     setUserPasswordLabel(
       <label htmlFor="userPassword" className="col-form-label">
         <span style={{ color: "black" }}>
@@ -105,7 +89,6 @@ function SignUpPopUp({ style, setLogIn }) {
   const resetData = () => {
     setFirstName("");
     setLastName("");
-    setUserName("");
     setUserPassword("");
     setEmail("");
   };
@@ -157,14 +140,6 @@ function SignUpPopUp({ style, setLogIn }) {
           </span>
         </label>
       );
-    } else if (userName.length === 0) {
-      setUserNameLabel(
-        <label htmlFor="userName" className="col-form-label">
-          <span style={{ color: "red" }}>
-            Create User Name <span style={{ color: "red" }}>**</span>
-          </span>
-        </label>
-      );
     } else if (userPassword.length === 0) {
       setUserPasswordLabel(
         <label htmlFor="userPassword" className="col-form-label">
@@ -176,7 +151,7 @@ function SignUpPopUp({ style, setLogIn }) {
     } else {
       // IF email valid => following things
       setLogIn(true);
-      localStorage.setItem("user", JSON.stringify({ user: userName }));
+      localStorage.setItem("user", JSON.stringify({ user: email }));
       handleClose();
 
       // IF email invalid => take some action
@@ -239,16 +214,7 @@ function SignUpPopUp({ style, setLogIn }) {
               />
             </div>
 
-            <div className="mb-3">
-              {userNameLabel}
-              <input
-                type="text"
-                className="form-control"
-                id="userName"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </div>
+         
 
             <div className="mb-3">
               {userPasswordLabel}

@@ -57,13 +57,23 @@ const PickMeals = ({
   setMealNumbers,
   setResetOrderPageInfo,
 }) => {
-  // scroll up only once when user arrives on this page
-  useEffect(() => {
-    ScrollTop.scrollUp();
-  }, []);
 
   // so we can go back to orderPage
   const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    // if zipCode not provided, go back to order page
+    if(zipCode.length===0){
+      navigate("/order"); 
+    }
+    console.log("zipcode is "+zipCode);
+    
+    // scroll up only once when user arrives on this page
+    ScrollTop.scrollUp();
+  }, []);
+
+  
 
   // visiting this first time
   if (mealNumbers.length === 0) {

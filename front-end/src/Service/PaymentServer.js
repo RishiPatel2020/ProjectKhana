@@ -1,0 +1,4 @@
+// sk_test_51MLGUDLxe44udBsp0hhphMfEKeTVx1vo7Z1uXiP1pfjgWfF0Ai0yxSFqp1NyW4BApo2iapm4NoqMHZVoi2rog4do000yUvdEht
+// Thali: price_1MLYhuLxe44udBspe3eaidyY
+// Thali2: price_1MLYioLxe44udBspBe0SSx82
+// Thali3: price_1MLYk3Lxe44udBspcjKhypeB
