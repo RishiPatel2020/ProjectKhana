@@ -2,7 +2,8 @@
  * Will call backend API to register user
  */
 
-import './SignUp.css';
+import userSession from "../../../Service/userSession";
+import "./SignUp.css";
 import React from "react";
 import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -75,7 +76,7 @@ function SignUpPopUp({ style, setLogIn }) {
         </span>
       </label>
     );
-    
+
     setUserPasswordLabel(
       <label htmlFor="userPassword" className="col-form-label">
         <span style={{ color: "black" }}>
@@ -150,8 +151,15 @@ function SignUpPopUp({ style, setLogIn }) {
       );
     } else {
       // IF email valid => following things
+      // store more info on order history
       setLogIn(true);
-      localStorage.setItem("user", JSON.stringify({ user: email }));
+      const userLoggedIn = {
+        fname: firstName,
+        lname: lastName,
+        emal: email,
+        password: userPassword,
+      };
+      userSession.addUser(userLoggedIn);
       handleClose();
 
       // IF email invalid => take some action
@@ -161,13 +169,8 @@ function SignUpPopUp({ style, setLogIn }) {
   return (
     <>
       {/* Sign Up Button on Red Box in Showcase */}
-      <button
-        onClick={handleDisplay}
-        className = "buttonAdjustments"
-      >
-        <span style={{ color: style.textColor}}>
-          Sign Up
-        </span>
+      <button onClick={handleDisplay} className="buttonAdjustments">
+        <span style={{ color: style.textColor }}>Sign Up</span>
       </button>
 
       {/* Content in Pop Up */}
@@ -213,8 +216,6 @@ function SignUpPopUp({ style, setLogIn }) {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
-         
 
             <div className="mb-3">
               {userPasswordLabel}

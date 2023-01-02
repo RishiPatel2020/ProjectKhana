@@ -6,6 +6,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
+import userSession from "../../../Service/userSession";
 
 function LogInPopUP({ style, setLogIn }) {
   // display pop up
@@ -93,7 +94,12 @@ function LogInPopUP({ style, setLogIn }) {
     } else {
       // IF username && password valid => following things
       setLogIn(true);
-      localStorage.setItem("user", JSON.stringify({ user: email }));
+      // need to receive more info from backend like name and order history 
+      const userReceived = {
+        info:email 
+      }
+      userSession.addUser(userReceived);
+      console.log(userSession.getUser().info);
       handleClose();
 
       // IF username || password invalid => take some action

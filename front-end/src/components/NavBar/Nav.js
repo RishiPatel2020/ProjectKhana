@@ -1,7 +1,7 @@
 import Nav from "react-bootstrap/Nav";
-
+import userSession from "../../Service/userSession";
 import { Container, Row, Col } from "react-bootstrap";
-import './Nav.css'
+import "./Nav.css";
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
@@ -71,12 +71,17 @@ function NavBar({
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="secondary" variant="light" className="fixed-top">
-      <Container style={{ fontFamily: "Signika"}}>
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="secondary"
+      variant="light"
+      className="fixed-top"
+    >
+      <Container style={{ fontFamily: "Signika" }}>
         {/* Mirchi Meals  */}
         <Navbar.Brand>
           <Link to="/">
-            
             <img
               src={require("../../Resources/Logo/mirchiMealsLogo.png")}
               alt="MirchiMealsLogo"
@@ -93,11 +98,7 @@ function NavBar({
                 to="/about"
                 style={{ textDecoration: "none", marginRight: "30px" }}
               >
-                <strong
-                 className="fontAdjustment"
-                >
-                  About
-                </strong>
+                <strong className="fontAdjustment">About</strong>
               </Link>
             </Nav.Link>
             <Nav.Link>
@@ -105,11 +106,7 @@ function NavBar({
                 to="/order"
                 style={{ textDecoration: "none", marginRight: "30px" }}
               >
-                <strong
-                 className="fontAdjustment"
-                >
-                  Order
-                </strong>
+                <strong className="fontAdjustment">Order</strong>
               </Link>
             </Nav.Link>
             <Nav.Link>
@@ -117,17 +114,13 @@ function NavBar({
                 to="/help"
                 style={{ textDecoration: "none", marginRight: "90px" }}
               >
-                <strong
-                 className="fontAdjustment"
-                >
-                  Help
-                </strong>
+                <strong className="fontAdjustment">Help</strong>
               </Link>
             </Nav.Link>
           </Nav>
 
           {/* User profile  */}
-          {loggedIn && (
+          { userSession.isLoggedIn() && (
             <Nav style={{ marginRight: "20px", marginTop: "8px" }}>
               <Navbar.Text
                 style={{ color: "rgba(255,255,255,.55)", marginRight: "15px" }}
@@ -139,7 +132,7 @@ function NavBar({
                     color: "white",
                   }}
                 >
-                  {JSON.parse(localStorage.getItem("user")).user}
+                  {userSession.getUser().info}
                 </strong>
               </Navbar.Text>
               <Dropdown>
@@ -149,7 +142,7 @@ function NavBar({
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">View Plans</Dropdown.Item>
-                  <Dropdown.Item href="">Account Info</Dropdown.Item>
+                  <Dropdown.Item href=""><Link to='/accountInfo' style={{textDecoration:"none",color:"black"}}>Account Info</Link></Dropdown.Item>
                   <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
