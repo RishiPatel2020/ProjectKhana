@@ -84,6 +84,7 @@ function NavBar({
           <Link to="/">
             <img
               src={require("../../Resources/Logo/mirchiMealsLogo.png")}
+              // src={require("../../../public/Resources/Logo/mirchiMealsLogo.png")}
               alt="MirchiMealsLogo"
               className="logoAdjustment"
             ></img>
