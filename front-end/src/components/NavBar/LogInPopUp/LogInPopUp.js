@@ -96,7 +96,10 @@ function LogInPopUP({ style, setLogIn }) {
       setLogIn(true);
       // need to receive more info from backend like name and order history 
       const userReceived = {
-        info:email 
+        fname:"First",
+        lname:"Last",
+        emailAddress:email,
+        password:userPassword
       }
       userSession.addUser(userReceived);
       console.log(userSession.getUser().info);

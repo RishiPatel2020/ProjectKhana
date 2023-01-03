@@ -11,7 +11,7 @@ class userSession {
     }
   };
   removeUser() {
-    if (this.isLoggedIn) {
+    if (this.isLoggedIn()) {
       localStorage.removeItem("user");
     }
   }

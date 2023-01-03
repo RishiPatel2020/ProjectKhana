@@ -156,7 +156,7 @@ function SignUpPopUp({ style, setLogIn }) {
       const userLoggedIn = {
         fname: firstName,
         lname: lastName,
-        emal: email,
+        emailAddress: email,
         password: userPassword,
       };
       userSession.addUser(userLoggedIn);

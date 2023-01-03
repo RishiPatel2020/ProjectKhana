@@ -1,4 +1,6 @@
+import Modal from "bootstrap";
 import Nav from "react-bootstrap/Nav";
+import AccountInfo from "../AccountInfo/AccountInfo";
 import userSession from "../../Service/userSession";
 import { Container, Row, Col } from "react-bootstrap";
 import "./Nav.css";
@@ -18,13 +20,14 @@ function NavBar({
   mealNumbers,
   setMealNumbers,
 }) {
+  const [displayAccountInfo, setDisplayAccountInfo] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const logOut = () => {
     setLogIn(false);
-    localStorage.removeItem("user");
+    userSession.removeUser();
   };
 
   const clearCart = () => {
@@ -121,7 +124,7 @@ function NavBar({
           </Nav>
 
           {/* User profile  */}
-          { userSession.isLoggedIn() && (
+          {userSession.isLoggedIn() && (
             <Nav style={{ marginRight: "20px", marginTop: "8px" }}>
               <Navbar.Text
                 style={{ color: "rgba(255,255,255,.55)", marginRight: "15px" }}
@@ -138,12 +141,23 @@ function NavBar({
               </Navbar.Text>
               <Dropdown>
                 <Dropdown.Toggle variant="light" id="dropdown-basic">
-                  <span class="material-symbols-outlined"> Person</span>
+                  {/* <span class="material-symbols-outlined"> Person</span> */}
+                  <i class="bi bi-person"></i>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">View Plans</Dropdown.Item>
-                  <Dropdown.Item href=""><Link to='/accountInfo' style={{textDecoration:"none",color:"black"}}>Account Info</Link></Dropdown.Item>
+                  <Dropdown.Item
+                    onClick= {() => setDisplayAccountInfo(true)}
+                  >
+                    Account Info
+                    {/* <Link
+                      to="/accountInfo"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      Account Info
+                    </Link> */}
+                  </Dropdown.Item>
                   <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -157,19 +171,14 @@ function NavBar({
                 className="bg-light text-dark"
                 style={{
                   border: "0px",
-                  height: "45px",
-                  width: "63.67px",
-                  padding: "6px 12px",
+                  height: "34px",
+                  width: "56.67px",
+                  padding: "inherit",
                   borderRadius: "10px",
                 }}
                 onClick={handleShow}
               >
-                <span
-                  style={{ paddingTop: "4px" }}
-                  class="material-symbols-outlined"
-                >
-                  shopping_cart
-                </span>
+                <i class="bi bi-cart3" style={{ fontSize: "20px" }}></i>
               </button>
 
               <Offcanvas
@@ -282,6 +291,7 @@ function NavBar({
           )}
         </Navbar.Collapse>
       </Container>
+      {userSession.isLoggedIn()?<AccountInfo show={displayAccountInfo} setShow = {setDisplayAccountInfo} />:null}
     </Navbar>
   );
 }

@@ -57,23 +57,19 @@ const PickMeals = ({
   setMealNumbers,
   setResetOrderPageInfo,
 }) => {
-
   // so we can go back to orderPage
   const navigate = useNavigate();
 
-  
   useEffect(() => {
     // if zipCode not provided, go back to order page
-    if(zipCode.length===0){
-      navigate("/order"); 
+    if (zipCode.length === 0) {
+      setResetOrderPageInfo(2); // if no zip code; go back to order page and have user fill out all the fields
+      navigate("/order");
+    } else {
+      // scroll up only once when user arrives on this page
+      ScrollTop.scrollUp();
     }
-    console.log("zipcode is "+zipCode);
-    
-    // scroll up only once when user arrives on this page
-    ScrollTop.scrollUp();
   }, []);
-
-  
 
   // visiting this first time
   if (mealNumbers.length === 0) {

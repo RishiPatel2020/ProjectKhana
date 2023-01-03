@@ -7,16 +7,17 @@ import "./index.css";
 import { useState } from "react";
 import "./App.css";
 import Nav from "./components/NavBar/Nav";
-import { Outlet, Route, Routes } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 import OrderPage from "./components/OrderPage/OrderPage";
 import PickMeals from "./components/PickMeals/PickMeals";
 import CheckOut from "./components/CheckOut/CheckOut";
 import ViewPlans from "./components/ViewPlans/ViewPlans";
 import AccountInfo from "./components/AccountInfo/AccountInfo";
 import Hotel from "./components/Hotel/Hotel";
+import userSession from "./Service/userSession";
 function App() {
   // Nav, Home
-  const [loggedIn, setLogIn] = useState(localStorage.getItem("user") !== null);
+  const [loggedIn, setLogIn] = useState(userSession.isLoggedIn());
 
   // OrderPage
   const [numMeals, setNumMeals] = useState("Select Plan"); // won't be that useful; just to trick user's mind
@@ -125,7 +126,7 @@ function App() {
         <Route
           exact
           path="/accountInfo"
-          element={navAndFoot(<AccountInfo />)}
+          element={navAndFoot(<AccountInfo isLoggedIn = {loggedIn}/>)}
         />
 
         {/* Hotel Page */}
