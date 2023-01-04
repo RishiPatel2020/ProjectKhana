@@ -5,7 +5,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import userSession from "../../Service/userSession";
 
-const ViewPlans = ({ isLoggedIn }) => {
+const OrderHistory = ({ isLoggedIn }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) {
@@ -120,10 +120,10 @@ const ViewPlans = ({ isLoggedIn }) => {
     );
   };
 
-  const viewPlansPage = () => {
+  const viewOrderHistoryPage = () => {
     return userSession.getUser().orderHistory ? history() : noHistory();
   };
-  return <>{isLoggedIn ? viewPlansPage() : toHomePage()}</>;
+  return <>{isLoggedIn ? viewOrderHistoryPage() : toHomePage()}</>;
 };
 
-export default ViewPlans;
+export default OrderHistory;

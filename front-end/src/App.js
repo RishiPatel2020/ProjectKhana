@@ -11,10 +11,9 @@ import { Route, Routes } from "react-router-dom";
 import OrderPage from "./components/OrderPage/OrderPage";
 import PickMeals from "./components/PickMeals/PickMeals";
 import CheckOut from "./components/CheckOut/CheckOut";
-import ViewPlans from "./components/ViewPlans/ViewPlans";
-import AccountInfo from "./components/AccountInfo/AccountInfo";
 import Hotel from "./components/Hotel/Hotel";
 import userSession from "./Service/userSession";
+import OrderHistory from "./components/OrderHistory/OrderHistory";
 function App() {
   // Nav, Home
   const [loggedIn, setLogIn] = useState(userSession.isLoggedIn());
@@ -119,8 +118,8 @@ function App() {
         {/* CheckOut Page */}
         <Route exact path="/checkOut" element={<CheckOut />} />
 
-        {/* ViewPlans Page */}
-        <Route exact path="/viewPlans" element={navAndFoot(<ViewPlans isLoggedIn = {loggedIn}/>)} />
+        {/* Order History Page */}
+        <Route exact path="/orderHistory" element={navAndFoot(<OrderHistory isLoggedIn = {loggedIn}/>)} />
 
         {/* Hotel Page */}
         <Route exact path="/hotel" element={<Hotel />} />
