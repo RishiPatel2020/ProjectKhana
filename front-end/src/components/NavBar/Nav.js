@@ -146,7 +146,7 @@ function NavBar({
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">View Plans</Dropdown.Item>
+                  <Dropdown.Item href="#/viewPlans">View Plans</Dropdown.Item>
                   <Dropdown.Item
                     onClick= {() => setDisplayAccountInfo(true)}
                   >

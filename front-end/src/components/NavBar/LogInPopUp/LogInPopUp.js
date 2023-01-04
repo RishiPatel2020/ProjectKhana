@@ -94,15 +94,45 @@ function LogInPopUP({ style, setLogIn }) {
     } else {
       // IF username && password valid => following things
       setLogIn(true);
-      // need to receive more info from backend like name and order history 
+      // need to receive more info from backend like name and order history
+      const orderhistory = [
+        {
+          size: 4,
+          meals: [
+            "Punjabi Meal",
+            "Gujarati Meal",
+            "Bangladeshi Meal",
+            "Gujarati Meal",
+          ],
+          price: 96,
+          orderDate:"12/11/2022",
+          deliveryDate:"Sunday"
+        },
+
+        {
+          size: 6,
+          meals: [
+            "Punjabi Meal",
+            "Gujarati Meal",
+            "Bangladeshi Meal",
+            "Gujarati Meal",
+            "Gujarati Meal",
+            "Bangladeshi Meal",
+          ],
+          price: 96,
+          orderDate:"12/12/2022",
+          deliveryDate:"Friday"
+        },
+      ];
+
       const userReceived = {
-        fname:"First",
-        lname:"Last",
-        emailAddress:email,
-        password:userPassword
-      }
+        fname: "First",
+        lname: "Last",
+        emailAddress: email,
+        password: userPassword,
+        orderHistory:orderhistory
+      };
       userSession.addUser(userReceived);
-      console.log(userSession.getUser().info);
       handleClose();
 
       // IF username || password invalid => take some action
@@ -112,11 +142,8 @@ function LogInPopUP({ style, setLogIn }) {
   return (
     <>
       {/* Log In Button on Red Box in Showcase */}
-      <button
-        onClick={handleDisplay}
-        className="buttonAdjustments"
-      >
-        <span style={{ color: style.textColor}}>Log In</span>
+      <button onClick={handleDisplay} className="buttonAdjustments">
+        <span style={{ color: style.textColor }}>Log In</span>
       </button>
 
       {/* Content in Pop Up */}

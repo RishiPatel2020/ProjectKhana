@@ -223,7 +223,7 @@
 }
 
 /* for laptops */
-@media screen and (width>820px) {
+@media screen and (width>=800px) {
   .imageAdjustment {
     height: 220px;
     width: 300px;
@@ -265,7 +265,7 @@
   }
 
   .backButton {
-    margin-top: 40px;
+    margin-top: 50px;
     top: 10%;
     left: 3%;
     margin-left: 10px;

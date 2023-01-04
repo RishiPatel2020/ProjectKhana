@@ -7,7 +7,7 @@ import "./index.css";
 import { useState } from "react";
 import "./App.css";
 import Nav from "./components/NavBar/Nav";
-import {Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import OrderPage from "./components/OrderPage/OrderPage";
 import PickMeals from "./components/PickMeals/PickMeals";
 import CheckOut from "./components/CheckOut/CheckOut";
@@ -120,14 +120,7 @@ function App() {
         <Route exact path="/checkOut" element={<CheckOut />} />
 
         {/* ViewPlans Page */}
-        <Route exact path="/viewPlans" element={navAndFoot(<ViewPlans/>)} />
-
-        {/* AccountInfo Page */}
-        <Route
-          exact
-          path="/accountInfo"
-          element={navAndFoot(<AccountInfo isLoggedIn = {loggedIn}/>)}
-        />
+        <Route exact path="/viewPlans" element={navAndFoot(<ViewPlans isLoggedIn = {loggedIn}/>)} />
 
         {/* Hotel Page */}
         <Route exact path="/hotel" element={<Hotel />} />
