@@ -13,41 +13,42 @@ import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ScrollTop from "../../Service/ScrollTop";
+import MealData from "../../Service/MealData";
 
-// depends on zipcode entered by user
-const data = [
-  {
-    id: 0,
-    img: require("../../Resources/Meals/meal1.png"),
-    mealName: "Madrasi Thari ",
-    description: "Special Dish from South India",
-    numberOfMeals: 0,
-  },
+// // depends on zipcode entered by user
+// const data = [
+//   {
+//     id: 0,
+//     img: require("../../Resources/Meals/meal1.png"),
+//     mealName: "Madrasi Thari ",
+//     description: "Special Dish from South India",
+//     numberOfMeals: 0,
+//   },
 
-  {
-    id: 1,
-    img: require("../../Resources/Meals/meal2.png"),
-    mealName: "Gujarati Thari",
-    description: "Special Dish from Gujarat",
-    numberOfMeals: 0,
-  },
+//   {
+//     id: 1,
+//     img: require("../../Resources/Meals/meal2.png"),
+//     mealName: "Gujarati Thari",
+//     description: "Special Dish from Gujarat",
+//     numberOfMeals: 0,
+//   },
 
-  {
-    id: 2,
-    img: require("../../Resources/Meals/meal3.png"),
-    mealName: "Punjabi Thari",
-    description: "Special Dish from Punjab",
-    numberOfMeals: 0,
-  },
+//   {
+//     id: 2,
+//     img: require("../../Resources/Meals/meal3.png"),
+//     mealName: "Punjabi Thari",
+//     description: "Special Dish from Punjab",
+//     numberOfMeals: 0,
+//   },
 
-  {
-    id: 3,
-    img: require("../../Resources/Meals/meal4.png"),
-    mealName: "Benagali Thari",
-    description: "Special Dish from Bengal",
-    numberOfMeals: 0,
-  },
-];
+//   {
+//     id: 3,
+//     img: require("../../Resources/Meals/meal4.png"),
+//     mealName: "Benagali Thari",
+//     description: "Special Dish from Bengal",
+//     numberOfMeals: 0,
+//   },
+// ];
 
 const PickMeals = ({
   zipCode,
@@ -70,6 +71,8 @@ const PickMeals = ({
       ScrollTop.scrollUp();
     }
   }, []);
+
+  const data = MealData.getMeals();
 
   // visiting this first time
   if (mealNumbers.length === 0) {
@@ -239,7 +242,14 @@ const PickMeals = ({
               <Modal.Header closeButton>
                 <Modal.Title>{mealSelected}</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{description}</Modal.Body>
+              <Modal.Body>
+                {Object.keys(description).map((key) => {
+                  return (<span>
+                    {`${key} : ${description[key]}`}
+                    <br></br>
+                  </span>)
+                })}
+              </Modal.Body>
               <Modal.Footer>
                 <Button variant="light" onClick={handleClose}>
                   Close

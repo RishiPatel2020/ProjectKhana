@@ -84,8 +84,8 @@ const OrderPage = ({
 
   // Pick meals button clicked
   const handlePickMeals = () => {
+    // NEED PROPER ZIPCODE, AND ZIPCODE SHOULD BE in specific range
     if (zipCode.length === 0) {
-      // need MORE validations on zip code like positive int, valid based on region
       // might require API call
       handleDisplay("Enter Proper Zip Code");
     } else if (numMeals === "Select Plan") {

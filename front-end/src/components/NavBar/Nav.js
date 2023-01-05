@@ -140,7 +140,7 @@ function NavBar({
                 </strong>
               </Navbar.Text>
               <Dropdown>
-                <Dropdown.Toggle variant="light" id="dropdown-basic" onClick={console.log("toggle clicked....")}>
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
                   {/* <span class="material-symbols-outlined"> Person</span> */}
                   <i class="bi bi-person"></i>
                 </Dropdown.Toggle>
