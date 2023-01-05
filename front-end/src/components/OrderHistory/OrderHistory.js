@@ -75,14 +75,6 @@ const OrderHistory = ({ isLoggedIn }) => {
     );
   };
 
-  const mealsFormated = (meals)=>{
-    let rslt="";
-    for (let i = 0; i < meals.length; i++) {
-      const element = meals[i];
-      i===(meals.length-1)?rslt+=element:(rslt+=element+", ");
-    }
-    return rslt; 
-  }
 
   const history = () => {
     const orders = userSession.getUser().orderHistory;
@@ -107,7 +99,17 @@ const OrderHistory = ({ isLoggedIn }) => {
               return (
                 <tr>
                   <td>{size}</td>
-                  <td>{mealsFormated(meals)}</td>
+                  {/* sorting might be expensive in run time*/}
+                  <td>
+                    {meals.sort().map((meal) => {
+                      return (
+                        <span>
+                          {meal}
+                          <br></br>
+                        </span>
+                      );
+                    })}
+                  </td>
                   <td>{price}</td>
                   <td>{orderDate}</td>
                   <td>{deliveryDate}</td>
