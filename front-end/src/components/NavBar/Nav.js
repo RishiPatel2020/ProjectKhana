@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "bootstrap";
 import { Offcanvas } from "react-bootstrap";
+import LogInPopUP from "./LogInPopUp/LogInPopUp";
+import SignUpPopUp from "./SignUpPopUp/SignUpPopUp";
 
 function NavBar({
   loggedIn,
@@ -84,175 +86,215 @@ function NavBar({
       <Container style={{ fontFamily: "Signika" }}>
         {/* Mirchi Meals  */}
         <Navbar.Brand>
-          <Link to="/">
+          <Nav.Link href="#/">
             <img
               src={require("../../Resources/Logo/mirchiMealsLogo.png")}
-              // src={require("../../../public/Resources/Logo/mirchiMealsLogo.png")}
               alt="MirchiMealsLogo"
               className="logoAdjustment"
-            ></img>
-          </Link>
+            />
+          </Nav.Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          {/* About, Order, Help Links */}
-          <Nav className="me-auto" defaultActiveKey="/home">
-            <Nav.Link>
-              <Link
-                to="/about"
-                style={{ textDecoration: "none", marginRight: "30px" }}
-              >
-                <strong className="fontAdjustment">About</strong>
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link
-                to="/order"
-                style={{ textDecoration: "none", marginRight: "30px" }}
-              >
-                <strong className="fontAdjustment">Order</strong>
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link
-                to="/help"
-                style={{ textDecoration: "none", marginRight: "90px" }}
-              >
-                <strong className="fontAdjustment">Help</strong>
-              </Link>
-            </Nav.Link>
-          </Nav>
+        {/* User profile  */}
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="light"
+            id="dropdown-basic"
+            className="mx-1"
+            style={{
+              marginBottom: "-3px",
+              borderRadius: "10px",
+              height: "36px",
+              boxShadow: "2px 1px 3px black",
+            }}
+          >
+            <i
+              class="bi bi-person"
+              style={{
+                marginBottom: "2px",
+                borderRadius: "10px",
+                height: "36px",
+              }}
+            ></i>
+          </Dropdown.Toggle>
 
-          {/* User profile  */}
-          {userSession.isLoggedIn() && (
-            <Nav style={{ marginRight: "20px", marginTop: "8px" }}>
-              <Navbar.Text
-                style={{ color: "rgba(255,255,255,.55)", marginRight: "15px" }}
-              >
-                <strong
-                  style={{
-                    fontFamily: "Signika",
-                    fontSize: "20px",
-                    color: "white",
-                  }}
-                >
-                  {userSession.getUser().info}
-                </strong>
-              </Navbar.Text>
-              <Dropdown>
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                  {/* <span class="material-symbols-outlined"> Person</span> */}
-                  <i class="bi bi-person"></i>
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/orderHistory">Order History</Dropdown.Item>
-                  <Dropdown.Item
-                    onClick= {() => setDisplayAccountInfo(true)}
-                  >
-                    Account Info
-                    {/* <Link
-                      to="/accountInfo"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      Account Info
-                    </Link> */}
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Nav>
+          {userSession.isLoggedIn() ? (
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/orderHistory">Order History</Dropdown.Item>
+              <Dropdown.Item onClick={() => setDisplayAccountInfo(true)}>
+                Account Info
+              </Dropdown.Item>
+              <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
+            </Dropdown.Menu>
+          ) : (
+            <Dropdown.Menu>
+              <Dropdown.Item><SignUpPopUp
+                    style={{ buttonColor: "secondary", textColor: "white" }}
+                    setLogIn={setLogIn}
+                  /></Dropdown.Item>
+              <Dropdown.Item><LogInPopUP
+                    style={{ buttonColor: "secondary", textColor: "white"}}
+                    setLogIn={setLogIn}
+                  /></Dropdown.Item>
+            </Dropdown.Menu>
           )}
-
-          {/* Shopping cart */}
-          {cart.length !== 0 && (
-            <Nav style={{ marginTop: "8px" }}>
-              <button
-                className="bg-light text-dark"
+        </Dropdown>
+        {/* {userSession.isLoggedIn() && (
+          <Dropdown>
+            <Dropdown.Toggle
+              variant="light"
+              id="dropdown-basic"
+              className="mx-1"
+              style={{
+                marginBottom: "-3px",
+                borderRadius: "10px",
+                height: "36px",
+                boxShadow: "2px 1px 3px black",
+              }}
+            >
+              <i
+                class="bi bi-person"
                 style={{
-                  border: "0px",
-                  height: "34px",
-                  width: "56.67px",
-                  padding: "inherit",
+                  marginBottom: "2px",
                   borderRadius: "10px",
+                  height: "36px",
                 }}
-                onClick={handleShow}
-              >
-                <i class="bi bi-cart3" style={{ fontSize: "20px" }}></i>
-              </button>
+              ></i>
+            </Dropdown.Toggle>
+              
+            
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/orderHistory">Order History</Dropdown.Item>
+              <Dropdown.Item onClick={() => setDisplayAccountInfo(true)}>
+                Account Info
+              </Dropdown.Item>
+              <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        )} */}
 
-              <Offcanvas
-                show={show}
-                onHide={handleClose}
-                placement="end"
-                style={{ fontFamily: "Signika", height: "85%" }}
-              >
-                <Offcanvas.Header closeButton>
-                  <Offcanvas.Title className="h-100 d-flex align-items-center justify-content-center">
-                    Shopping Cart
-                  </Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                  <Container>
-                    {cart.map((item) => {
-                      return (
-                        <Row key={item.id}>
-                          <Col style={{ marginLeft: "100px" }}>
-                            <span>{mealNumbers[item.id]} </span>
-                            <span>{item.mealName}</span>
-                            <br></br>
-                            <span>{item.description}</span>
-                            <br></br>
-                            <button
-                              variant="light"
-                              onClick={() => remove(item.id)}
-                              style={{
-                                borderRadius: "30px",
-                                border: "0px",
-                                backgroundColor: "rgb(247, 193, 68)",
-                              }}
-                            >
-                              <span
-                                className="material-symbols-outlined"
-                                style={{ padding: "4px" }}
-                              >
-                                remove
-                              </span>
-                            </button>
+        {/* Shopping cart */}
+        {cart.length !== 0 && (
+          <Nav style={{ marginTop: "8px" }}>
+            <button
+              className="bg-light text-dark"
+              style={{
+                border: "0px",
+                height: "34px",
+                width: "56.67px",
+                padding: "inherit",
+                borderRadius: "10px",
+                marginRight: "17px",
+                marginBottom: "5px",
+                boxShadow: "2px 1px 3px black",
+              }}
+              onClick={handleShow}
+            >
+              <i
+                class="bi bi-cart3"
+                style={{
+                  marginBottom: "12px",
+                  borderRadius: "10px",
+                  height: "36px",
+                }}
+              ></i>
+            </button>
 
+            <Offcanvas
+              show={show}
+              onHide={handleClose}
+              placement="end"
+              style={{ fontFamily: "Signika", height: "50%" }}
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title className="d-flex align-items-center justify-content-center">
+                  Shopping Cart
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Container>
+                  {cart.map((item) => {
+                    return (
+                      <Row key={item.id}>
+                        <Col style={{ marginLeft: "100px" }}>
+                          <span>{mealNumbers[item.id]} </span>
+                          <span>{item.mealName}</span>
+                          <br></br>
+                          {/* <span>{item.description}</span> */}
+                          {/* {Object.keys(item.description).map((key) => {
+                              return (
+                                <span>
+                                  {`${key} : ${item.description[key]}`}
+                                  <br></br>
+                                </span>
+                              );
+                            })} */}
+                          <br></br>
+                          <button
+                            variant="light"
+                            onClick={() => remove(item.id)}
+                            style={{
+                              borderRadius: "30px",
+                              border: "0px",
+                              backgroundColor: "rgb(247, 193, 68)",
+                            }}
+                          >
                             <span
-                              style={{
-                                fontSize: "40px",
-                                paddingLeft: "20px",
-                                paddingRight: "15px",
-                              }}
+                              className="material-symbols-outlined"
+                              style={{ padding: "0px" }}
                             >
-                              {mealNumbers[item.id]}
+                              remove
                             </span>
+                          </button>
 
-                            <button
-                              variant="light"
-                              onClick={() => add(item.id)}
-                              style={{
-                                borderRadius: "30px",
-                                border: "0px",
-                                backgroundColor: "rgb(247, 193, 68)",
-                              }}
+                          <span
+                            style={{
+                              fontSize: "40px",
+                              paddingLeft: "20px",
+                              paddingRight: "15px",
+                            }}
+                          >
+                            {mealNumbers[item.id]}
+                          </span>
+
+                          <button
+                            variant="light"
+                            onClick={() => add(item.id)}
+                            style={{
+                              borderRadius: "30px",
+                              border: "0px",
+                              backgroundColor: "rgb(247, 193, 68)",
+                            }}
+                          >
+                            <span
+                              className="material-symbols-outlined"
+                              style={{ padding: "4px" }}
                             >
-                              <span
-                                className="material-symbols-outlined"
-                                style={{ padding: "4px" }}
-                              >
-                                add
-                              </span>
-                            </button>
-                          </Col>
-                        </Row>
-                      );
-                    })}
-                  </Container>
+                              add
+                            </span>
+                          </button>
+                        </Col>
+                      </Row>
+                    );
+                  })}
+                </Container>
 
-                  <div className="h-100 d-flex align-items-center justify-content-center">
+                <div className="h-100 d-flex align-items-center justify-content-center">
+                  <button
+                    onClick={() => clearCart()}
+                    className="text-dark"
+                    style={{
+                      backgroundColor: "rgb(247, 193, 68)",
+                      border: "0px",
+                      height: "45px",
+                      width: "145px",
+                      borderRadius: "25px",
+                      fontSize: "20px",
+                    }}
+                  >
+                    Clear Order
+                  </button>
+
+                  <Link to="/checkOut" smooth style={{ marginLeft: "24px" }}>
                     <button
                       onClick={() => clearCart()}
                       className="text-dark"
@@ -265,33 +307,55 @@ function NavBar({
                         fontSize: "20px",
                       }}
                     >
-                      Clear Order
+                      Check Out
                     </button>
-
-                    <Link to="/checkOut" smooth style={{ marginLeft: "24px" }}>
-                      <button
-                        onClick={() => clearCart()}
-                        className="text-dark"
-                        style={{
-                          backgroundColor: "rgb(247, 193, 68)",
-                          border: "0px",
-                          height: "45px",
-                          width: "145px",
-                          borderRadius: "25px",
-                          fontSize: "20px",
-                        }}
-                      >
-                        Check Out
-                      </button>
-                    </Link>
-                  </div>
-                </Offcanvas.Body>
-              </Offcanvas>
-            </Nav>
-          )}
+                  </Link>
+                </div>
+              </Offcanvas.Body>
+            </Offcanvas>
+          </Nav>
+        )}
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          style={{
+            backgroundColor: "rgb(247, 193, 68)",
+            boxShadow: "2px 1px 3px black",
+            height: "36px",
+            width: "48px",
+            fontSize: "10px",
+          }}
+        />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          {/* About, Order, Help Links */}
+          <Nav className="me-auto" defaultActiveKey="/home">
+            <Nav.Link href="#/about">
+              {/* adjust marginRight Based on screens */}
+              <span
+                className="fontAdjustment"
+                style={{ marginLeft: "0px", marginRight: "40px" }}
+              >
+                About
+              </span>
+            </Nav.Link>
+            <Nav.Link href="#/order">
+              <span className="fontAdjustment" style={{ marginRight: "40px" }}>
+                Order
+              </span>
+            </Nav.Link>
+            <Nav.Link href="#/help">
+              <span className="fontAdjustment" style={{ marginRight: "40px" }}>
+                Help
+              </span>
+            </Nav.Link>
+          </Nav>
         </Navbar.Collapse>
       </Container>
-      {userSession.isLoggedIn()?<AccountInfo show={displayAccountInfo} setShow = {setDisplayAccountInfo} />:null}
+      {userSession.isLoggedIn() ? (
+        <AccountInfo
+          show={displayAccountInfo}
+          setShow={setDisplayAccountInfo}
+        />
+      ) : null}
     </Navbar>
   );
 }

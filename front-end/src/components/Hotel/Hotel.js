@@ -1,6 +1,7 @@
 /**
  * API call required
  */
+import { Modal } from "react-bootstrap";
 import { Table } from "react-bootstrap";
 import { useState } from "react";
 import Row from "react-bootstrap/Row";
@@ -12,7 +13,16 @@ import { json } from "react-router-dom";
 
 const Hotel = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [displayReport, setDisplayReport] = useState(false);
+  const handleCloseReport = () => setDisplayReport(false);
+  /**
+   * API call to send notifcation to admin
+   */
+  const handleSubmitReport = () => {
+    handleCloseReport();
+  };
 
+  // do validation of pin after than let user in
   const handleSubmit = () => {
     setIsLoggedIn(true);
   };
@@ -29,35 +39,23 @@ const Hotel = () => {
           <Row className="mb-4">
             <div class="form-group">
               <label for="exampleInputEmail1" className="mb-2">
-                Email address
+                PIN
               </label>
               <input
-                type="email"
+                type="number"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="Enter email"
+                placeholder="Enter PIN"
               />
             </div>
           </Row>
 
-          <Row className="mb-4">
-            <div class="form-group">
-              <label for="exampleInputPassword1" className="mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              />
-            </div>
-          </Row>
-
-          <Button variant="dark" onClick={handleSubmit}>
-            Log In
-          </Button>
+          <div class="container text-center">
+            <Button variant="dark" onClick={handleSubmit} className="">
+              Log In
+            </Button>
+          </div>
         </form>
       </div>
     );
@@ -91,32 +89,40 @@ const Hotel = () => {
       {
         orderNumber: 1,
         meals: {
-          1:2,
-          2:1
+          1: 2,
+          2: 1,
         },
         dueDate: "12/11/2023",
       },
       {
         orderNumber: 2,
-        meals:{
-          0:2
+        meals: {
+          0: 2,
         },
         dueDate: "12/31/2023",
       },
     ];
     return (
       <>
+        <Button
+          variant="light"
+          className="text-dark text-center float-start position-fixed"
+          onClick={() => setIsLoggedIn(false)}
+        >
+          Log Out
+        </Button>
+
+        <Button
+          variant="light"
+          className="text-dark text-center float-end"
+          onClick={() => setDisplayReport(true)}
+        >
+          Report
+        </Button>
         <section
           className="bg-primary"
           style={{ fontFamily: "Signika", padding: "64px 32px" }}
         >
-          <Button
-            variant="light"
-            className="text-dark text-center"
-            onClick={() => setIsLoggedIn(false)}
-          >
-            Log Out
-          </Button>
           <h1 style={{ fontFamily: "Signika" }} className="text-center mb-4">
             Meal Quantity Table
           </h1>
@@ -186,18 +192,18 @@ const Hotel = () => {
                   <tr>
                     <td>{orderNumber}</td>
 
-                    <td>{Object.keys(meals).map(
-                        (key) => {
-                          return (
-                            <span>
-                              {`${MealData.getMeals()[key].mealName} : ${
-                                meals[key]
-                              }`}
-                              <br></br>
-                            </span>
-                          );
-                        }
-                      )}</td>
+                    <td>
+                      {Object.keys(meals).map((key) => {
+                        return (
+                          <span>
+                            {`${MealData.getMeals()[key].mealName} : ${
+                              meals[key]
+                            }`}
+                            <br></br>
+                          </span>
+                        );
+                      })}
+                    </td>
                     <td>{dueDate}</td>
                   </tr>
                 );
@@ -205,6 +211,50 @@ const Hotel = () => {
             </tbody>
           </Table>
         </section>
+
+        <Modal
+          show={displayReport}
+          onHide={handleCloseReport}
+          style={{ fontFamily: "Signika" }}
+        >
+          <Modal.Header closeButton style={{ textAlign: "center" }}>
+            <Modal.Title>Report</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <p className="lead">Describe report in detail</p>
+            <form>
+              <div className="mb-3">
+                <label>Report</label>
+                {/* <input
+                  type="text"
+                  className="form-control"
+                  id="first-name"
+                  
+                /> */}
+                <textarea className="form-control"></textarea>
+              </div>
+            </form>
+          </Modal.Body>
+
+          <Modal.Footer>
+            {/* Submit Button Clicked */}
+            <Button
+              className="text-center"
+              variant="light"
+              onClick={handleSubmitReport}
+            >
+              <span>Submit</span>
+            </Button>
+            <Button
+              className="text-center"
+              variant="light"
+              onClick={handleCloseReport}
+            >
+              <span>Close</span>
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </>
     );
     // return(<p className="text-dark text-center" >Logged In</p>)

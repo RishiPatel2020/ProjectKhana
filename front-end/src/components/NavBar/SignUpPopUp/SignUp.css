@@ -14,9 +14,9 @@
 /* Small mobiles like iphone SE*/
 @media screen and (width>280px) and (width<=375px) {
   .buttonAdjustments {
-    font-size: 20px;
-    width: 100px;
-    height: 45px;
+    font-size: 13px;
+    width: 63px;
+    height: 25px;
     background-color: rgb(212, 106, 25);
     border-color: rgb(212, 106, 25);
     border: 0px;
@@ -27,9 +27,9 @@
 /* for mobiles */
 @media screen and (width>376px) and (width<=420px) {
   .buttonAdjustments {
-    font-size: 20px;
-    width: 100px;
-    height: 45px;
+    font-size: 15px;
+    width: 66px;
+    height: 35px;
     background-color: rgb(212, 106, 25);
     border-color: rgb(212, 106, 25);
     border: 0px;
