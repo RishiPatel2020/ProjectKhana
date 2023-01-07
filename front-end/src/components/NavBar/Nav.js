@@ -43,54 +43,8 @@ function NavBar({
             />
           </Nav.Link>
         </Navbar.Brand>
-        {/* User profile  */}
-        {/* <Dropdown>
-          <Dropdown.Toggle
-            variant="light"
-            id="dropdown-basic"
-            className="mx-1"
-            style={{
-              marginBottom: "-3px",
-              borderRadius: "10px",
-              height: "36px",
-              boxShadow: "2px 1px 3px black",
-            }}
-          >
-            <i
-              class="bi bi-person"
-              style={{
-                marginBottom: "2px",
-                borderRadius: "10px",
-                height: "36px",
-              }}
-            ></i>
-          </Dropdown.Toggle>
 
-          {userSession.isLoggedIn() ? (
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/orderHistory">Order History</Dropdown.Item>
-              <Dropdown.Item onClick={() => setDisplayAccountInfo(true)}>
-                Account Info
-              </Dropdown.Item>
-              <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
-            </Dropdown.Menu>
-          ) : (
-            <Dropdown.Menu>
-              <Dropdown.Item>
-                <SignUpPopUp
-                  style={{ buttonColor: "secondary", textColor: "white" }}
-                  setLogIn={setLogIn}
-                />
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <LogInPopUP
-                  style={{ buttonColor: "secondary", textColor: "white" }}
-                  setLogIn={setLogIn}
-                />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          )}
-        </Dropdown> */}
+        {/* user Profile */}
         <UserProfile
           setDisplayAccountInfo={setDisplayAccountInfo}
           setLogIn={setLogIn}
