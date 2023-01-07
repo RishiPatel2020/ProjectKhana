@@ -32,6 +32,11 @@ function App() {
   // 0: do NOT reset, 1: RESET Everything except Number of Meals bc we go from Home to OrderPage by selecting number of meals, 2: RESET EVERYTHING
   const [resetOrderPageInfo, setResetOrderPageInfo] = useState(0);
 
+  // total price REMOVE THIS IF LOCAL WORKS
+  const [totalPrice, setTotalPrice] = useState(0);
+  // localtotalPrice
+  const [cartPrice, setCartPrice] = useState(0);
+
   const navAndFoot = (element) => {
     return (
       <>
@@ -42,6 +47,10 @@ function App() {
           setCart={setCart}
           mealNumbers={mealNumbers}
           setMealNumbers={setMealNumbers}
+          totalPrice={totalPrice}
+          setTotalPrice={setTotalPrice}
+          cartPrice=  {cartPrice}
+          setCartPrice={setCartPrice}
         />
 
         {/* to make nav sticked to top */}
@@ -111,6 +120,8 @@ function App() {
               mealNumbers={mealNumbers}
               setMealNumbers={setMealNumbers}
               setResetOrderPageInfo={setResetOrderPageInfo}
+              totalPrice={totalPrice}
+              setTotalPrice={setTotalPrice}
             />
           )}
         />
@@ -119,7 +130,11 @@ function App() {
         <Route exact path="/checkOut" element={<CheckOut />} />
 
         {/* Order History Page */}
-        <Route exact path="/orderHistory" element={navAndFoot(<OrderHistory isLoggedIn = {loggedIn}/>)} />
+        <Route
+          exact
+          path="/orderHistory"
+          element={navAndFoot(<OrderHistory isLoggedIn={loggedIn} />)}
+        />
 
         {/* Hotel Page */}
         <Route exact path="/hotel" element={<Hotel />} />

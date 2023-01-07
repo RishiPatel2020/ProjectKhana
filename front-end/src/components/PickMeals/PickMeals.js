@@ -4,7 +4,6 @@
  */
 
 import "./PickMeals.css";
-import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -14,42 +13,6 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ScrollTop from "../../Service/ScrollTop";
 import MealData from "../../Service/MealData";
-
-// // depends on zipcode entered by user
-// const data = [
-//   {
-//     id: 0,
-//     img: require("../../Resources/Meals/meal1.png"),
-//     mealName: "Madrasi Thari ",
-//     description: "Special Dish from South India",
-//     numberOfMeals: 0,
-//   },
-
-//   {
-//     id: 1,
-//     img: require("../../Resources/Meals/meal2.png"),
-//     mealName: "Gujarati Thari",
-//     description: "Special Dish from Gujarat",
-//     numberOfMeals: 0,
-//   },
-
-//   {
-//     id: 2,
-//     img: require("../../Resources/Meals/meal3.png"),
-//     mealName: "Punjabi Thari",
-//     description: "Special Dish from Punjab",
-//     numberOfMeals: 0,
-//   },
-
-//   {
-//     id: 3,
-//     img: require("../../Resources/Meals/meal4.png"),
-//     mealName: "Benagali Thari",
-//     description: "Special Dish from Bengal",
-//     numberOfMeals: 0,
-//   },
-// ];
-
 const PickMeals = ({
   zipCode,
   cart,
@@ -57,6 +20,8 @@ const PickMeals = ({
   mealNumbers,
   setMealNumbers,
   setResetOrderPageInfo,
+  totalPrice,
+  setTotalPrice,
 }) => {
   // so we can go back to orderPage
   const navigate = useNavigate();
@@ -244,10 +209,12 @@ const PickMeals = ({
               </Modal.Header>
               <Modal.Body>
                 {Object.keys(description).map((key) => {
-                  return (<span>
-                    {`${key} : ${description[key]}`}
-                    <br></br>
-                  </span>)
+                  return (
+                    <span>
+                      {`${key} : ${description[key]}`}
+                      <br></br>
+                    </span>
+                  );
                 })}
               </Modal.Body>
               <Modal.Footer>

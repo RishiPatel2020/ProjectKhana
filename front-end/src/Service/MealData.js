@@ -12,6 +12,7 @@ class MealData {
         chutney: 1,
       },
       numberOfMeals: 0,
+      price:11.99
     },
 
     {
@@ -24,6 +25,7 @@ class MealData {
         gulabJamun: 1,
       },
       numberOfMeals: 0,
+      price:11.99
     },
 
     {
@@ -38,6 +40,7 @@ class MealData {
         lassi: 1,
       },
       numberOfMeals: 0,
+      price:11.99
     },
 
     {
@@ -50,6 +53,7 @@ class MealData {
         rausagula: 1,
       },
       numberOfMeals: 0,
+      price:11.99
     },
   ];
   getMeals = () => {
