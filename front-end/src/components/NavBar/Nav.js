@@ -1,5 +1,3 @@
-import Modal from "bootstrap";
-import { useNavigate } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import AccountInfo from "../AccountInfo/AccountInfo";
 import userSession from "../../Service/userSession";
@@ -8,14 +6,11 @@ import "./Nav.css";
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Button } from "bootstrap";
-import { Offcanvas } from "react-bootstrap";
 import LogInPopUP from "./LogInPopUp/LogInPopUp";
 import SignUpPopUp from "./SignUpPopUp/SignUpPopUp";
-import MealData from "../../Service/MealData";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import UserProfile from "./UserProfile/UserProfile";
 
 function NavBar({
   loggedIn,
@@ -28,10 +23,6 @@ function NavBar({
   setCartPrice,
 }) {
   const [displayAccountInfo, setDisplayAccountInfo] = useState(false);
-  const logOut = () => {
-    setLogIn(false);
-    userSession.removeUser();
-  };
 
   return (
     <Navbar
@@ -53,7 +44,7 @@ function NavBar({
           </Nav.Link>
         </Navbar.Brand>
         {/* User profile  */}
-        <Dropdown>
+        {/* <Dropdown>
           <Dropdown.Toggle
             variant="light"
             id="dropdown-basic"
@@ -75,7 +66,6 @@ function NavBar({
             ></i>
           </Dropdown.Toggle>
 
-          {/* user info */}
           {userSession.isLoggedIn() ? (
             <Dropdown.Menu>
               <Dropdown.Item href="#/orderHistory">Order History</Dropdown.Item>
@@ -100,7 +90,11 @@ function NavBar({
               </Dropdown.Item>
             </Dropdown.Menu>
           )}
-        </Dropdown>
+        </Dropdown> */}
+        <UserProfile
+          setDisplayAccountInfo={setDisplayAccountInfo}
+          setLogIn={setLogIn}
+        />
 
         {/* Shopping cart */}
         <ShoppingCart
