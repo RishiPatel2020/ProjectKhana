@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MM/static/css/main.0b92fbc8.css",
-    "main.js": "/MM/static/js/main.149425cb.js",
+    "main.js": "/MM/static/js/main.53dcb8ca.js",
     "static/js/496.7431dc9b.chunk.js": "/MM/static/js/496.7431dc9b.chunk.js",
     "static/media/noHistory.png": "/MM/static/media/noHistory.4c3a724200d75503ab2f.png",
     "static/media/newGradient.png": "/MM/static/media/newGradient.6c8b5355fa41b9d261d1.png",
@@ -32,11 +32,11 @@
     "static/media/mirchiMealsLogo.png": "/MM/static/media/mirchiMealsLogo.edea7ed0341520f42b54.png",
     "index.html": "/MM/index.html",
     "main.0b92fbc8.css.map": "/MM/static/css/main.0b92fbc8.css.map",
-    "main.149425cb.js.map": "/MM/static/js/main.149425cb.js.map",
+    "main.53dcb8ca.js.map": "/MM/static/js/main.53dcb8ca.js.map",
     "496.7431dc9b.chunk.js.map": "/MM/static/js/496.7431dc9b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0b92fbc8.css",
-    "static/js/main.149425cb.js"
+    "static/js/main.53dcb8ca.js"
   ]
 }
