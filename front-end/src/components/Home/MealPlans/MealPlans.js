@@ -160,7 +160,7 @@ const MealPlans = ({ setMeals, setResetOrderPageInfo, setCart, setMealNumbers })
             <Col>
               <div className="d-flex justify-content-center align-items-center">
                 {/* Link to order page */}
-                <Link to="/order" smooth>
+                <Link to="/order">
                   <Button
                     variant="primary"
                     className="text-dark"

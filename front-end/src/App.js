@@ -21,7 +21,7 @@ function App() {
   // OrderPage
   const [numMeals, setNumMeals] = useState("Select Plan"); // won't be that useful; just to trick user's mind
   const [zipCode, setZipCode] = useState("");
-  const [freq, setFreq] = useState("Select Frequency");
+  // const [freq, setFreq] = useState("Select Frequency");
   const [delivDate, setDelivDate] = useState("Select Day");
 
   // Nav, PickMeals
@@ -97,8 +97,8 @@ function App() {
               setNumMeals={setNumMeals}
               zipCode={zipCode}
               setZipCode={setZipCode}
-              freq={freq}
-              setFreq={setFreq}
+              // freq={freq}
+              // setFreq={setFreq}
               delivDate={delivDate}
               setDelivDate={setDelivDate}
               resetOrderPageInfo={resetOrderPageInfo}

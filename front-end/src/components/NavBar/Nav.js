@@ -1,14 +1,11 @@
 import Nav from "react-bootstrap/Nav";
 import AccountInfo from "../AccountInfo/AccountInfo";
 import userSession from "../../Service/userSession";
-import { Container, Row, Col } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 import "./Nav.css";
 import Navbar from "react-bootstrap/Navbar";
-import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
 import { useState } from "react";
-import LogInPopUP from "./LogInPopUp/LogInPopUp";
-import SignUpPopUp from "./SignUpPopUp/SignUpPopUp";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import UserProfile from "./UserProfile/UserProfile";
 

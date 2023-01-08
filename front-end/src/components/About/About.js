@@ -52,7 +52,7 @@ const About = () => {
 
     button: (
       <div className="h-100 d-flex align-items-center justify-content-center">
-        <Link to="/order" smooth>
+        <Link to="/order">
           <Button
             variant="secondary"
             className="text-primary"

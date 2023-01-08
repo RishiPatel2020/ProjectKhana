@@ -198,10 +198,11 @@ const ShoppingCart = ({
                 Clear Order
               </button>
 
-              <Link to="/checkOut" smooth style={{ marginLeft: "24px" }}>
+              <Link to="/checkOut" style={{ marginLeft: "24px" }}>
                 <button
                   onClick={() => {
-                    clearCart();
+                    // what if user comes back from checkout page
+                    // clearCart();
                   }}
                   className="text-dark"
                   style={{

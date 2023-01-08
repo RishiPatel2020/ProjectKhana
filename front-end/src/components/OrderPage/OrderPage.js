@@ -1,6 +1,7 @@
 /**
  * Might need API call to validate zipcode based on region
  */
+import DeliveryDate from './DeliveryDate/DeliveryDate'; 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import React from "react";
@@ -69,14 +70,16 @@ const OrderPage = ({
     } else if (resetOrderPageInfo === 1) {
       // came from mealPlans section of Home Page
       // reset freq, date, and zipcode
-      setFreq("Select Frequency");
+
+      // setFreq("Select Frequency");
+
       setZipCode("");
       setDelivDate("Select Date");
     } else {
       // Want to choose every option again; Coming back from Pick Meals Page
       setNumMeals("Select Plan");
       setZipCode("");
-      setFreq("Select Frequency");
+      // setFreq("Select Frequency");
       setDelivDate("Select Date");
     }
     Scroll.scrollUp();
@@ -90,9 +93,11 @@ const OrderPage = ({
       handleDisplay("Enter Proper Zip Code");
     } else if (numMeals === "Select Plan") {
       handleDisplay("Select Plan");
-    } else if (freq === "Select Frequency") {
-      handleDisplay("Select Frequency");
-    } else if (delivDate === "Select Date") {
+    }
+    // else if (freq === "Select Frequency") {
+    // handleDisplay("Select Frequency");
+    // }
+    else if (delivDate === "Select Date") {
       handleDisplay("Select Date");
     } else {
       // move to pickMeals page
@@ -113,6 +118,10 @@ const OrderPage = ({
     setMsg("");
     setShow(false);
   };
+
+
+  // to see if delivDate rendered is the whole re-rendered
+  console.log("OrderPage RENDERED !!!!!");
 
   return (
     <>
@@ -198,7 +207,7 @@ const OrderPage = ({
                 </Col>
 
                 {/* Freq */}
-                <Col style={{ marginBottom: "35px" }}>
+                {/* <Col style={{ marginBottom: "35px" }}>
                   <h2 className="text-center">Frequency</h2>
                   <h6 className="text-center">Order one-time or recurring </h6>
 
@@ -234,7 +243,7 @@ const OrderPage = ({
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
-                </Col>
+                </Col> */}
 
                 {/* Delivery Date */}
                 <Col style={{ marginBottom: "55px" }}>
@@ -243,7 +252,7 @@ const OrderPage = ({
                     Deliveries between 6pm - 7:30pm
                   </h6>
                   <div className="d-flex align-items-center justify-content-center">
-                    <Dropdown>
+                    {/* <Dropdown>
                       <Dropdown.Toggle
                         variant="dark"
                         id="dropdown-basic"
@@ -272,7 +281,12 @@ const OrderPage = ({
                           <span>Friday</span>
                         </Dropdown.Item>
                       </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> */}
+
+                    <DeliveryDate
+                      delivDate={delivDate}
+                      setDelivDate={setDelivDate}
+                    />
                   </div>
                 </Col>
               </Row>

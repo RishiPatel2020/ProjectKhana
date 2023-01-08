@@ -86,7 +86,7 @@ const MealsLookUp = () => {
           <Row>
             <Col>
               <div className="d-flex justify-content-center align-items-center">
-                <Link to="/order" smooth>
+                <Link to="/order">
                   <Button
                     variant="secondary"
                     className="text-primary"

@@ -34,15 +34,15 @@ const PickMeals = ({
     } else {
       // scroll up only once when user arrives on this page
       ScrollTop.scrollUp();
+      if (mealNumbers.length === 0) {
+        setMealNumbers(new Array(data.length).fill(0));
+        console.log("RESETTING CART");
+      }
     }
   }, []);
 
   const data = MealData.getMeals();
 
-  // visiting this first time
-  if (mealNumbers.length === 0) {
-    setMealNumbers(new Array(data.length).fill(0));
-  }
 
   // pop up to show description/ingridents to users
   const [show, setShow] = useState(false);
@@ -165,12 +165,13 @@ const PickMeals = ({
         <Container className="text-dark my-4 customCss">
           <Row style={{ marginTop: "66px", marginBottom: "32px" }} xs="auto">
             {data.map((item) => {
-              const { id, img, mealName, description } = item;
+              const { id, img, mealName, description, price } = item;
               return (
                 <Col key={id} className="p-3 spacesBetweenBoxes">
                   <div className="card-body text-center">
                     <img src={img} className="img-fluid imageAdjustment" />
                     <h4 className="titleAdjustment">{mealName}</h4>
+                    <h5>${price}</h5>
                     <Link onClick={() => handleDisplay(description, mealName)}>
                       <p className="text-light descriptionAdjustment">
                         Description/Ingridients
@@ -229,7 +230,7 @@ const PickMeals = ({
             {/* Only show checkout button if # of item > 0 */}
             {cart.length !== 0 && (
               <div className="h-100 d-flex align-items-center justify-content-center">
-                <Link to="/checkOut" smooth>
+                <Link to="/checkOut" >
                   <Button
                     variant="secondary"
                     className="text-primary checkOutButton"

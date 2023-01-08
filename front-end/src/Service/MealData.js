@@ -11,7 +11,6 @@ class MealData {
         idli: 3,
         chutney: 1,
       },
-      numberOfMeals: 0,
       price:11.99
     },
 
@@ -24,7 +23,6 @@ class MealData {
         saak: 2,
         gulabJamun: 1,
       },
-      numberOfMeals: 0,
       price:11.99
     },
 
@@ -39,7 +37,6 @@ class MealData {
         gulabJamun: 3,
         lassi: 1,
       },
-      numberOfMeals: 0,
       price:11.99
     },
 
@@ -52,7 +49,6 @@ class MealData {
         saak: 2,
         rausagula: 1,
       },
-      numberOfMeals: 0,
       price:11.99
     },
   ];
