@@ -80,7 +80,7 @@ const OrderPage = ({
       setDelivDate("Select Date");
     } else {
       // Want to choose every option again; Coming back from Pick Meals Page
-      console.log("COMING BACK FROM PICK MEALS: RESET EVERYTHING");
+      console.log("COMING BACK FROM PICK MEALS OR COMING FROM HOME PAGE: RESET EVERYTHING");
       setNumMeals("Select Plan");
       setZipCode("");
       // setFreq("Select Frequency");

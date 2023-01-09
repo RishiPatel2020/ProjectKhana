@@ -241,6 +241,7 @@ function SignUpPopUp({ style, setLogIn }) {
           <Button variant={style.buttonColor} onClick={handleSubmit}>
             <span style={{ color: style.textColor }}>Submit</span>
           </Button>
+
         </Modal.Footer>
       </Modal>
     </>

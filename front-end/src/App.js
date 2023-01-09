@@ -15,6 +15,9 @@ import CheckOut from "./components/CheckOut/CheckOut";
 import Hotel from "./components/Hotel/Hotel";
 import userSession from "./Service/userSession";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import TermsAndCondition from "./components/TermsAndCondition/TermsAndCondition";
+import RefundsAndCancellationsPolicy from "./components/RefundsAndCancellationsPolicy/RefundsAndCancellationsPolicy";
 function App() {
   useEffect(() => {
     console.log("APP RENDERED...");
@@ -131,6 +134,8 @@ function App() {
               setTotalPrice={setTotalPrice}
               numMealsSelected={numMealsSelected}
               setNumMealsSelected={setNumMealsSelected}
+              setLogIn={setLogIn}
+              numMeals={numMeals}
             />
           )}
         />
@@ -147,6 +152,23 @@ function App() {
 
         {/* Hotel Page */}
         <Route exact path="/hotel" element={<Hotel />} />
+
+        {/* Privacy Policy */}
+        <Route exact path="/privacy" element={navAndFoot(<PrivacyPolicy />)} />
+
+        {/* Terms & Condition Policy */}
+        <Route
+          exact
+          path="/terms"
+          element={navAndFoot(<TermsAndCondition />)}
+        />
+
+        {/* Refunds Policy */}
+        <Route
+          exact
+          path="/refund"
+          element={navAndFoot(<RefundsAndCancellationsPolicy />)}
+        />
       </Routes>
     </>
   );

@@ -333,6 +333,7 @@ const ShoppingCart = ({
       )}
 
       
+      {/* should probably remove 1st condition */}
       {(numMealsSelected===0 || !userSession.isLoggedIn()) && (
         <PopUp
           displayPopUp={displayPopUp}
