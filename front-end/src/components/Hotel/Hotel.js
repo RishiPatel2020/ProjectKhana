@@ -37,13 +37,13 @@ const Hotel = () => {
           className="rounded"
         >
           <Row className="mb-4">
-            <div class="form-group">
+            <div className="form-group">
               <label for="exampleInputEmail1" className="mb-2">
                 PIN
               </label>
               <input
                 type="number"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter PIN"
@@ -51,7 +51,7 @@ const Hotel = () => {
             </div>
           </Row>
 
-          <div class="container text-center">
+          <div className="container text-center">
             <Button variant="dark" onClick={handleSubmit} className="">
               Log In
             </Button>

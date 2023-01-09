@@ -106,7 +106,10 @@ function SignUpPopUp({ style, setLogIn }) {
     setDisplay(false);
   };
 
-  const handleDisplay = () => setDisplay(true);
+  const handleDisplay = (e) => {
+    e.preventDefault();
+    setDisplay(true);
+  };
 
   /** User clicked on submit
    * all fields were entered
@@ -169,7 +172,7 @@ function SignUpPopUp({ style, setLogIn }) {
   return (
     <>
       {/* Sign Up Button on Red Box in Showcase */}
-      <button onClick={handleDisplay} className="buttonAdjustments">
+      <button onClick={(e) => handleDisplay(e)} className="buttonAdjustments">
         <span style={{ color: style.textColor }}>Sign Up</span>
       </button>
 

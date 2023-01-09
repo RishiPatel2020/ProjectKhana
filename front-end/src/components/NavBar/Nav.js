@@ -18,6 +18,9 @@ function NavBar({
   setMealNumbers,
   cartPrice,
   setCartPrice,
+  numMeals,
+  numMealsSelected,
+  setNumMealsSelected,
 }) {
   const [displayAccountInfo, setDisplayAccountInfo] = useState(false);
 
@@ -55,6 +58,10 @@ function NavBar({
           setCartPrice={setCartPrice}
           mealNumbers={mealNumbers}
           setMealNumbers={setMealNumbers}
+          setLogIn={setLogIn}
+          numMeals={numMeals}
+          numMealsSelected={numMealsSelected}
+          setNumMealsSelected={setNumMealsSelected}
         />
 
         <Navbar.Toggle

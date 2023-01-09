@@ -1,7 +1,7 @@
 /**
  * Might need API call to validate zipcode based on region
  */
-import DeliveryDate from './DeliveryDate/DeliveryDate'; 
+import DeliveryDate from "./DeliveryDate/DeliveryDate";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import React from "react";
@@ -50,6 +50,8 @@ const OrderPage = ({
   resetOrderPageInfo,
   setResetOrderPageInfo,
   setMealNumbers,
+  numMealsSelected,
+  setNumMealsSelected,
 }) => {
   const navigate = useNavigate();
 
@@ -63,20 +65,22 @@ const OrderPage = ({
    * coming from else where, go to pickMeals page or stay on orderPage depending on previous interaction of user with orderPage
    */
   useEffect(() => {
+    console.log("ORDER PAGE FOR FIRST TIME");
+    // user was looking at pickMeals; went else where; wants to go back to pickMeals
+    // GO to pick meals
     if (resetOrderPageInfo === 0) {
-      // user was looking at pickMeals; went else where; wants to go back to pickMeals
-      // GO to pick meals
+      console.log("GOING TO PM PAGE==>");
       navigate("/pickMeals");
-    } else if (resetOrderPageInfo === 1) {
-      // came from mealPlans section of Home Page
-      // reset freq, date, and zipcode
-
+    }
+    // came from mealPlans section of Home Page
+    // reset date and zipcode
+    else if (resetOrderPageInfo === 1) {
       // setFreq("Select Frequency");
-
       setZipCode("");
       setDelivDate("Select Date");
     } else {
       // Want to choose every option again; Coming back from Pick Meals Page
+      console.log("COMING BACK FROM PICK MEALS: RESET EVERYTHING");
       setNumMeals("Select Plan");
       setZipCode("");
       // setFreq("Select Frequency");
@@ -118,10 +122,6 @@ const OrderPage = ({
     setMsg("");
     setShow(false);
   };
-
-
-  // to see if delivDate rendered is the whole re-rendered
-  console.log("OrderPage RENDERED !!!!!");
 
   return (
     <>

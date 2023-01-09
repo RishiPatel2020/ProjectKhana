@@ -1,11 +1,17 @@
+import { Modal } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import SignUpPopUp from "../SignUpPopUp/SignUpPopUp";
+import LogInPopUP from "../LogInPopUp/LogInPopUp";
+
 import { useNavigate } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Offcanvas } from "react-bootstrap";
 import MealData from "../../../Service/MealData";
+import userSession from "../../../Service/userSession";
+import PopUp from "../../../SharedComponents/PopUp/PopUp";
 const ShoppingCart = ({
   cart,
   setCart,
@@ -13,6 +19,10 @@ const ShoppingCart = ({
   setCartPrice,
   mealNumbers,
   setMealNumbers,
+  setLogIn,
+  numMeals,
+  numMealsSelected,
+  setNumMealsSelected,
 }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -34,6 +44,7 @@ const ShoppingCart = ({
     setMealNumbers(emptyAr);
   };
   const add = (id) => {
+    setNumMealsSelected((numMealsSelected) => numMealsSelected + 1);
     setCartPrice(
       (cartPrice) =>
         Math.round(
@@ -52,6 +63,7 @@ const ShoppingCart = ({
   };
   const remove = (id) => {
     if (mealNumbers[id] > 0) {
+      setNumMealsSelected((numMealsSelected) => numMealsSelected - 1);
       setCartPrice(
         (cartPrice) =>
           Math.round(
@@ -81,6 +93,72 @@ const ShoppingCart = ({
     }
   };
 
+  // log in warnin
+  const [displayPopUp, setDisplayPopUp] = useState(false);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const [displayEnoughPopUp, setDisplayEnoughPopUp] = useState(false);
+  const [titleEnough, setTitleEnough] = useState("");
+  const [bodyEnough, setBodyEnough] = useState("");
+
+  {
+    /* remove this after stripe */
+  }
+  const [successPopUp, setSuccessPopUp] = useState(false);
+  const [successTitle, setSuccessTitle] = useState("");
+  const [successBody, setSuccessBody] = useState("");
+
+  const handleCheckOut = () => {
+    // not enough meals selected
+    if (!userSession.isLoggedIn()) {
+      setTitle("LogIn/SignUp");
+
+      setBody(
+        <div
+          className="container align-items-center d-flex justify-content-center"
+          style={{ fontFamily: "Signika" }}
+        >
+          <form style={{ padding: "20px" }} className="rounded">
+            <Row className="">
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1" className="mb-4">
+                  <p className="lead">Log in or Sign Up to continue</p>
+                </label>
+              </div>
+            </Row>
+
+            <div className="container text-center mb-4">
+              <LogInPopUP
+                style={{ buttonColor: "secondary", textColor: "white" }}
+                setLogIn={setLogIn}
+              />
+            </div>
+
+            <div className="container text-center">
+              {/* <Button variant="dark" className="">
+                Log In
+              </Button> */}
+              <SignUpPopUp
+                style={{ buttonColor: "secondary", textColor: "white" }}
+                setLogIn={setLogIn}
+              />
+            </div>
+          </form>
+        </div>
+      );
+      setDisplayPopUp(true);
+    } else if (parseInt(numMeals.split(" ")[0]) > numMealsSelected) {
+      setTitleEnough("Not Enough Meals selected!!");
+      setBodyEnough(<p>Select at least {numMeals.split(" ")[0]} meals</p>);
+      setDisplayEnoughPopUp(true);
+    } else {
+      setSuccessTitle("GO TO STRIPE");
+      setSuccessBody(<p>You can proceed to stripe checkout</p>);
+      setSuccessPopUp(true);
+    }
+  };
+
   return (
     <Nav style={{ marginTop: "8px" }}>
       <button
@@ -98,7 +176,7 @@ const ShoppingCart = ({
         onClick={handleShow}
       >
         <i
-          class="bi bi-cart3"
+          className="bi bi-cart3"
           style={{
             marginBottom: "12px",
             borderRadius: "10px",
@@ -198,25 +276,22 @@ const ShoppingCart = ({
                 Clear Order
               </button>
 
-              <Link to="/checkOut" style={{ marginLeft: "24px" }}>
-                <button
-                  onClick={() => {
-                    // what if user comes back from checkout page
-                    // clearCart();
-                  }}
-                  className="text-dark"
-                  style={{
-                    backgroundColor: "rgb(247, 193, 68)",
-                    border: "0px",
-                    height: "45px",
-                    width: "145px",
-                    borderRadius: "25px",
-                    fontSize: "20px",
-                  }}
-                >
-                  Check Out
-                </button>
-              </Link>
+              {/* <Link to="/checkOut" style={{ marginLeft: "24px" }}> */}
+              <button
+                onClick={() => handleCheckOut()}
+                className="text-dark"
+                style={{
+                  backgroundColor: "rgb(247, 193, 68)",
+                  border: "0px",
+                  height: "45px",
+                  width: "145px",
+                  borderRadius: "25px",
+                  fontSize: "20px",
+                }}
+              >
+                Check Out
+              </button>
+              {/* </Link> */}
             </div>
           </Offcanvas.Body>
         </Offcanvas>
@@ -256,6 +331,31 @@ const ShoppingCart = ({
           </Offcanvas.Body>
         </Offcanvas>
       )}
+
+      
+      {(numMealsSelected===0 || !userSession.isLoggedIn()) && (
+        <PopUp
+          displayPopUp={displayPopUp}
+          setDisplayPopUp={setDisplayPopUp}
+          title={title}
+          body={body}
+        />
+      )}
+
+      <PopUp
+        displayPopUp={displayEnoughPopUp}
+        setDisplayPopUp={setDisplayEnoughPopUp}
+        title={titleEnough}
+        body={bodyEnough}
+      />
+
+      {/* remove this after stripe */}
+      <PopUp
+        displayPopUp={successPopUp}
+        setDisplayPopUp={setSuccessPopUp}
+        title={successTitle}
+        body={successBody}
+      />
     </Nav>
   );
 };

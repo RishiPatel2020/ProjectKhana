@@ -69,7 +69,7 @@ const DeliveryDate = ({ delivDate, setDelivDate }) => {
         <Dropdown.Menu>
           {sundays().map((item) => {
             return (
-              <Dropdown.Item onClick={() => setDelivDate(item)}>
+              <Dropdown.Item key = {item} onClick={() => setDelivDate(item)}>
                 <span>{item}</span>
               </Dropdown.Item>
             );

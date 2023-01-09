@@ -23,7 +23,7 @@ const UserProfile = ({ setDisplayAccountInfo, setLogIn }) => {
         }}
       >
         <i
-          class="bi bi-person"
+          className="bi bi-person"
           style={{
             marginBottom: "2px",
             borderRadius: "10px",

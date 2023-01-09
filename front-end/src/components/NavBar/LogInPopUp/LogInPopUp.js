@@ -65,7 +65,10 @@ function LogInPopUP({ style, setLogIn }) {
     setDisplay(false);
   };
 
-  const handleDisplay = () => setDisplay(true);
+  const handleDisplay = (e) => {
+    e.preventDefault(); 
+    setDisplay(true);
+  };
 
   /** User clicked on submit
    * all fields were entered
@@ -105,8 +108,8 @@ function LogInPopUP({ style, setLogIn }) {
             "Gujarati Meal",
           ],
           price: 96,
-          orderDate:"12/11/2022",
-          deliveryDate:"Sunday"
+          orderDate: "12/11/2022",
+          deliveryDate: "Sunday",
         },
 
         {
@@ -120,8 +123,8 @@ function LogInPopUP({ style, setLogIn }) {
             "Bangladeshi Meal",
           ],
           price: 96,
-          orderDate:"12/12/2022",
-          deliveryDate:"Friday"
+          orderDate: "12/12/2022",
+          deliveryDate: "Friday",
         },
       ];
 
@@ -130,7 +133,7 @@ function LogInPopUP({ style, setLogIn }) {
         lname: "Last",
         emailAddress: email,
         password: userPassword,
-        orderHistory:orderhistory
+        orderHistory: orderhistory,
       };
       userSession.addUser(userReceived);
       handleClose();
@@ -142,7 +145,7 @@ function LogInPopUP({ style, setLogIn }) {
   return (
     <>
       {/* Log In Button on Red Box in Showcase */}
-      <button onClick={handleDisplay} className="buttonAdjustments">
+      <button onClick={(e)=>handleDisplay(e)} className="buttonAdjustments">
         <span style={{ color: style.textColor }}>Log In</span>
       </button>
 

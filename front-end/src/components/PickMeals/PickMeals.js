@@ -13,6 +13,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ScrollTop from "../../Service/ScrollTop";
 import MealData from "../../Service/MealData";
+import { logDOM } from "@testing-library/react";
 const PickMeals = ({
   zipCode,
   cart,
@@ -20,15 +21,17 @@ const PickMeals = ({
   mealNumbers,
   setMealNumbers,
   setResetOrderPageInfo,
-  totalPrice,
-  setTotalPrice,
+  numMealsSelected,
+  setNumMealsSelected,
 }) => {
   // so we can go back to orderPage
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("ZIPCODE ON PM RENDERED::: " + zipCode);
     // if zipCode not provided, go back to order page
     if (zipCode.length === 0) {
+      console.log("NO ZIPCODE; GO BACK TO ORDER AND RESET EVERYTHING");
       setResetOrderPageInfo(2); // if no zip code; go back to order page and have user fill out all the fields
       navigate("/order");
     } else {
@@ -37,12 +40,12 @@ const PickMeals = ({
       if (mealNumbers.length === 0) {
         setMealNumbers(new Array(data.length).fill(0));
         console.log("RESETTING CART");
+        // should do this in case of payment success
       }
     }
   }, []);
 
   const data = MealData.getMeals();
-
 
   // pop up to show description/ingridents to users
   const [show, setShow] = useState(false);
@@ -54,6 +57,7 @@ const PickMeals = ({
     setCart([]);
     setMealNumbers([]);
     setResetOrderPageInfo(2); // reset everything in orderPage
+    console.log("<== BACK BUTTON CLICKED...");
     navigate("/order");
   };
 
@@ -79,11 +83,13 @@ const PickMeals = ({
    */
 
   const add = (idNum) => {
+    setNumMealsSelected((numMealsSelected) => numMealsSelected + 1);
     // will have to add PRICE
     const addToCart = {
       id: idNum,
       mealName: data[idNum].mealName,
       description: data[idNum].description,
+      price: data[idNum].price,
     };
 
     const tempArray = [];
@@ -129,6 +135,7 @@ const PickMeals = ({
   const remove = (id) => {
     // CANNOT have quantity < 0
     if (mealNumbers[id] > 0) {
+      setNumMealsSelected((numMealsSelected) => numMealsSelected - 1);
       mealNumbers[id]--; // decrement quantity in mealNumbers at index "id"
       const newAr = [];
       mealNumbers.map((item) => {
@@ -230,7 +237,7 @@ const PickMeals = ({
             {/* Only show checkout button if # of item > 0 */}
             {cart.length !== 0 && (
               <div className="h-100 d-flex align-items-center justify-content-center">
-                <Link to="/checkOut" >
+                <Link to="/checkOut">
                   <Button
                     variant="secondary"
                     className="text-primary checkOutButton"

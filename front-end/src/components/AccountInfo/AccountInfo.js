@@ -7,17 +7,16 @@ import userSession from "../../Service/userSession";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const AccountInfo = ({ show, setShow }) => {
-  
-
   // email value displayed on inputfield
   const [email, setEmail] = useState(userSession.getUser().emailAddress);
 
-
   // toggle password visibility
-  const [eyeIcon, setEyeIcon] = useState(<i class="bi bi-eye"></i>);
+  const [eyeIcon, setEyeIcon] = useState(<i className="bi bi-eye"></i>);
 
   // passwd displayed on input field
-  const [userPassword, setUserPassword] = useState(userSession.getUser().password);
+  const [userPassword, setUserPassword] = useState(
+    userSession.getUser().password
+  );
 
   /**
    * closed without saving
@@ -87,11 +86,11 @@ const AccountInfo = ({ show, setShow }) => {
     const element = document.getElementById("passwordChange");
     if (element.type === "text") {
       // hide
-      setEyeIcon(<i class="bi bi-eye"></i>);
+      setEyeIcon(<i className="bi bi-eye"></i>);
       element.type = "password";
     } else {
       // show
-      setEyeIcon(<i class="bi bi-eye-slash"></i>);
+      setEyeIcon(<i className="bi bi-eye-slash"></i>);
       element.type = "text";
     }
   };
@@ -123,7 +122,7 @@ const AccountInfo = ({ show, setShow }) => {
               }}
               onClick={enableEmail}
             >
-              <i class="bi bi-pencil"></i>
+              <i className="bi bi-pencil"></i>
             </Button>
             <input
               type="email"
@@ -163,7 +162,7 @@ const AccountInfo = ({ show, setShow }) => {
               }}
               onClick={enablePassword}
             >
-              <i class="bi bi-pencil"></i>
+              <i className="bi bi-pencil"></i>
             </Button>
 
             <input

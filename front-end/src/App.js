@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Help from "./components/Help/Help";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
@@ -15,6 +16,9 @@ import Hotel from "./components/Hotel/Hotel";
 import userSession from "./Service/userSession";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 function App() {
+  useEffect(() => {
+    console.log("APP RENDERED...");
+  }, []);
   // Nav, Home
   const [loggedIn, setLogIn] = useState(userSession.isLoggedIn());
 
@@ -36,6 +40,7 @@ function App() {
   const [totalPrice, setTotalPrice] = useState(0);
   // localtotalPrice
   const [cartPrice, setCartPrice] = useState(0);
+  const [numMealsSelected, setNumMealsSelected] = useState(0);
 
   const navAndFoot = (element) => {
     return (
@@ -49,8 +54,10 @@ function App() {
           setMealNumbers={setMealNumbers}
           totalPrice={totalPrice}
           setTotalPrice={setTotalPrice}
-          cartPrice=  {cartPrice}
+          cartPrice={cartPrice}
           setCartPrice={setCartPrice}
+          numMealsSelected={numMealsSelected}
+          setNumMealsSelected={setNumMealsSelected}
         />
 
         {/* to make nav sticked to top */}
@@ -122,6 +129,8 @@ function App() {
               setResetOrderPageInfo={setResetOrderPageInfo}
               totalPrice={totalPrice}
               setTotalPrice={setTotalPrice}
+              numMealsSelected={numMealsSelected}
+              setNumMealsSelected={setNumMealsSelected}
             />
           )}
         />
