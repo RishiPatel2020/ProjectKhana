@@ -2,7 +2,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <section className="p-5" style={{ fontFamily: "Comfortaa" }}>
+    <section className="p-5" style={{ fontFamily: "Signika" }}>
       <div className="container">
         <div className="row g-4">
           <div className="col-md">
@@ -14,7 +14,7 @@ const Contact = () => {
 
               <li className="list-group-item">
                 <span className="fw-bold">Email:</span>
-                khana839@gmail.com
+                support@mirchimeals.com
               </li>
             </ul>
           </div>

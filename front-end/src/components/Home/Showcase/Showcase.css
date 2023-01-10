@@ -158,8 +158,10 @@
   }
 
   .boxing {
+    
     background-color: rgb(98, 10, 21);
-    opacity: 0.91;
+    /* background-color: rgb(247, 193, 68); */
+    opacity: 1;
     padding-left: 25px;
     padding-right: 25px;
     margin-bottom: 55px;
