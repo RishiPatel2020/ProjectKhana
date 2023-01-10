@@ -196,10 +196,10 @@ const OrderPage = ({
                         </Dropdown.Item>
 
                         <Dropdown.Item
-                          onMouseEnter={() => setNumMeals("12 Meals")}
-                          onClick={() => setNumMeals("12 Meals")}
+                          onMouseEnter={() => setNumMeals("12+ Meals")}
+                          onClick={() => setNumMeals("12+ Meals")}
                         >
-                          <span>12 meals</span>
+                          <span>12+ meals</span>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

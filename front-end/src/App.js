@@ -37,7 +37,7 @@ function App() {
 
   // Connecting PickMeals & OrderPage, [About,Home,Help....]
   // 0: do NOT reset, 1: RESET Everything except Number of Meals bc we go from Home to OrderPage by selecting number of meals, 2: RESET EVERYTHING
-  const [resetOrderPageInfo, setResetOrderPageInfo] = useState(0);
+  const [resetOrderPageInfo, setResetOrderPageInfo] = useState(3);
 
   // total price REMOVE THIS IF LOCAL WORKS
   const [totalPrice, setTotalPrice] = useState(0);
@@ -59,6 +59,7 @@ function App() {
           setTotalPrice={setTotalPrice}
           cartPrice={cartPrice}
           setCartPrice={setCartPrice}
+          numMeals={numMeals}
           numMealsSelected={numMealsSelected}
           setNumMealsSelected={setNumMealsSelected}
         />

@@ -109,9 +109,22 @@ const ShoppingCart = ({
   const [successTitle, setSuccessTitle] = useState("");
   const [successBody, setSuccessBody] = useState("");
 
+  /**
+   * send Data to DB for DA purporses
+   * STRIP INTEGRATION
+   */
   const handleCheckOut = () => {
+    console.log(`numMeals:: ${numMeals};;; Selected::: ${numMealsSelected}`);
     // not enough meals selected
-    if (!userSession.isLoggedIn()) {
+    if (numMeals === "12+ Meals" && numMealsSelected < 12) {
+      setTitleEnough("Not Enough Meals selected!!");
+      setBodyEnough(<p>Select at least 12 meals</p>);
+      setDisplayEnoughPopUp(true);
+    } else if (parseInt(numMeals[0]) > numMealsSelected) {
+      setTitleEnough("Not Enough Meals selected!!");
+      setBodyEnough(<p>Select at least {numMeals[0]} meals</p>);
+      setDisplayEnoughPopUp(true);
+    } else if (!userSession.isLoggedIn()) {
       setTitle("LogIn/SignUp");
 
       setBody(
@@ -148,10 +161,6 @@ const ShoppingCart = ({
         </div>
       );
       setDisplayPopUp(true);
-    } else if (parseInt(numMeals.split(" ")[0]) > numMealsSelected) {
-      setTitleEnough("Not Enough Meals selected!!");
-      setBodyEnough(<p>Select at least {numMeals.split(" ")[0]} meals</p>);
-      setDisplayEnoughPopUp(true);
     } else {
       setSuccessTitle("GO TO STRIPE");
       setSuccessBody(<p>You can proceed to stripe checkout</p>);
@@ -332,9 +341,8 @@ const ShoppingCart = ({
         </Offcanvas>
       )}
 
-      
       {/* should probably remove 1st condition */}
-      {(numMealsSelected===0 || !userSession.isLoggedIn()) && (
+      {!userSession.isLoggedIn() && (
         <PopUp
           displayPopUp={displayPopUp}
           setDisplayPopUp={setDisplayPopUp}
